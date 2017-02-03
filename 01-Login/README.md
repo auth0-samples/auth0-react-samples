@@ -1,8 +1,32 @@
-# Auth0 React Samples
+# Auth0 React Login
 
-These samples demonstrate how to add authentication to a React application with Auth0. Each folder contains a distinct application so that various Auth0 features can be viewed in isolation.
+This sample demonstrates how to add authentication to a React application using Auth0's Lock widget. The sample uses create-react-app.
 
-The samples show how to integrate Auth0 using [Auth0Lock](https://github.com/auth0/lock) >= 10.9.0 and [auth0.js](https://github.com/auth0/auth0.js) >= 8.0.0.
+## Getting Started
+
+If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. If you are using the server provided by the create-react-app, that URL is `http://localhost:3000`.
+
+Clone the repo or download it from the React quickstart page in Auth0's documentation. Install create-react-app globally and the dependencies for the app.
+
+```bash
+npm install -g create-react-app
+cd 01-Login
+npm install
+```
+
+## Set the Client ID and Domain
+
+If you download the sample from the quickstart page, it will come pre-populated with the **client ID** and **domain** for your application. If you clone the repo directly from Github, rename the `auth0-variables.js.example` file to `auth0-variables.js` and provide the **client ID** and **domain** there. This file is located in `src/Auth/`.
+
+## Run the Application
+
+The development server that comes with create-react-app can be used to serve the application.
+
+```bash
+npm start
+```
+
+The application will be served at `http://localhost:3000`.
 
 ## What is Auth0?
 
@@ -31,3 +55,5 @@ If you have found a bug or if you have a feature request, please report them at 
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE.txt) file for more info.
+
+
