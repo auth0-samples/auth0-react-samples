@@ -40,7 +40,6 @@ export default class Auth extends EventEmitter {
   }
 
   _doAuthentication(authResult) {
-    console.log(authResult)
     if (authResult && authResult.accessToken && authResult.idToken) {
       // Saves the user's access token and ID token
       localStorage.setItem('access_token', authResult.accessToken);

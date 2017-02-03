@@ -12,13 +12,13 @@ class Home extends Component {
   ping() {
     fetch(`${API_URL}/public`)
       .then(res => res.json())
-      .then(data => this.setState({message: data.message}));
+      .then(data => this.setState({ message: data.message }));
   }
   securedPing() {
     const { authFetch } = this.props.route.auth;
     authFetch(`${API_URL}/private`)
-      .then(data => this.setState({message: data.message}))
-      .catch(error => this.setState({message: error.message}));
+      .then(data => this.setState({ message: data.message }))
+      .catch(error => this.setState({ message: error.message }));
   }
   render() {
     const { isAuthenticated } = this.props.route.auth;
@@ -31,11 +31,12 @@ class Home extends Component {
             <p>Log in to call a private (secured) server endpoint.</p>
         }
         <Button bsStyle="primary" onClick={this.ping.bind(this)}>Ping</Button>
+        {' '}
         {
           isAuthenticated() && (
-            <Button bsStyle="primary" onClick={this.securedPing.bind(this)}>
-              Call Private
-            </Button>
+              <Button bsStyle="primary" onClick={this.securedPing.bind(this)}>
+                Call Private
+              </Button>
             )
         }
         <h2>{message}</h2>
