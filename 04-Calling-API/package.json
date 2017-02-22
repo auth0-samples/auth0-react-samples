@@ -6,7 +6,7 @@
     "react-scripts": "0.8.5"
   },
   "dependencies": {
-    "auth0-lock": "^10.10.2",
+    "auth0-lock": "^10.11",
     "bootstrap": "^3.3.7",
     "cors": "^2.8.1",
     "dotenv": "^4.0.0",
@@ -14,7 +14,6 @@
     "express": "^4.14.1",
     "express-jwt": "^5.1.0",
     "jwks-rsa": "^1.1.1",
-    "jwt-decode": "^2.1.0",
     "npm-run-all": "^4.0.1",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.7",

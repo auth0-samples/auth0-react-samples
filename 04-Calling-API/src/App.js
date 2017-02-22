@@ -12,6 +12,10 @@ class App extends Component {
     browserHistory.replace('/ping');
   }
 
+  goToProfile() {
+    browserHistory.replace('/profile');
+  }
+
   login() {
     this.props.route.auth.login();
   }
@@ -45,6 +49,17 @@ class App extends Component {
                     onClick={this.login.bind(this)}
                   >
                     Log In
+                  </Button>
+                )
+            }
+            {
+              isAuthenticated() && (
+                  <Button
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.goToProfile.bind(this)}
+                  >
+                    Profile
                   </Button>
                 )
             }

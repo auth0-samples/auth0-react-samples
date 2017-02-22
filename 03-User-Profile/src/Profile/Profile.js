@@ -27,9 +27,8 @@ class Profile extends Component {
           <div>
             <ControlLabel><Glyphicon glyph="user" /> Nickname</ControlLabel>
             <h3>{profile.nickname}</h3>
-            <ControlLabel><Glyphicon glyph="envelope" /> Email</ControlLabel>
-            <h3>{profile.email}</h3>
           </div>
+          <pre>{JSON.stringify(profile, null, 2)}</pre>
         </Panel>
       </div>
     );

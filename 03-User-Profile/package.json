@@ -1,15 +1,14 @@
 {
-  "name": "01-Login",
+  "name": "03-User-Profile",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.8.5"
   },
   "dependencies": {
-    "auth0-lock": "^10.10.2",
+    "auth0-lock": "^10.11.0",
     "bootstrap": "^3.3.7",
     "events": "^1.1.1",
-    "jwt-decode": "^2.1.0",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2",

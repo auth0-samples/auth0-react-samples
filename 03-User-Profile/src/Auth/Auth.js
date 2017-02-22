@@ -1,7 +1,6 @@
 import { browserHistory } from 'react-router';
-import { EventEmitter } from 'events'
+import { EventEmitter } from 'events';
 import Auth0Lock from 'auth0-lock';
-import decode from 'jwt-decode';
 import { AUTH_CONFIG } from './auth0-variables';
 
 export default class Auth extends EventEmitter {
@@ -9,7 +8,7 @@ export default class Auth extends EventEmitter {
     oidcConformant: true,
     autoclose: true,
     auth: {
-      callbackUrl: AUTH_CONFIG.callbackUrl,
+      redirectUrl: AUTH_CONFIG.callbackUrl,
       responseType: 'token id_token',
       params: {
         audience: `https://${AUTH_CONFIG.domain}/userinfo`,
@@ -17,13 +16,16 @@ export default class Auth extends EventEmitter {
       }
     }
   });
+
   userProfile;
+
   constructor() {
     super();
     // Add callback Lock's `authenticated` event
-    this.lock.on('authenticated', this._doAuthentication.bind(this));
+    this.lock.on('authenticated', this.setSession.bind(this));
     // Add callback for Lock's `authorization_error` event
-    this.lock.on('authorization_error', this._authorizationError.bind(this));
+    this.lock.on('authorization_error', error =>
+      console.log('Authentication Error', error));
     // binds functions to keep this context
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -34,29 +36,6 @@ export default class Auth extends EventEmitter {
   login() {
     // Call the show method to display the widget.
     this.lock.show();
-  }
-
-  logout() {
-    // Clear access token and ID token from local storage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
-    // navigate to the home route
-    browserHistory.replace('/home');
-  }
-
-  _doAuthentication(authResult) {
-    if (authResult && authResult.accessToken && authResult.idToken) {
-      // Saves the user's access token and ID token
-      localStorage.setItem('access_token', authResult.accessToken);
-      localStorage.setItem('id_token', authResult.idToken);
-      // navigate to the home route
-      browserHistory.replace('/home');
-    }
-  }
-
-  _authorizationError(error) {
-    // Unexpected authentication error
-    console.log('Authentication Error', error);
   }
 
   getProfile(cb) {
@@ -72,9 +51,34 @@ export default class Auth extends EventEmitter {
     });
   }
 
+  setSession(authResult) {
+    if (authResult && authResult.accessToken && authResult.idToken) {
+      // Set the time that the access token will expire at
+      let expiresAt = JSON.stringify(
+        authResult.expiresIn * 1000 + new Date().getTime()
+      );
+      localStorage.setItem('access_token', authResult.accessToken);
+      localStorage.setItem('id_token', authResult.idToken);
+      localStorage.setItem('expires_at', expiresAt);
+      // navigate to the home route
+      browserHistory.replace('/home');
+    }
+  }
+
+  logout() {
+    // Clear access token and ID token from local storage
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
+    this.userProfile = null;
+    // navigate to the home route
+    browserHistory.replace('/home');
+  }
+
   isAuthenticated() {
-    // Checks whether the token exists and is unexpired
-    const token = localStorage.getItem('id_token');
-    return !!token && decode(token).exp > Date.now() / 1000;
+    // Check whether the current time is past the
+    // access token's expiry time
+    let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    return new Date().getTime() < expiresAt;
   }
 }
