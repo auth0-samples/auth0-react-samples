@@ -6,15 +6,18 @@ class Home extends Component {
     this.props.route.auth.login();
   }
   render() {
-    const { isAuthenticated } = this.props.route.auth;
+    const { isAuthenticated, isAdmin } = this.props.route.auth;
     return (
       <div>
         {
           isAuthenticated() && (
-              <h4>
-                You are logged in! You can now You can now view your <Link to="admin">admin area</Link>
-              </h4>
-            )
+            <h4>You are logged in!</h4>
+          )
+        }
+        {
+          isAuthenticated() && isAdmin() && (
+            <h4>You can now You can now view your <Link to="admin">admin area</Link></h4>
+          )
         }
         {
           !isAuthenticated() && (
