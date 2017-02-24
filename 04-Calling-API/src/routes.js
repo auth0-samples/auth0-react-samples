@@ -25,4 +25,4 @@ export const makeMainRoutes = () => {
       <Route path="callback" component={Callback} />
     </Route>
   );
-};
+}

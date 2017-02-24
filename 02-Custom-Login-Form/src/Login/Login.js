@@ -10,6 +10,7 @@ import {
 } from 'react-bootstrap';
 
 class Login extends Component {
+  
   getFormData() {
     return {
       email: ReactDOM.findDOMNode(this.refs.email).value,
@@ -31,6 +32,7 @@ class Login extends Component {
   loginWithGoogle() {
     this.props.route.auth.loginWithGoogle();
   }
+
   render() {
     return (
       <div>

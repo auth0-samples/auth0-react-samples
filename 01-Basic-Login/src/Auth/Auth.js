@@ -4,17 +4,17 @@ import Auth0Lock from 'auth0-lock';
 import { AUTH_CONFIG } from './auth0-variables';
 
 export default class Auth extends EventEmitter {
+
   lock = new Auth0Lock(AUTH_CONFIG.clientId, AUTH_CONFIG.domain, {
     oidcConformant: true,
     autoclose: true,
     auth: {
       redirectUrl: AUTH_CONFIG.callbackUrl,
       responseType: 'token id_token',
-      params: {
-        audience: `https://${AUTH_CONFIG.domain}/userinfo`
-      }
+      audience: `https://${AUTH_CONFIG.domain}/userinfo`
     }
   });
+
   constructor() {
     super();
     this.handleAuthentication();
