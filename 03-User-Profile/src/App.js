@@ -4,12 +4,8 @@ import { browserHistory } from 'react-router';
 import './App.css';
 
 class App extends Component {
-  goHome() {
-    browserHistory.replace('/home');
-  }
-
-  goToProfile() {
-    browserHistory.replace('/profile');
+  goTo(route) {
+    browserHistory.replace(`/${route}`)
   }
 
   login() {
@@ -33,7 +29,7 @@ class App extends Component {
             <Button
               bsStyle="primary"
               className="btn-margin"
-              onClick={this.goHome.bind(this)}
+              onClick={this.goTo.bind(this, 'home')}
             >
               Home
             </Button>
@@ -53,7 +49,7 @@ class App extends Component {
                   <Button
                     bsStyle="primary"
                     className="btn-margin"
-                    onClick={this.goToProfile.bind(this)}
+                    onClick={this.goTo.bind(this, 'profile')}
                   >
                     Profile
                   </Button>
