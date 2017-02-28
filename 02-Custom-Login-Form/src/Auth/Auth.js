@@ -55,8 +55,9 @@ export default class Auth extends EventEmitter {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
         browserHistory.replace('/home');
-      } else if (authResult && authResult.error) {
-        alert(`Error: ${authResult.error}`);
+      } else if (err) {
+        browserHistory.replace('/home');
+        alert(`Error: ${err.error}`);
       }
     });
   }
