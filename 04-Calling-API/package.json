@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.8.5"
+    "react-scripts": "0.9.3"
   },
   "dependencies": {
-    "auth0-lock": "^10.11",
+    "auth0-lock": "^10.13.0",
     "bootstrap": "^3.3.7",
     "cors": "^2.8.1",
     "dotenv": "^4.0.0",
