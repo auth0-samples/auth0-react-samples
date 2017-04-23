@@ -1,7 +1,7 @@
-import { browserHistory } from 'react-router';
 import { EventEmitter } from 'events';
 import Auth0Lock from 'auth0-lock';
 import { AUTH_CONFIG } from './auth0-variables';
+import history from '../history';
 
 export default class Auth extends EventEmitter {
   lock = new Auth0Lock(AUTH_CONFIG.clientId, AUTH_CONFIG.domain, {
@@ -47,7 +47,7 @@ export default class Auth extends EventEmitter {
       localStorage.setItem('id_token', authResult.idToken);
       localStorage.setItem('expires_at', expiresAt);
       // navigate to the home route
-      browserHistory.replace('/home');
+      history.replace('/home');
     }
   }
 
@@ -76,7 +76,7 @@ export default class Auth extends EventEmitter {
     localStorage.removeItem('expires_at');
     this.userProfile = null;
     // navigate to the home route
-    browserHistory.replace('/home');
+    history.replace('/home');
   }
 
   isAuthenticated() {

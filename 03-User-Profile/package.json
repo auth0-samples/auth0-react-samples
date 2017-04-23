@@ -3,16 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.9.3"
+    "react-scripts": "0.9.5"
   },
   "dependencies": {
-    "auth0-lock": "^10.13.0",
+    "auth0-lock": "^10.14.0",
     "bootstrap": "^3.3.7",
     "events": "^1.1.1",
-    "react": "^15.4.2",
-    "react-bootstrap": "^0.30.7",
-    "react-dom": "^15.4.2",
-    "react-router": "^3.0.2"
+    "history": "^4.6.1",
+    "react": "^15.5.4",
+    "react-bootstrap": "^0.30.10",
+    "react-dom": "^15.5.4",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
