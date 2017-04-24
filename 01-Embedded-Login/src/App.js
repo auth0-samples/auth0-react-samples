@@ -56,9 +56,6 @@ class App extends Component {
             }
           </Navbar.Header>
         </Navbar>
-        <div className="container">
-          {this.props.children}
-        </div>
       </div>
     );
   }
