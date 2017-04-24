@@ -1,7 +1,7 @@
-import { browserHistory } from 'react-router';
 import { EventEmitter } from 'events';
 import auth0 from 'auth0-js';
 import { AUTH_CONFIG } from './auth0-variables';
+import history from '../history';
 
 export default class Auth extends EventEmitter {
   auth0 = new auth0.WebAuth({
@@ -54,9 +54,9 @@ export default class Auth extends EventEmitter {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        browserHistory.replace('/home');
+        history.replace('/home');
       } else if (err) {
-        browserHistory.replace('/home');
+        history.replace('/home');
         alert(`Error: ${err.error}`);
       }
     });
@@ -70,7 +70,7 @@ export default class Auth extends EventEmitter {
       localStorage.setItem('id_token', authResult.idToken);
       localStorage.setItem('expires_at', expiresAt);
       // navigate to the home route
-      browserHistory.replace('/home');
+      history.replace('/home');
     }
   }
 
@@ -80,7 +80,7 @@ export default class Auth extends EventEmitter {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // navigate to the home route
-    browserHistory.replace('/home');
+    history.replace('/home');
   }
 
   isAuthenticated() {

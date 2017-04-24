@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import { Navbar, Button } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
 import './App.css';
 
 class App extends Component {
   goTo(route) {
-    browserHistory.replace(`/${route}`)
+    this.props.history.replace(`/${route}`)
   }
 
   login() {
-    browserHistory.replace('/login');
+    this.props.history.replace('/login');
   }
 
   logout() {
-    this.props.route.auth.logout();
+    this.props.auth.logout();
   }
 
   render() {
-    const { isAuthenticated } = this.props.route.auth;
+    const { isAuthenticated } = this.props.auth;
 
     return (
       <div>

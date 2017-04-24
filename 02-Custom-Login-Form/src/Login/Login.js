@@ -21,16 +21,16 @@ class Login extends Component {
   login(event) {
     event.preventDefault();
     const user = this.getFormData();
-    this.props.route.auth.login(user.email, user.password);
+    this.props.auth.login(user.email, user.password);
   }
 
   signup() {
     const user = this.getFormData();
-    this.props.route.auth.signup(user.email, user.password);
+    this.props.auth.signup(user.email, user.password);
   }
 
   loginWithGoogle() {
-    this.props.route.auth.loginWithGoogle();
+    this.props.auth.loginWithGoogle();
   }
 
   render() {

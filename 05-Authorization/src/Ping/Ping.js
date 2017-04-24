@@ -7,7 +7,7 @@ class Home extends Component {
     this.setState({ message: '' });
   }
   login() {
-    this.props.route.auth.login();
+    this.props.auth.login();
   }
   ping() {
     fetch(`${API_URL}/public`)
@@ -15,13 +15,13 @@ class Home extends Component {
       .then(data => this.setState({ message: data.message }));
   }
   securedPing(route) {
-    const { authFetch } = this.props.route.auth;
+    const { authFetch } = this.props.auth;
     authFetch(`${API_URL}/${route}`)
       .then(data => this.setState({ message: data.message }))
       .catch(error => this.setState({ message: error.message }));
   }
   render() {
-    const { isAuthenticated, isAdmin } = this.props.route.auth;
+    const { isAuthenticated, isAdmin } = this.props.auth;
     const { message } = this.state;
     return (
       <div>
