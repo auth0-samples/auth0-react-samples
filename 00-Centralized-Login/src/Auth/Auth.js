@@ -20,7 +20,7 @@ export default class Auth extends EventEmitter {
     this.isAuthenticated = this.isAuthenticated.bind(this);
   }
 
-  login(username, password) {
+  login() {
     this.auth0.authorize();
   }
 
