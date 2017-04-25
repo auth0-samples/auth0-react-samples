@@ -1,5 +1,5 @@
 {
-  "name": "02-Custom-Login",
+  "name": "00-Centralized-Login",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
