@@ -1,0 +1,24 @@
+{
+  "name": "02-Custom-Login",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.9.5"
+  },
+  "dependencies": {
+    "auth0-js": "^8.5.0",
+    "bootstrap": "^3.3.7",
+    "events": "^1.1.1",
+    "react": "^15.5.4",
+    "react-bootstrap": "^0.30.10",
+    "react-dom": "^15.5.4",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
