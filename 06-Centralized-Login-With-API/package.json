@@ -1,0 +1,33 @@
+{
+  "name": "06-Centralized-Login-With-API",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.9.5"
+  },
+  "dependencies": {
+    "auth0-js": "^8.5.0",
+    "bootstrap": "^3.3.7",
+    "cors": "^2.8.1",
+    "dotenv": "^4.0.0",
+    "events": "^1.1.1",
+    "express": "^4.14.1",
+    "express-jwt": "^5.1.0",
+    "history": "^4.6.1",
+    "jwks-rsa": "^1.1.1",
+    "npm-run-all": "^4.0.1",
+    "react": "^15.5.4",
+    "react-bootstrap": "^0.30.10",
+    "react-dom": "^15.5.4",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1"
+  },
+  "scripts": {
+    "start": "npm-run-all --parallel server:start client:start",
+    "client:start": "react-scripts start",
+    "server:start": "node server.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
