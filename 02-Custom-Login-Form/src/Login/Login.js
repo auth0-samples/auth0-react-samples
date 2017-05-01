@@ -35,7 +35,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Col sm={6}>
           <h2>Username/Password Authentication</h2>
           <form>
