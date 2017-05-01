@@ -24,7 +24,7 @@ class Home extends Component {
     const { isAuthenticated, isAdmin } = this.props.auth;
     const { message } = this.state;
     return (
-      <div>
+      <div className="container">
         <h1>Make a Call to the Server</h1>
         {
           !isAuthenticated() &&

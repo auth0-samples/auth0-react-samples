@@ -8,7 +8,7 @@ class Home extends Component {
   render() {
     const { isAuthenticated, isAdmin } = this.props.auth;
     return (
-      <div>
+      <div className="container">
         {
           isAuthenticated() && (
             <h4>You are logged in!</h4>
@@ -16,7 +16,7 @@ class Home extends Component {
         }
         {
           isAuthenticated() && isAdmin() && (
-            <h4>You can now You can now view your <Link to="admin">admin area</Link></h4>
+            <h4>You can now view the <Link to="admin">admin area</Link>.</h4>
           )
         }
         {

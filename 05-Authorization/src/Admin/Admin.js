@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Admin extends Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <h2>You are an Admin!</h2>
         <p>
           Only users who have a{' '}
