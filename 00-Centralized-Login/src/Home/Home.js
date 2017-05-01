@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 class Home extends Component {
+  login() {
+    this.props.auth.login();
+  }
   render() {
     const { isAuthenticated } = this.props.auth;
     return (
@@ -17,11 +19,12 @@ class Home extends Component {
           !isAuthenticated() && (
               <h4>
                 You are not logged in! Please{' '}
-                <Link
-                  to={'/login'}
+                <a
+                  style={{ cursor: 'pointer' }}
+                  onClick={this.login.bind(this)}
                 >
                   Log In
-                </Link>
+                </a>
                 {' '}to continue.
               </h4>
             )
