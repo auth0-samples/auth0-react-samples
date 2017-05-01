@@ -10,7 +10,7 @@ Clone the repo or download it from the React quickstart page in Auth0's document
 
 ```bash
 npm install -g create-react-app
-cd 01-Login
+cd 01-Embedded-Login
 npm install
 ```
 
