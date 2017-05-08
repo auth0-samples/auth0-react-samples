@@ -1,12 +1,12 @@
 {
-  "name": "01-Login",
+  "name": "embedded-login",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.9.5"
   },
   "dependencies": {
-    "auth0-lock": "^10.14.0",
+    "auth0-lock": "^10.15.0",
     "bootstrap": "^3.3.7",
     "events": "^1.1.1",
     "history": "^4.6.1",

@@ -1,12 +1,12 @@
 {
-  "name": "00-Centralized-Login",
+  "name": "centralized-login",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.9.5"
   },
   "dependencies": {
-    "auth0-js": "^8.5.0",
+    "auth0-js": "^8.6.0",
     "bootstrap": "^3.3.7",
     "events": "^1.1.1",
     "react": "^15.5.4",

@@ -1,12 +1,12 @@
 {
-  "name": "06-Centralized-Login-With-API",
+  "name": "calling-an-api",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.9.5"
   },
   "dependencies": {
-    "auth0-js": "^8.5.0",
+    "auth0-js": "^8.6.0",
     "bootstrap": "^3.3.7",
     "cors": "^2.8.1",
     "dotenv": "^4.0.0",
