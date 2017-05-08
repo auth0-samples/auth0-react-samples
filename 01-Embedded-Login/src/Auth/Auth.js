@@ -33,7 +33,10 @@ export default class Auth extends EventEmitter {
     // Add callback Lock's `authenticated` event
     this.lock.on('authenticated', this.setSession.bind(this));
     // Add callback for Lock's `authorization_error` event
-    this.lock.on('authorization_error', (error) => console.log('Authentication Error', error));
+    this.lock.on('authorization_error', (error) => {
+      console.log(error);
+      alert(`Error: ${err.error}. Check the console for further details.`);
+    });
   }
 
   setSession(authResult) {

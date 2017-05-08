@@ -1,4 +1,4 @@
-# Auth0 React User Sessions
+# Auth0 React User Profile
 
 This sample demonstrates how to get a user's profile using Auth0 in a React application. The sample uses create-react-app.
 
@@ -10,7 +10,7 @@ Clone the repo or download it from the React quickstart page in Auth0's document
 
 ```bash
 npm install -g create-react-app
-cd 03-User-Sessions
+cd 03-User-Profile
 npm install
 ```
 
