@@ -1,4 +1,4 @@
-# Auth0 React Centralized Login + Calling an API
+# Auth0 React Calling an API
 
 This sample demonstrates how to make secure calls to an API after authenticating a user with Auth0. The calls to the API are made with the user's `access_token`. The sample makes use of Auth0's hosted login page which provides centralized authentication. The sample uses create-react-app.
 
@@ -10,7 +10,7 @@ Clone the repo or download it from the React quickstart page in Auth0's document
 
 ```bash
 npm install -g create-react-app
-cd 06-Centralized-Login-With-API
+cd 04-Calling-an-API
 npm install
 ```
 
