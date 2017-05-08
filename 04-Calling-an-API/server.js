@@ -33,11 +33,7 @@ app.get('/api/public', function(req, res) {
   res.json({ message: "Hello from a public endpoint! You don't need to be authenticated to see this." });
 });
 
-app.get('/api/private', authenticate, function(req, res) {
-  res.json({ message: "Hello from a private endpoint! You DO need to be authenticated to see this." });
-});
-
-app.get('/api/private/admin', authenticate, authorize, function(req, res) {
+app.get('/api/private', authenticate, authorize, function(req, res) {
   res.json({ message: "Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this." });
 });
 
