@@ -1,6 +1,6 @@
 # Auth0 React Centralized Login
 
-This sample demonstrates how to add authentication to a React application with Auth0. The sample makes use of Auth0's hosted login page which provides centralized authentication.
+This sample demonstrates how to add authentication to a React application with Auth0. The sample makes use of Auth0's hosted login page which provides centralized authentication. The sample uses create-react-app.
 
 ## Getting Started
 
