@@ -27,7 +27,8 @@ export default class Auth extends EventEmitter {
       { realm: 'Username-Password-Authentication', username, password },
       (err, authResult) => {
         if (err) {
-          alert(`Error: ${err.description}`);
+          console.log(err);
+          alert(`Error: ${err.description}. Check the console for further details.`);
           return;
         }
         this.setSession(authResult);
@@ -40,7 +41,9 @@ export default class Auth extends EventEmitter {
       { connection: 'Username-Password-Authentication', email, password },
       function(err) {
         if (err) {
-          alert(`Error: ${err.description}`);
+          console.log(err);
+          alert(`Error: ${err.description}. Check the console for further details.`);
+          return;
         }
       }
     );
