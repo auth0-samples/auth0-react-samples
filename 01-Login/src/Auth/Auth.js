@@ -9,7 +9,8 @@ export default class Auth extends EventEmitter {
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
     audience: `https://${AUTH_CONFIG.domain}/userinfo`,
-    responseType: 'token id_token'
+    responseType: 'token id_token',
+    scope: 'openid'
   });
 
   constructor() {
