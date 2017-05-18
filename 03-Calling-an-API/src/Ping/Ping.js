@@ -6,9 +6,6 @@ class Ping extends Component {
   componentWillMount() {
     this.setState({ message: '' });
   }
-  login() {
-    this.props.auth.login();
-  }
   ping() {
     fetch(`${API_URL}/public`)
       .then(res => res.json())
