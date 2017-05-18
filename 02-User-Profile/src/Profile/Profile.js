@@ -3,9 +3,6 @@ import { Panel, ControlLabel, Glyphicon } from 'react-bootstrap';
 import './Profile.css';
 
 class Profile extends Component {
-  login() {
-    this.props.auth.login();
-  }
   componentWillMount() {
     this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
