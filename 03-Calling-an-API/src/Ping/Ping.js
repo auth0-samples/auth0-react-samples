@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { API_URL } from './../constants';
 
-class Home extends Component {
+class Ping extends Component {
   componentWillMount() {
     this.setState({ message: '' });
   }
@@ -45,4 +45,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Ping;
