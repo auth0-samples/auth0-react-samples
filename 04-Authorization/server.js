@@ -4,7 +4,6 @@ const jwt = require('express-jwt');
 const jwtAuthz = require('express-jwt-authz');
 const jwksRsa = require('jwks-rsa');
 const cors = require('cors');
-const morgan = require('morgan');
 require('dotenv').config();
 
 if (!process.env.AUTH0_DOMAIN || !process.env.AUTH0_AUDIENCE) {
@@ -12,7 +11,6 @@ if (!process.env.AUTH0_DOMAIN || !process.env.AUTH0_AUDIENCE) {
 }
 
 app.use(cors());
-app.use(morgan('API Request (port 3001): :method :url :status :response-time ms - :res[content-length]'));
 
 const checkJwt = jwt({
   // Dynamically provide a signing key based on the kid in the header and the singing keys provided by the JWKS endpoint.
@@ -30,6 +28,7 @@ const checkJwt = jwt({
 });
 
 const checkScopes = jwtAuthz([ 'read:messages' ]);
+const checkScopesAdmin = jwtAuthz([ 'write:messages' ]);
 
 app.get('/api/public', function(req, res) {
   res.json({ message: "Hello from a public endpoint! You don't need to be authenticated to see this." });
@@ -37,6 +36,10 @@ app.get('/api/public', function(req, res) {
 
 app.get('/api/private', checkJwt, checkScopes, function(req, res) {
   res.json({ message: "Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this." });
+});
+
+app.post('/api/admin', checkJwt, checkScopesAdmin, function(req, res) {
+  res.json({ message: "Hello from an admin endpoint! You need to be authenticated and have a scope of write:messages to see this." });
 });
 
 app.listen(3001);
