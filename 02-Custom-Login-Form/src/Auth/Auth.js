@@ -1,9 +1,8 @@
-import { EventEmitter } from 'events';
 import auth0 from 'auth0-js';
 import { AUTH_CONFIG } from './auth0-variables';
 import history from '../history';
 
-export default class Auth extends EventEmitter {
+export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
@@ -13,7 +12,6 @@ export default class Auth extends EventEmitter {
   });
 
   constructor() {
-    super();
     this.login = this.login.bind(this);
     this.signup = this.signup.bind(this);
     this.loginWithGoogle = this.loginWithGoogle.bind(this);

@@ -1,9 +1,8 @@
-import { EventEmitter } from 'events'
 import Auth0Lock from 'auth0-lock';
 import { AUTH_CONFIG } from './auth0-variables';
 import history from '../history';
 
-export default class Auth extends EventEmitter {
+export default class Auth {
 
   lock = new Auth0Lock(AUTH_CONFIG.clientId, AUTH_CONFIG.domain, {
     oidcConformant: true,
@@ -19,7 +18,6 @@ export default class Auth extends EventEmitter {
   });
 
   constructor() {
-    super();
     this.handleAuthentication();
     // binds functions to keep this context
     this.login = this.login.bind(this);
