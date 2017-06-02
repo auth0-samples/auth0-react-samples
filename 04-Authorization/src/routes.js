@@ -38,7 +38,7 @@ export const makeMainRoutes = () => {
             )
           )} />
           <Route path="/admin" render={(props) => (
-            !auth.isAuthenticated() || !auth.userHasScopes(['write:messages'])? (
+            !auth.isAuthenticated() || !auth.userHasScopes(['write:messages']) ? (
               <Redirect to="/home"/>
             ) : (
               <Admin auth={auth} {...props} />
