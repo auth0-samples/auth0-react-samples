@@ -44,24 +44,22 @@ export default class Auth {
   }
 
   setSession(authResult) {
-    if (authResult && authResult.accessToken && authResult.idToken) {
-      // Set the time that the access token will expire at
-      let expiresAt = JSON.stringify(
-        authResult.expiresIn * 1000 + new Date().getTime()
-      );
-      // If there is a value on the `scope` param from the authResult,
-      // use it to set scopes in the session for the user. Otherwise
-      // use the scopes as requested. If no scopes were requested,
-      // set it to nothing
-      const scopes = authResult.scope || this.requestedScopes || '';
+    // Set the time that the access token will expire at
+    let expiresAt = JSON.stringify(
+      authResult.expiresIn * 1000 + new Date().getTime()
+    );
+    // If there is a value on the `scope` param from the authResult,
+    // use it to set scopes in the session for the user. Otherwise
+    // use the scopes as requested. If no scopes were requested,
+    // set it to nothing
+    const scopes = authResult.scope || this.requestedScopes || '';
 
-      localStorage.setItem('access_token', authResult.accessToken);
-      localStorage.setItem('id_token', authResult.idToken);
-      localStorage.setItem('expires_at', expiresAt);
-      localStorage.setItem('scopes', JSON.stringify(scopes));
-      // navigate to the home route
-      history.replace('/home');
-    }
+    localStorage.setItem('access_token', authResult.accessToken);
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem('expires_at', expiresAt);
+    localStorage.setItem('scopes', JSON.stringify(scopes));
+    // navigate to the home route
+    history.replace('/home');
   }
 
   getAccessToken() {
