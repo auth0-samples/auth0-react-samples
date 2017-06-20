@@ -20,11 +20,18 @@ npm install
 
 ## Set up a new API
 
+Visit [React Calling an API](https://auth0.com/docs/quickstart/spa/react/03-calling-an-api), for more complete documentation.
+
 From the Auth0 dashboard, select the APIs section and select "Create API". 
 * Add a name for the API. `A friendly name for the API.`
 * Select an identifier for the endpoint. `A logical identifier for this API. We recommend using a URL but note that this doesn’t have to be a publicly available URL, Auth0 will not call your API at all. Important! This field cannot be modified.`
 
 For purposes of this demo, you may want to consider using http://localhost:3001 as your identifier.
+
+You will also need to add in a new scope. `Scopes allow you to define the data that will be accessed through the applications to your API. Set a name for them and its description for better understanding.`
+* Select the Scopes tab from the API section
+* in the name textbox, enter in `read:messages`
+* add a description for this scope ex: `permission to read messages` and click the 'add' button.
 
 ## Set the Client ID and Domain
 
