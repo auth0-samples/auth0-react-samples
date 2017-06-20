@@ -2,7 +2,7 @@
 
 This sample demonstrates how to make secure calls to an API after authenticating a user with Auth0. The calls to the API are made with the user's `access_token`. The sample makes use of Auth0's hosted login page which provides centralized authentication. The sample uses create-react-app.
 
-There is [short screencast](https://www.youtube.com/watch?v=ti2zMJm34Cw) available.
+There is a [short screencast](https://www.youtube.com/watch?v=ti2zMJm34Cw) available.
 
 ## Getting Started
 
@@ -20,7 +20,7 @@ npm install
 
 ## Set up a new API
 
-Visit [React Calling an API](https://auth0.com/docs/quickstart/spa/react/03-calling-an-api), for more complete documentation.
+More complete documentation is available at [React Calling an API](https://auth0.com/docs/quickstart/spa/react/03-calling-an-api).
 
 From the Auth0 dashboard, select the APIs section and select "Create API". 
 * Add a name for the API. `A friendly name for the API.`
