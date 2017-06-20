@@ -2,6 +2,8 @@
 
 This sample demonstrates how to make secure calls to an API after authenticating a user with Auth0. The calls to the API are made with the user's `access_token`. The sample makes use of Auth0's hosted login page which provides centralized authentication. The sample uses create-react-app.
 
+There is a [short screencast](https://www.youtube.com/watch?v=ti2zMJm34Cw) available.
+
 ## Getting Started
 
 If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. If you are using the server provided by the create-react-app, that URL is `http://localhost:3000`.
@@ -15,6 +17,21 @@ npm install
 ```
 
 > **Note:** If you are not using create-react-app but are using Babel, you need to add the `stage-0` preset.
+
+## Set up a new API
+
+More complete documentation is available at [React Calling an API](https://auth0.com/docs/quickstart/spa/react/03-calling-an-api).
+
+From the Auth0 dashboard, select the APIs section and select "Create API". 
+* Add a name for the API. `A friendly name for the API.`
+* Select an identifier for the endpoint. `A logical identifier for this API. We recommend using a URL but note that this doesn’t have to be a publicly available URL, Auth0 will not call your API at all. Important! This field cannot be modified.`
+
+For purposes of this demo, you may want to consider using http://localhost:3001 as your identifier.
+
+You will also need to add in a new scope. `Scopes allow you to define the data that will be accessed through the applications to your API. Set a name for them and its description for better understanding.`
+* Select the Scopes tab from the API section
+* in the name textbox, enter in `read:messages`
+* add a description for this scope ex: `permission to read messages` and click the 'add' button.
 
 ## Set the Client ID and Domain
 
