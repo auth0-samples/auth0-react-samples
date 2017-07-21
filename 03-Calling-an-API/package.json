@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "auth0-js": "^8.7.0",
+    "axios": "^0.16.2",
     "bootstrap": "^3.3.7",
     "cors": "^2.8.1",
     "dotenv": "^4.0.0",
