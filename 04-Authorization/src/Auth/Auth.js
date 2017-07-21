@@ -23,7 +23,6 @@ export default class Auth {
     this.userHasScopes = this.userHasScopes.bind(this);
     this.getAccessToken = this.getAccessToken.bind(this);
     this.getProfile = this.getProfile.bind(this);
-    this.authFetch = this.authFetch.bind(this);
   }
 
   login() {
@@ -101,30 +100,5 @@ export default class Auth {
   userHasScopes(scopes) {
     const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
     return scopes.every(scope => grantedScopes.includes(scope));
-  }
-
-  authFetch(url, options) {
-    const headers = {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    };
-
-    if (this.isAuthenticated()) {
-      headers['Authorization'] = 'Bearer ' + this.getAccessToken();
-    }
-
-    return fetch(url, { headers, ...options })
-      .then(this.checkStatus)
-      .then(response => response.json());
-  }
-
-  checkStatus(response) {
-    if (response.status >= 200 && response.status < 300) {
-      return response;
-    } else {
-      let error = new Error(response.statusText);
-      error.response = response;
-      throw error;
-    }
   }
 }

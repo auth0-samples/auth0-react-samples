@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { API_URL } from './../constants';
+import axios from 'axios';
 
 class Ping extends Component {
   componentWillMount() {
     this.setState({ message: '' });
   }
   ping() {
-    fetch(`${API_URL}/public`)
-      .then(res => res.json())
-      .then(data => this.setState({ message: data.message }));
+    axios.get(`${API_URL}/public`)
+      .then(response => this.setState({ message: response.data.message }))
+      .catch(error => this.setState({ message: error.message }));
   }
   securedPing() {
-    const { authFetch } = this.props.auth;
-    authFetch(`${API_URL}/private`)
-      .then(data => this.setState({ message: data.message }))
+    const { getAccessToken } = this.props.auth;
+    const headers = { 'Authorization': `Bearer ${getAccessToken()}`}
+    axios.get(`${API_URL}/private`, { headers })
+      .then(response => this.setState({ message: response.data.message }))
       .catch(error => this.setState({ message: error.message }));
   }
   render() {
