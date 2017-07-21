@@ -31,9 +31,9 @@ export default class Auth {
   }
 
   handleAuthentication() {
-    // Add callback Lock's `authenticated` event
+    // Add a callback for Lock's `authenticated` event
     this.lock.on('authenticated', this.setSession.bind(this));
-    // Add callback for Lock's `authorization_error` event
+    // Add a callback for Lock's `authorization_error` event
     this.lock.on('authorization_error', (err) => {
       console.log(err);
       alert(`Error: ${err.error}. Check the console for further details.`);
