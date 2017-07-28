@@ -7,11 +7,13 @@ class Ping extends Component {
   componentWillMount() {
     this.setState({ message: '' });
   }
+  
   ping() {
     axios.get(`${API_URL}/public`)
       .then(response => this.setState({ message: response.data.message }))
       .catch(error => this.setState({ message: error.message }));
   }
+
   securedPing() {
     const { getAccessToken } = this.props.auth;
     const headers = { 'Authorization': `Bearer ${getAccessToken()}`}
@@ -19,6 +21,7 @@ class Ping extends Component {
       .then(response => this.setState({ message: response.data.message }))
       .catch(error => this.setState({ message: error.message }));
   }
+
   render() {
     const { isAuthenticated } = this.props.auth;
     const { message } = this.state;

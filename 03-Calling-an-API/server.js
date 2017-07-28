@@ -12,7 +12,7 @@ if (!process.env.AUTH0_DOMAIN || !process.env.AUTH0_AUDIENCE) {
 }
 
 app.use(cors());
-app.use(morgan('API Request (port 3001): :method :url :status :response-time ms - :res[content-length]'));
+app.use(morgan('API Request (port ' + process.env.API_PORT + '): :method :url :status :response-time ms - :res[content-length]'));
 
 const checkJwt = jwt({
   // Dynamically provide a signing key based on the kid in the header and the singing keys provided by the JWKS endpoint.
@@ -39,5 +39,5 @@ app.get('/api/private', checkJwt, checkScopes, function(req, res) {
   res.json({ message: "Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this." });
 });
 
-app.listen(3001);
-console.log('Server listening on http://localhost:3001. The React app will be built and served at http://localhost:3000.');
+app.listen(process.env.API_PORT);
+console.log('Server listening on http://localhost:' + process.env.API_PORT + '. The React app will be built and served at http://localhost:3000.');
