@@ -6,8 +6,8 @@
     "react-scripts": "0.9.5"
   },
   "dependencies": {
-    "axios": "^0.16.2",
     "auth0-js": "^8.8.0",
+    "axios": "^0.16.2",
     "bootstrap": "^3.3.7",
     "cors": "^2.8.1",
     "dotenv": "^4.0.0",
@@ -27,7 +27,7 @@
   "scripts": {
     "start": "npm-run-all --parallel server:start client:start",
     "client:start": "react-scripts start",
-    "server:start": "node server.js",
+    "server:start": "nodemon server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
