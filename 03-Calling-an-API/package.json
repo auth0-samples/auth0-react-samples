@@ -13,7 +13,6 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "express-jwt": "^5.3.0",
-    "express-jwt-authz": "^1.0.0",
     "history": "^4.6.1",
     "jwks-rsa": "^1.1.1",
     "morgan": "^1.8.2",
