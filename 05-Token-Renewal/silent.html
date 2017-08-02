@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.auth0.com/js/auth0/8.8/auth0.min.js"></script>
+  <script>
+    var AUTH0_CLIENT_ID = '{CLIENT_ID}';
+    var AUTH0_DOMAIN = '{DOMAIN}';
+
+    if (!AUTH0_CLIENT_ID || !AUTH0_DOMAIN) {
+      alert('Make sure to set the AUTH0_CLIENT_ID and AUTH0_DOMAIN variables in silent.html.');
+    }
+
+    var webAuth = new auth0.WebAuth({
+      domain: AUTH0_DOMAIN,
+      clientID: AUTH0_CLIENT_ID,
+      scope: 'openid profile',
+      responseType: 'token id_token',
+      redirectUri: 'http://localhost:3000'
+    });
+  </script>
+  <script>
+    webAuth.parseHash(window.location.hash, function (err, response) {
+      parent.postMessage(err || response, 'http://localhost:3000');
+    });
+  </script>
+</head>
+<body></body>
+</html>
+
