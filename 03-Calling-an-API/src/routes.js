@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route, BrowserRouter } from 'react-router-dom';
+import { Redirect, Route, Router } from 'react-router-dom';
 import App from './App';
 import Home from './Home/Home';
 import Profile from './Profile/Profile';
@@ -18,7 +18,7 @@ const handleAuthentication = (nextState, replace) => {
 
 export const makeMainRoutes = () => {
   return (
-    <BrowserRouter history={history} component={App}>
+    <Router history={history} component={App}>
         <div>
           <Route path="/" render={(props) => <App auth={auth} {...props} />} />
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
@@ -41,6 +41,6 @@ export const makeMainRoutes = () => {
             return <Callback {...props} /> 
           }}/>        
         </div>
-      </BrowserRouter>
+      </Router>
   );
 }
