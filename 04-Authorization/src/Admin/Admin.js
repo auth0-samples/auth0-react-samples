@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { API_URL } from './../constants';
+import axios from 'axios';
 
 class Admin extends Component {
   componentWillMount() {
     this.setState({ message: '' });
   }
   adminPing() {
-    const { authFetch } = this.props.auth;
-    authFetch(`${API_URL}/admin`, { method: 'POST' })
-      .then(data => this.setState({ message: data.message }))
+    const { getAccessToken } = this.props.auth;
+    const headers = { 'Authorization': `Bearer ${getAccessToken()}`}
+    axios.post(`${API_URL}/admin`, {}, { headers })
+      .then(response => this.setState({ message: response.data.message }))
       .catch(error => this.setState({ message: error.message }));
   }
   render() {
