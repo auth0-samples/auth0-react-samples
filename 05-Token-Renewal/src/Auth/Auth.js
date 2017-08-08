@@ -4,6 +4,7 @@ import history from '../history';
 
 export default class Auth {
   userProfile;
+  tokenRenewalTimeout;
 
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
@@ -21,6 +22,7 @@ export default class Auth {
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.getAccessToken = this.getAccessToken.bind(this);
     this.getProfile = this.getProfile.bind(this);
+    this.scheduleRenewal();
   }
 
   login() {
@@ -49,6 +51,10 @@ export default class Auth {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+
+    // schedule a token renewal
+    this.scheduleRenewal();
+
     // navigate to the home route
     history.replace('/home');
   }
@@ -78,6 +84,7 @@ export default class Auth {
     localStorage.removeItem('expires_at');
     localStorage.removeItem('scopes');
     this.userProfile = null;
+    clearTimeout(this.tokenRenewalTimeout);
     // navigate to the home route
     history.replace('/home');
   }
@@ -90,17 +97,32 @@ export default class Auth {
   }
 
   renewToken() {
-    this.auth0.renewAuth({
-      audience: AUTH_CONFIG.apiUrl,
-      redirectUri: 'http://localhost:3001/silent',
-      usePostMessage: true
-    }, (err, result) => {
-      if (err) {
-        alert(`Could not get a new token using silent authentication (${err.error}).`);
-      } else {
-        alert(`Successfully renewed auth!`);
-        this.setSession(result);
+    this.auth0.renewAuth(
+      {
+        audience: AUTH_CONFIG.apiUrl,
+        redirectUri: AUTH_CONFIG.silentAuthRedirect,
+        usePostMessage: true
+      },
+      (err, result) => {
+        if (err) {
+          alert(
+            `Could not get a new token using silent authentication (${err.error}).`
+          );
+        } else {
+          this.setSession(result);
+          alert(`Successfully renewed auth!`);
+        }
       }
-    });
+    );
+  }
+
+  scheduleRenewal() {
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    const delay = expiresAt - Date.now();
+    if (delay > 0) {
+      this.tokenRenewalTimeout = setTimeout(() => {
+        this.renewToken();
+      }, delay);
+    }
   }
 }
