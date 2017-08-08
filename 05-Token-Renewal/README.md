@@ -21,6 +21,7 @@ If you download the sample from the quickstart page, it will come pre-populated 
 You should also provide the identifier for the API you create in the Auth0 dashboard as your `apiUrl`.
 
 ## Set Up the `silent.html` File
+
 If you download the sample from the quickstart page, it will come pre-populated with the **client ID** and **domain** for your application. If you clone the repo directly from Github, edit `silent.html` and add your **client ID** and **domain**.
 
 ## Run the Application
