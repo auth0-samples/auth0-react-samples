@@ -34,10 +34,6 @@ npm start
 
 The application will be served at `http://localhost:3000`.
 
-## Making It Live
-
-To make the silent authentication work on a live environment, you'll need to edit the two `localhost` urls in `silent.html` and the one `localhost` url you have in the `auth0-variables.ts` file.
-
 ## Troubleshooting
 If you see an error on renewal saying `login_required`, that means you may be using the Auth0 dev keys for whichever social login you're testing. You'll need to add your own keys for this to work.
 
