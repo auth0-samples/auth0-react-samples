@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "auth0-js": "^8.8.0",
+    "bootstrap": "^3.3.7",
     "connect-static-file": "^1.2.0",
     "cors": "^2.8.4",
     "express": "^4.15.3",
