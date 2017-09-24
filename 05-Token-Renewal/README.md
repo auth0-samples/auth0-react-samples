@@ -24,6 +24,8 @@ You should also provide the identifier for the API you create in the Auth0 dashb
 
 If you download the sample from the quickstart page, it will come pre-populated with the **client ID** and **domain** for your application. If you clone the repo directly from Github, edit `silent.html` and add your **client ID** and **domain**.
 
+Add the URL of the `silent.html` to the **Allowed Callback URLs** box in your client settings. If you downloaded the sample from the quickstart page, this would be `http://localhost:3001/silent`.
+
 ## Run the Application
 
 The development server that comes with create-react-app can be used to serve the application.
