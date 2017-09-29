@@ -5,10 +5,9 @@
   <script src="https://cdn.auth0.com/js/auth0/8.8/auth0.min.js"></script>
   <script>
       parent.postMessage({
-          hash: window.location.hash,
-          type: 'auth0:silent-authentication'
-        }, "http://localhost:3000/");
-    };
+        hash: window.location.hash,
+        type: 'auth0:silent-authentication'
+      }, "http://localhost:3000/");
   </script>
 </head>
 <body></body>
