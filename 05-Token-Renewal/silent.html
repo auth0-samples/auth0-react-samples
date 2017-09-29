@@ -21,7 +21,10 @@
   </script>
   <script>
     webAuth.parseHash(window.location.hash, function (err, response) {
-      parent.postMessage(err || response, 'http://localhost:3000');
+      parent.postMessage({
+          hash: response,
+          type: 'auth0:silent-authentication'
+        }, "http://localhost:3000/");
     });
   </script>
 </head>

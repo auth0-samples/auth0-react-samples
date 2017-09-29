@@ -101,7 +101,8 @@ export default class Auth {
       {
         audience: AUTH_CONFIG.apiUrl,
         redirectUri: AUTH_CONFIG.silentAuthRedirect,
-        usePostMessage: true
+        usePostMessage: true,
+        postMessageDataType: 'auth0:silent-authentication',
       },
       (err, result) => {
         if (err) {
