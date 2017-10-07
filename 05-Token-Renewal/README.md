@@ -35,6 +35,7 @@ npm start
 The application will be served at `http://localhost:3000`.
 
 ## Troubleshooting
+
 If you see an error on renewal saying `login_required`, that means you may be using the Auth0 dev keys for whichever social login you're testing. You'll need to add your own keys for this to work.
 
 ## What is Auth0?
@@ -64,4 +65,3 @@ If you have found a bug or if you have a feature request, please report them at 
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE.txt) file for more info.
-
