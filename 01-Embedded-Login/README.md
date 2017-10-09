@@ -18,6 +18,12 @@ npm install
 
 If you download the sample from the quickstart page, it will come pre-populated with the **client ID** and **domain** for your application. If you clone the repo directly from Github, rename the `auth0-variables.js.example` file to `auth0-variables.js` and provide the **client ID** and **domain** there. This file is located in `src/Auth/`.
 
+## Enable Cross Origin Authentication
+
+In order to be able to log-in with user and password you need to enable the [Cross Origin Authentication](https://auth0.com/docs/cross-origin-authentication). This is not required for Social or Enterprise connections.
+
+Make sure you edit the contents of the `public/callback-cross-auth.html` file to match your Client Id, Domain and Callback settings. This page will only be used when third-party cookies are disabled in the client browser, and *needs to be served over HTTPS*. Note that when third-party cookies are disabled, there are some browsers where the authentication flow will NOT work. 
+
 ## Run the Application
 
 The development server that comes with create-react-app can be used to serve the application.

@@ -2,6 +2,8 @@
 
 These samples demonstrate how to add authentication to a React application with Auth0. Each folder contains a distinct application so that various Auth0 features can be viewed in isolation.
 
+The samples show how to integrate Auth0 using [Auth0Lock](https://github.com/auth0/lock) >= 10.22.0 and [auth0.js](https://github.com/auth0/auth0.js) >= 8.10.1.
+
 ## What is Auth0?
 
 Auth0 helps you to:
