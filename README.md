@@ -1,8 +1,10 @@
 # Auth0 React Samples
 
-These samples demonstrate how to add authentication to a React application with Auth0. Each folder contains a distinct application so that various Auth0 features can be viewed in isolation.
+These samples demonstrate how to embed Auth0's Lock widget or a custom login form directly in your application. It is recommended that you use Auth0's [hosted login page](https://auth0.com/docs/hosted-pages/login) instead as it offers the fastest, most secure, and most feature-rich way to add authentication to your app.
 
-The samples show how to integrate Auth0 using [Auth0Lock](https://github.com/auth0/lock) >= 10.22.0 and [auth0.js](https://github.com/auth0/auth0.js) >= 8.10.1.
+For examples which demonstrate how to use Auth0's hosted login page, see the [master](https://github.com/auth0-samples/auth0-react-samples) branch.
+
+These samples show how to integrate Auth0 using [Auth0Lock](https://github.com/auth0/lock) >= 10.22.0 and [auth0.js](https://github.com/auth0/auth0.js) >= 8.10.1.
 
 ## What is Auth0?
 
