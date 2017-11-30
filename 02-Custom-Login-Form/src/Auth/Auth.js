@@ -21,28 +21,38 @@ export default class Auth {
   }
 
   login(username, password) {
-    this.auth0.client.login(
-      { realm: 'Username-Password-Authentication', username, password },
+    this.auth0.login(
+      { realm: AUTH_CONFIG.dbConnectionName, username, password },
       (err, authResult) => {
         if (err) {
           console.log(err);
           alert(`Error: ${err.description}. Check the console for further details.`);
           return;
         }
-        this.setSession(authResult);
       }
     );
   }
 
   signup(email, password) {
-    this.auth0.redirect.signupAndLogin(
-      { connection: 'Username-Password-Authentication', email, password },
-      function(err) {
+    this.auth0.signup(
+      { connection: AUTH_CONFIG.dbConnectionName, email, password },
+      (err) => {
         if (err) {
           console.log(err);
           alert(`Error: ${err.description}. Check the console for further details.`);
+
           return;
         }
+
+        this.auth0.login({ realm: AUTH_CONFIG.dbConnectionName, username: email, password },
+          (err, authResult) => {
+            if (err) {
+              console.log(err);
+              alert(`Error: ${err.description}. Check the console for further details.`);
+              return;
+            }
+          }
+        );
       }
     );
   }
