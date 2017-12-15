@@ -18,8 +18,7 @@ class Home extends Component {
               {this.getExpiryDate()}
             </p>
             <p>
-              The token has been scheduled for renewal using silent
-              authentication, but you can also renew it manually from the navbar
+              The token has been scheduled for renewal, but you can also renew it manually from the navbar
               if you don't want to wait. This manual renewal button is really
               just for demonstration and you probably won't want such a control
               in your actual application.
