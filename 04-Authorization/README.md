@@ -1,6 +1,6 @@
 # Auth0 React Authorization
 
-This sample demonstrates how to include user authorization in a React application with Auth0.The sample uses create-react-app.
+This sample demonstrates how to include user authorization in a React application with Auth0. The sample uses create-react-app.
 
 ## Getting Started
 
@@ -49,7 +49,7 @@ Auth0 helps you to:
 * Analytics of how, when and where users are logging in.
 * Pull data from other sources and add it to the user profile, through [JavaScript rules](https://docs.auth0.com/rules).
 
-## Create a free Auth0 account
+## Create a Free Auth0 Account
 
 1. Go to [Auth0](https://auth0.com/signup) and click Sign Up.
 2. Use Google, GitHub or Microsoft Account to login.
@@ -65,5 +65,3 @@ If you have found a bug or if you have a feature request, please report them at 
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE.txt) file for more info.
-
-

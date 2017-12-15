@@ -22,16 +22,18 @@ npm install
 
 More complete documentation is available at [React Calling an API](https://auth0.com/docs/quickstart/spa/react/03-calling-an-api).
 
-From the Auth0 dashboard, select the APIs section and select "Create API". 
+From the Auth0 dashboard, select the APIs section and select "Create API":
+
 * Add a name for the API. `A friendly name for the API.`
 * Select an identifier for the endpoint. `A logical identifier for this API. We recommend using a URL but note that this doesn’t have to be a publicly available URL, Auth0 will not call your API at all. Important! This field cannot be modified.`
 
 For purposes of this demo, you may want to consider using http://localhost:3001 as your identifier.
 
 You will also need to add in a new scope. `Scopes allow you to define the data that will be accessed through the applications to your API. Set a name for them and its description for better understanding.`
-* Select the Scopes tab from the API section
-* in the name textbox, enter in `read:messages`
-* add a description for this scope ex: `permission to read messages` and click the 'add' button.
+
+* Select the Scopes tab from the API section.
+* In the name textbox, enter in `read:messages`.
+* Add a description for this scope ex: `permission to read messages` and click the 'add' button.
 
 ## Set the Client ID and Domain
 
@@ -66,7 +68,7 @@ Auth0 helps you to:
 * Analytics of how, when and where users are logging in.
 * Pull data from other sources and add it to the user profile, through [JavaScript rules](https://docs.auth0.com/rules).
 
-## Create a free Auth0 account
+## Create a Free Auth0 Account
 
 1. Go to [Auth0](https://auth0.com/signup) and click Sign Up.
 2. Use Google, GitHub or Microsoft Account to login.
@@ -82,5 +84,3 @@ If you have found a bug or if you have a feature request, please report them at 
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE.txt) file for more info.
-
-
