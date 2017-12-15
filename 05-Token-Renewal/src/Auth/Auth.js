@@ -10,7 +10,6 @@ export default class Auth {
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
-    audience: AUTH_CONFIG.apiUrl,
     responseType: 'token id_token',
     scope: 'openid profile'
   });
@@ -97,10 +96,7 @@ export default class Auth {
   }
 
   renewToken() {
-    this.auth0.checkSession(
-      {
-        audience: AUTH_CONFIG.apiUrl
-      },
+    this.auth0.checkSession({},
       (err, result) => {
         if (err) {
           alert(
