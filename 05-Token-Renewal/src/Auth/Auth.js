@@ -100,7 +100,7 @@ export default class Auth {
       (err, result) => {
         if (err) {
           alert(
-            `Could not get a new token (${err.error}).`
+            `Could not get a new token (${err.error}: ${err.error_description}).`
           );
         } else {
           this.setSession(result);
