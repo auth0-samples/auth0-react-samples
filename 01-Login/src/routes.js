@@ -7,9 +7,8 @@ import Auth from './Auth/Auth';
 import history from './history';
 
 export default class Routes extends Component {
-  constructor(){
+  constructor() {
     super();
-
     this.auth = new Auth();
 
     this.state = {
@@ -17,8 +16,8 @@ export default class Routes extends Component {
     };
   }
 
-  handleAuthentication = (nextState, replace) => {
-    if (/access_token|id_token|error/.test(nextState.location.hash)) {
+  handleAuthentication = ({location}) => {
+    if (/access_token|id_token|error/.test(location.hash)) {
       const { auth0 } = this.auth;
       auth0.parseHash((err, authResult) => {
         if (authResult && authResult.accessToken && authResult.idToken) {
