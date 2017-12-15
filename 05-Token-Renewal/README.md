@@ -1,6 +1,6 @@
 # Auth0 React Token Renewal
 
-This sample demonstrates how to silently renew `access_token`s in a React application with Auth0. The sample uses the create-react-app.
+This sample demonstrates how to renew `access_token`s in a React application with Auth0 using `checkSession`. For more information, read [our reference documentation](https://auth0.com/docs/libraries/auth0js#using-checksession-to-acquire-new-tokens). The sample uses the create-react-app.
 
 ## Getting Started
 
@@ -18,11 +18,9 @@ npm install
 
 If you download the sample from the quickstart page, it will come pre-populated with the **client ID** and **domain** for your application. If you clone the repo directly from Github, rename the `auth0-variables.js.example` file to `auth0-variables.js` and provide the **client ID** and **domain** there. This file is located in `src/Auth/`.
 
-You should also provide the identifier for the API you create in the Auth0 dashboard as your `apiUrl`.
+## Set Up `Allowed Web Origins` in the dashboard
 
-## Set Up the `silent.html` File
-
-If you download the sample from the quickstart page, it will come pre-populated with the **client ID** and **domain** for your application. If you clone the repo directly from Github, edit `silent.html` and add your **client ID** and **domain**.
+In order to make `checkSession` work, you need to add the URL where the authorization request originates from, to the Allowed Web Origins list of your Auth0 client in the Dashboard under your client's Settings.
 
 ## Run the Application
 

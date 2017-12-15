@@ -10,7 +10,6 @@ export default class Auth {
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
-    audience: AUTH_CONFIG.apiUrl,
     responseType: 'token id_token',
     scope: 'openid profile'
   });
@@ -97,17 +96,11 @@ export default class Auth {
   }
 
   renewToken() {
-    this.auth0.renewAuth(
-      {
-        audience: AUTH_CONFIG.apiUrl,
-        redirectUri: AUTH_CONFIG.silentAuthRedirect,
-        usePostMessage: true,
-        postMessageDataType: 'auth0:silent-authentication',
-      },
+    this.auth0.checkSession({},
       (err, result) => {
         if (err) {
           alert(
-            `Could not get a new token using silent authentication (${err.error}).`
+            `Could not get a new token (${err.error}: ${err.error_description}).`
           );
         } else {
           this.setSession(result);

@@ -1,7 +1,5 @@
 export const AUTH_CONFIG = {
   domain: '{DOMAIN}',
   clientId: '{CLIENT_ID}',
-  callbackUrl: 'http://localhost:3000/callback',
-  apiUrl: '{API_IDENTIFIER}',
-  silentAuthRedirect: 'http://localhost:3001/silent'
+  callbackUrl: 'http://localhost:3000/callback'
 }
