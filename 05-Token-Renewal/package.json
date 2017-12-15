@@ -6,7 +6,7 @@
     "react-scripts": "1.0.10"
   },
   "dependencies": {
-    "auth0-js": "^8.8.0",
+    "auth0-js": "^8.12.1",
     "bootstrap": "^3.3.7",
     "connect-static-file": "^1.2.0",
     "cors": "^2.8.4",

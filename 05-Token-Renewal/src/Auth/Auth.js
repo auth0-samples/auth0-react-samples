@@ -97,17 +97,14 @@ export default class Auth {
   }
 
   renewToken() {
-    this.auth0.renewAuth(
+    this.auth0.checkSession(
       {
-        audience: AUTH_CONFIG.apiUrl,
-        redirectUri: AUTH_CONFIG.silentAuthRedirect,
-        usePostMessage: true,
-        postMessageDataType: 'auth0:silent-authentication',
+        audience: AUTH_CONFIG.apiUrl
       },
       (err, result) => {
         if (err) {
           alert(
-            `Could not get a new token using silent authentication (${err.error}).`
+            `Could not get a new token (${err.error}).`
           );
         } else {
           this.setSession(result);
