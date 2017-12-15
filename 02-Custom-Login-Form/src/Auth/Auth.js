@@ -22,7 +22,6 @@ export default class Auth {
 
   login(username, password) {
     this.auth0.login(
-      { realm: 'Username-Password-Authentication', username, password },
       { realm: AUTH_CONFIG.dbConnectionName, username, password },
       (err, authResult) => {
         if (err) {
