@@ -5,7 +5,6 @@ import history from '../history';
 export default class Auth {
 
   lock = new Auth0Lock(AUTH_CONFIG.clientId, AUTH_CONFIG.domain, {
-    oidcConformant: true,
     autoclose: true,
     auth: {
       redirectUrl: AUTH_CONFIG.callbackUrl,
