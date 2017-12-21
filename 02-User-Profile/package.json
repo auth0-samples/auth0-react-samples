@@ -6,7 +6,7 @@
     "react-scripts": "0.9.5"
   },
   "dependencies": {
-    "auth0-js": "^8.8.0",
+    "auth0-js": "^9.0.0",
     "bootstrap": "^3.3.7",
     "history": "^4.6.1",
     "react": "^15.5.4",
