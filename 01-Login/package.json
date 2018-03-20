@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "react-scripts": "1.1.1"
   },
   "dependencies": {
-    "auth0-js": "^9.0.0",
+    "auth0-js": "^9.3.3",
     "bootstrap": "^3.3.7",
-    "react": "^15.5.4",
-    "react-bootstrap": "^0.31.0",
-    "react-dom": "^15.5.4",
+    "react": "^16.2.0",
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.2.0",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1"
   },
