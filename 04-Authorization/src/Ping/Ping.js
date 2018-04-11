@@ -19,6 +19,13 @@ class Ping extends Component {
       .then(response => this.setState({ message: response.data.message }))
       .catch(error => this.setState({ message: error.message }));
   }
+  securedScopedPing() {
+    const { getAccessToken } = this.props.auth;
+    const headers = { 'Authorization': `Bearer ${getAccessToken()}`}
+    axios.get(`${API_URL}/private-scoped`, { headers })
+      .then(response => this.setState({ message: response.data.message }))
+      .catch(error => this.setState({ message: error.message }));
+  }
   render() {
     const { isAuthenticated } = this.props.auth;
     const { message } = this.state;
@@ -29,12 +36,20 @@ class Ping extends Component {
           !isAuthenticated() &&
             <p>Log in to call a private (secured) server endpoint.</p>
         }
-        <Button bsStyle="primary" onClick={this.ping.bind(this)}>Ping</Button>
+        <Button bsStyle="primary" onClick={this.ping.bind(this)}>Call Public</Button>
         {' '}
         {
           isAuthenticated() && (
               <Button bsStyle="primary" onClick={this.securedPing.bind(this)}>
                 Call Private
+              </Button>
+            )
+        }
+        {' '}
+        {
+          isAuthenticated() && (
+              <Button bsStyle="primary" onClick={this.securedScopedPing.bind(this)}>
+                Call Private Scoped
               </Button>
             )
         }
