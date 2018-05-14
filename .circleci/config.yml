@@ -14,7 +14,7 @@ defaults: &defaults
             echo "export const AUTH_CONFIG = {" >> $AUTH0_CFG
             echo "  clientId: '$AUTH0_TEST_CLIENT_ID'," >> $AUTH0_CFG
             echo "  domain: '$AUTH0_TEST_DOMAIN'," >> $AUTH0_CFG
-            echo "  callbackUrl: 'https://localhost:3000/callback'," >> $AUTH0_CFG
+            echo "  callbackUrl: 'http://localhost:3000/callback'," >> $AUTH0_CFG
             echo "  apiUrl: '$AUTH0_TEST_AUDIENCE'" >> $AUTH0_CFG
             echo "}" >> $AUTH0_CFG
           
