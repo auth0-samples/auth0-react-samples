@@ -53,7 +53,7 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: git clone https://github.com/rafanog/spa-script scripts
+      - run: git clone https://github.com/auth0-samples/spa-quickstarts-tests scripts
       - persist_to_workspace:
           root: ~/ 
           paths:
