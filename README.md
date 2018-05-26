@@ -4,7 +4,9 @@ These samples demonstrate how to embed Auth0's Lock widget or a custom login for
 
 For examples which demonstrate how to use Auth0's hosted login page, see the [master](https://github.com/auth0-samples/auth0-react-samples) branch.
 
-These samples show how to integrate Auth0 using [Auth0Lock](https://github.com/auth0/lock) >= 10.22.0 and [auth0.js](https://github.com/auth0/auth0.js) >= 8.10.1.
+Note that embedded login uses Cross Origin Authentication which [does not work well](https://auth0.com/docs/cross-origin-authentication#limitations-of-cross-origin-authentication) if you don't enable Custom Domains [Custom Domains](https://auth0.com/docs/custom-domains) which is a paid feature. 
+
+These samples show how to integrate Auth0 using [Auth0Lock](https://github.com/auth0/lock) >= 11.0.0 and [auth0.js](https://github.com/auth0/auth0.js) >= 9.0.0
 
 ## What is Auth0?
 
