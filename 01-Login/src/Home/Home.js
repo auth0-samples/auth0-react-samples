@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-class Home extends Component {
-  login() {
+export default class Home extends Component {
+  login = () =>{
     this.props.auth.login();
   }
   render() {
@@ -21,7 +21,7 @@ class Home extends Component {
                 You are not logged in! Please{' '}
                 <a
                   style={{ cursor: 'pointer' }}
-                  onClick={this.login.bind(this)}
+                  onClick={this.login}
                 >
                   Log In
                 </a>
@@ -34,4 +34,3 @@ class Home extends Component {
   }
 }
 
-export default Home;
