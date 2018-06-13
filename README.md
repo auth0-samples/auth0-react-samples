@@ -4,6 +4,7 @@
 
 These samples demonstrate how to add authentication to a React application with Auth0. Each folder contains a distinct application so that various Auth0 features can be viewed in isolation. You can read about these examples in our [React Quickstart](https://auth0.com/docs/quickstart/spa/react).
 
+
 ## Embedded Integration Samples
 
 These samples use Auth0's [hosted login page](https://auth0.com/docs/hosted-pages/login) which offers the fastest, most secure, and most feature-rich way to add authentication to your app.
