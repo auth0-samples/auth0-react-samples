@@ -7,11 +7,12 @@ export default class Auth {
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
-    audience: AUTH_CONFIG.apiUrl,
+    audience: `https://${AUTH_CONFIG.domain}/userinfo`,
     responseType: 'token id_token',
-    scope: 'openid profile read:messages'
+    scope: 'openid profile'
   });
 
+  accessToken;
   userProfile;
 
   constructor() {
@@ -41,23 +42,22 @@ export default class Auth {
   }
 
   setSession(authResult) {
-    // Set the time that the access token will expire at
-    let expiresAt = JSON.stringify(
-      authResult.expiresIn * 1000 + new Date().getTime()
-    );
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
+    // Set the time that the Access Token will expire at
+    let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
     localStorage.setItem('expires_at', expiresAt);
-    // navigate to the home route
+
+    this.accessToken = authResult.accessToken;
+
+    // Navigate to the home route
     history.replace('/home');
   }
 
   getAccessToken() {
-    const accessToken = localStorage.getItem('access_token');
-    if (!accessToken) {
+    if (!this.accessToken) {
       throw new Error('No access token found');
     }
-    return accessToken;
+
+    return this.accessToken;
   }
 
   getProfile(cb) {
@@ -71,19 +71,20 @@ export default class Auth {
   }
 
   logout() {
-    // Clear access token and ID token from local storage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
+    // Clear stored information
     localStorage.removeItem('expires_at');
+
+    this.accessToken = null;
     this.userProfile = null;
+
     // navigate to the home route
     history.replace('/home');
   }
 
   isAuthenticated() {
-    // Check whether the current time is past the 
-    // access token's expiry time
+    // Check whether the current time is past the
+    // Access Token's expiry time
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
+    return (Date.now() < expiresAt) && this.accessToken;
   }
 }
