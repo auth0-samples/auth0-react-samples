@@ -3,9 +3,6 @@ import { AUTH_CONFIG } from './auth0-variables';
 import history from '../history';
 
 export default class Auth {
-  userProfile;
-  requestedScopes = 'openid profile read:messages write:messages';
-
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
@@ -14,6 +11,12 @@ export default class Auth {
     responseType: 'token id_token',
     scope: this.requestedScopes
   });
+
+  expires;
+  accessToken;
+  userProfile;
+  userScopes;
+  requestedScopes = 'openid profile read:messages write:messages';
 
   constructor() {
     this.login = this.login.bind(this);
@@ -43,30 +46,17 @@ export default class Auth {
   }
 
   setSession(authResult) {
-    // Set the time that the access token will expire at
-    let expiresAt = JSON.stringify(
-      authResult.expiresIn * 1000 + new Date().getTime()
-    );
-    // If there is a value on the `scope` param from the authResult,
-    // use it to set scopes in the session for the user. Otherwise
-    // use the scopes as requested. If no scopes were requested,
-    // set it to nothing
-    const scopes = authResult.scope || this.requestedScopes || '';
-
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
-    localStorage.setItem('scopes', JSON.stringify(scopes));
-    // navigate to the home route
-    history.replace('/home');
+    this.expires = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+    this.accessToken = authResult.accessToken;
+    this.userScopes = JSON.stringify(authResult.scope || this.requestedScopes || '');
   }
 
   getAccessToken() {
-    const accessToken = localStorage.getItem('access_token');
-    if (!accessToken) {
+    if (!this.accessToken) {
       throw new Error('No access token found');
     }
-    return accessToken;
+
+    return this.accessToken;
   }
 
   getProfile(cb) {
@@ -80,25 +70,24 @@ export default class Auth {
   }
 
   logout() {
-    // Clear access token and ID token from local storage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
-    localStorage.removeItem('scopes');
+    this.expires = null;
+    this.accessToken = null;
     this.userProfile = null;
-    // navigate to the home route
-    history.replace('/home');
+    this.userScopes = null;
+
+    this.goTo('/home');
+  }
+
+  goTo(path) {
+    history.replace(path);
   }
 
   isAuthenticated() {
-    // Check whether the current time is past the
-    // access token's expiry time
-    let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
+    return this.expires && (Date.now() < JSON.parse(this.expires)) && this.accessToken;
   }
 
   userHasScopes(scopes) {
-    const grantedScopes = (JSON.parse(localStorage.getItem('scopes')) || '').split(' ');
+    let grantedScopes = (JSON.parse(this.userScopes) || '').split(' ');
     return scopes.every(scope => grantedScopes.includes(scope));
   }
 }

@@ -12,6 +12,7 @@ export default class Auth {
     scope: 'openid'
   });
 
+  expires;
   accessToken;
 
   constructor() {
@@ -29,9 +30,9 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        history.replace('/home');
+        this.goTo('/home');
       } else if (err) {
-        history.replace('/home');
+        this.goTo('/home');
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
@@ -39,30 +40,22 @@ export default class Auth {
   }
 
   setSession(authResult) {
-    // Set the time that the Access Token will expire at
-    let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-    localStorage.setItem('expires_at', expiresAt);
-
+    this.expires = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
     this.accessToken = authResult.accessToken;
-
-    // Navigate to the home route
-    history.replace('/home');
   }
 
   logout() {
-    // Clear stored information
-    localStorage.removeItem('expires_at');
-
+    this.expires = null;
     this.accessToken = null;
 
-    // navigate to the home route
-    history.replace('/home');
+    this.goTo('/home');
+  }
+
+  goTo(path) {
+    history.replace(path);
   }
 
   isAuthenticated() {
-    // Check whether the current time is past the
-    // Access Token's expiry time
-    let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return (Date.now() < expiresAt) && this.accessToken;
+    return this.expires && (Date.now() < JSON.parse(this.expires)) && this.accessToken;
   }
 }
