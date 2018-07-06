@@ -26,6 +26,7 @@ export default class Auth {
     this.userHasScopes = this.userHasScopes.bind(this);
     this.getAccessToken = this.getAccessToken.bind(this);
     this.getProfile = this.getProfile.bind(this);
+    this.goTo = this.goTo.bind(this);
   }
 
   login() {
@@ -36,9 +37,9 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        history.replace('/home');
+        this.goTo('/home');
       } else if (err) {
-        history.replace('/home');
+        this.goTo('/home');
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
