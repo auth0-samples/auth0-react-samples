@@ -12,12 +12,10 @@ export default class Auth {
     scope: 'openid profile'
   });
 
+  accessToken;
   userProfile;
 
   constructor() {
-    this.accessToken = undefined;
-    this.userProfile = undefined;
-
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
