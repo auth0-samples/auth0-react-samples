@@ -53,7 +53,7 @@ export default class Auth {
     // Clear stored information
     localStorage.removeItem('expires_at');
 
-    this.accessToken = undefined;
+    this.accessToken = null;
 
     // navigate to the home route
     history.replace('/home');
