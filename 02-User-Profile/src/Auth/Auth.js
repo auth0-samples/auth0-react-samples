@@ -48,7 +48,7 @@ export default class Auth {
 
     this.accessToken = authResult.accessToken;
 
-    // navigate to the home route
+    // Navigate to the home route
     history.replace('/home');
   }
 
