@@ -3,7 +3,11 @@ import { Panel, ControlLabel, Glyphicon } from 'react-bootstrap';
 import './Profile.css';
 
 class Profile extends Component {
-  componentWillMount() {
+  constructor() {
+    super();
+    this.state = { profile: {} };
+  }
+  componentDidMount() {
     this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
     if (!userProfile) {
