@@ -3,6 +3,9 @@ import history from '../history';
 import { AUTH_CONFIG } from './auth0-variables';
 
 export default class Auth {
+  expires;
+  accessToken;
+
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
@@ -11,9 +14,6 @@ export default class Auth {
     responseType: 'token',
     scope: 'openid'
   });
-
-  expires;
-  accessToken;
 
   constructor() {
     this.login = this.login.bind(this);
