@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 
 class Home extends Component {
   getExpiryDate() {
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    const expiresAt = JSON.parse(this.props.auth.expires);
     return JSON.stringify(new Date(expiresAt));
   }
+
   render() {
     const { isAuthenticated, login } = this.props.auth;
     return (

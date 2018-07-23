@@ -15,8 +15,8 @@ class App extends Component {
     this.props.auth.logout();
   }
 
-  renewToken() {
-    this.props.auth.renewToken();
+  renewAuthentication() {
+    this.props.auth.renewAuthentication();
   }
 
   render() {
@@ -57,7 +57,7 @@ class App extends Component {
               <Button
                 bsStyle="primary"
                 className="btn-margin"
-                onClick={this.renewToken.bind(this)}
+                onClick={this.renewAuthentication.bind(this)}
               >
                 Renew Token
               </Button>}

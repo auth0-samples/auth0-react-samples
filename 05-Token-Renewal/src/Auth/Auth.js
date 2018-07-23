@@ -1,8 +1,10 @@
 import auth0 from 'auth0-js';
-import { AUTH_CONFIG } from './auth0-variables';
 import history from '../history';
+import { AUTH_CONFIG } from './auth0-variables';
 
 export default class Auth {
+  expires;
+  accessToken;
   userProfile;
   tokenRenewalTimeout;
 
@@ -10,7 +12,8 @@ export default class Auth {
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
-    responseType: 'token id_token',
+    audience: `https://${AUTH_CONFIG.domain}/userinfo`,
+    responseType: 'token',
     scope: 'openid profile'
   });
 
@@ -21,7 +24,11 @@ export default class Auth {
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.getAccessToken = this.getAccessToken.bind(this);
     this.getProfile = this.getProfile.bind(this);
-    this.scheduleRenewal();
+    this.goTo = this.goTo.bind(this);
+
+    if (localStorage.getItem('loggedIn') === 'true') {
+      this.renewAuthentication();
+    }
   }
 
   login() {
@@ -30,40 +37,56 @@ export default class Auth {
 
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
-      if (authResult && authResult.accessToken && authResult.idToken) {
-        this.setSession(authResult);
-        history.replace('/home');
-      } else if (err) {
-        history.replace('/home');
+      if (err) {
+        this.goTo('/home');
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
+      } else if (authResult && authResult.accessToken) {
+        this.storeToken(authResult);
+        this.goTo('/home');
       }
     });
   }
 
-  setSession(authResult) {
-    // Set the time that the access token will expire at
-    let expiresAt = JSON.stringify(
-      authResult.expiresIn * 1000 + new Date().getTime()
+  renewAuthentication() {
+    this.auth0.checkSession({}, (err, authResult) => {
+        if (err) {
+          this.logout();
+          console.log(err);
+          alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
+        } else if (authResult && authResult.accessToken) {
+          this.storeToken(authResult);
+          this.goTo('/home');
+        }
+      }
     );
+  }
 
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
+  storeToken(authResult) {
+    this.expires = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+    this.accessToken = authResult.accessToken;
 
-    // schedule a token renewal
+    localStorage.setItem('loggedIn', 'true');
+
     this.scheduleRenewal();
+  }
 
-    // navigate to the home route
-    history.replace('/home');
+  scheduleRenewal() {
+    const expiresAt = JSON.parse(this.expires);
+    const delay = expiresAt - Date.now();
+    if (delay > 0) {
+      this.tokenRenewalTimeout = setTimeout(() => {
+        this.renewAuthentication();
+      }, delay);
+    }
   }
 
   getAccessToken() {
-    const accessToken = localStorage.getItem('access_token');
-    if (!accessToken) {
+    if (!this.accessToken) {
       throw new Error('No access token found');
     }
-    return accessToken;
+
+    return this.accessToken;
   }
 
   getProfile(cb) {
@@ -77,46 +100,21 @@ export default class Auth {
   }
 
   logout() {
-    // Clear access token and ID token from local storage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
-    localStorage.removeItem('scopes');
+    this.expires = null;
+    this.accessToken = null;
     this.userProfile = null;
     clearTimeout(this.tokenRenewalTimeout);
-    // navigate to the home route
-    history.replace('/home');
+
+    localStorage.removeItem('loggedIn');
+
+    this.goTo('/home');
+  }
+
+  goTo(path) {
+    history.replace(path);
   }
 
   isAuthenticated() {
-    // Check whether the current time is past the
-    // access token's expiry time
-    let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
-  }
-
-  renewToken() {
-    this.auth0.checkSession({},
-      (err, result) => {
-        if (err) {
-          alert(
-            `Could not get a new token (${err.error}: ${err.error_description}).`
-          );
-        } else {
-          this.setSession(result);
-          alert(`Successfully renewed auth!`);
-        }
-      }
-    );
-  }
-
-  scheduleRenewal() {
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    const delay = expiresAt - Date.now();
-    if (delay > 0) {
-      this.tokenRenewalTimeout = setTimeout(() => {
-        this.renewToken();
-      }, delay);
-    }
+    return this.expires && (Date.now() < JSON.parse(this.expires)) && this.accessToken;
   }
 }
