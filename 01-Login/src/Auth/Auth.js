@@ -1,5 +1,5 @@
-import history from '../history';
 import auth0 from 'auth0-js';
+import history from '../history';
 import { AUTH_CONFIG } from './auth0-variables';
 
 export default class Auth {
@@ -34,8 +34,7 @@ export default class Auth {
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
       if (err) {
-        this.logout();
-
+        this.goTo('/home');
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       } else if (authResult && authResult.accessToken) {
@@ -49,7 +48,6 @@ export default class Auth {
     this.auth0.checkSession({}, (err, authResult) => {
         if (err) {
           this.logout();
-
           console.log(err);
           alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
         } else if (authResult && authResult.accessToken) {
