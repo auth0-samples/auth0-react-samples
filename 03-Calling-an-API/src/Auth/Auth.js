@@ -12,7 +12,7 @@ export default class Auth {
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
     audience: AUTH_CONFIG.apiUrl,
-    responseType: 'token',
+    responseType: 'token id_token',
     scope: 'openid profile read:messages'
   });
 
@@ -24,10 +24,6 @@ export default class Auth {
     this.getAccessToken = this.getAccessToken.bind(this);
     this.getProfile = this.getProfile.bind(this);
     this.goTo = this.goTo.bind(this);
-
-    if (localStorage.getItem('loggedIn') === 'true') {
-      this.renewAuthentication();
-    }
   }
 
   login() {
@@ -51,8 +47,6 @@ export default class Auth {
     this.auth0.checkSession({}, (err, authResult) => {
         if (err) {
           this.logout();
-          console.log(err);
-          alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
         } else if (authResult && authResult.accessToken) {
           this.storeToken(authResult);
           this.goTo('/home');
@@ -101,6 +95,6 @@ export default class Auth {
   }
 
   isAuthenticated() {
-    return this.expires && (Date.now() < JSON.parse(this.expires)) && this.accessToken;
+    return localStorage.getItem('loggedIn') === 'true';
   }
 }

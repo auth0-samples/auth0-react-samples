@@ -15,6 +15,14 @@ class App extends Component {
     this.props.auth.logout();
   }
 
+  componentDidMount() {
+    const { isAuthenticated, renewAuthentication } = this.props.auth;
+
+    if (isAuthenticated()) {
+      renewAuthentication();
+    }
+  }
+
   render() {
     const { isAuthenticated } = this.props.auth;
 

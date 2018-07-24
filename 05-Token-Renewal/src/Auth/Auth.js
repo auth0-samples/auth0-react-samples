@@ -12,23 +12,18 @@ export default class Auth {
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
-    audience: `https://${AUTH_CONFIG.domain}/userinfo`,
-    responseType: 'token',
-    scope: 'openid profile'
+    responseType: 'token id_token',
   });
 
   constructor() {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
+    this.renewAuthentication = this.renewAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.getAccessToken = this.getAccessToken.bind(this);
     this.getProfile = this.getProfile.bind(this);
     this.goTo = this.goTo.bind(this);
-
-    if (localStorage.getItem('loggedIn') === 'true') {
-      this.renewAuthentication();
-    }
   }
 
   login() {
@@ -52,8 +47,6 @@ export default class Auth {
     this.auth0.checkSession({}, (err, authResult) => {
         if (err) {
           this.logout();
-          console.log(err);
-          alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
         } else if (authResult && authResult.accessToken) {
           this.storeToken(authResult);
           this.goTo('/home');
@@ -115,6 +108,6 @@ export default class Auth {
   }
 
   isAuthenticated() {
-    return this.expires && (Date.now() < JSON.parse(this.expires)) && this.accessToken;
+    return localStorage.getItem('loggedIn') === 'true';
   }
 }
