@@ -21,10 +21,6 @@ export default class Auth {
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.goTo = this.goTo.bind(this);
-
-    if (localStorage.getItem('loggedIn') === 'true') {
-      this.renewAuthentication();
-    }
   }
 
   login() {
