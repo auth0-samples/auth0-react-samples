@@ -3,15 +3,13 @@ import history from '../history';
 import { AUTH_CONFIG } from './auth0-variables';
 
 export default class Auth {
-  expires;
-  accessToken;
   userProfile;
 
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
-    responseType: 'token id_token',
+    responseType: 'id_token',
   });
 
   constructor() {
@@ -19,9 +17,6 @@ export default class Auth {
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
-    this.getAccessToken = this.getAccessToken.bind(this);
-    this.getProfile = this.getProfile.bind(this);
-    this.goTo = this.goTo.bind(this);
   }
 
   login() {
@@ -34,8 +29,8 @@ export default class Auth {
         this.goTo('/home');
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
-      } else if (authResult && authResult.accessToken) {
-        this.storeToken(authResult);
+      } else if (authResult && authResult.idToken) {
+        this.storeDetails(authResult);
         this.goTo('/home');
       }
     });
@@ -45,42 +40,21 @@ export default class Auth {
     this.auth0.checkSession({}, (err, authResult) => {
         if (err) {
           this.logout();
-        } else if (authResult && authResult.accessToken) {
-          this.storeToken(authResult);
+        } else if (authResult && authResult.idToken) {
+          this.storeDetails(authResult);
           this.goTo('/home');
         }
       }
     );
   }
 
-  storeToken(authResult) {
-    this.expires = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-    this.accessToken = authResult.accessToken;
+  storeDetails(authResult) {
+    this.userProfile = authResult.idTokenPayload;
 
     localStorage.setItem('loggedIn', 'true');
   }
 
-  getAccessToken() {
-    if (!this.accessToken) {
-      throw new Error('No access token found');
-    }
-
-    return this.accessToken;
-  }
-
-  getProfile(cb) {
-    let accessToken = this.getAccessToken();
-    this.auth0.client.userInfo(accessToken, (err, profile) => {
-      if (profile) {
-        this.userProfile = profile;
-      }
-      cb(err, profile);
-    });
-  }
-
   logout() {
-    this.expires = null;
-    this.accessToken = null;
     this.userProfile = null;
 
     localStorage.removeItem('loggedIn');
