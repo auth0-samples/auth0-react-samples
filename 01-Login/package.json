@@ -1,6 +1,6 @@
 {
-  "name": "user-profile",
-  "version": "0.1.0",
+  "name": "centralized-login",
+  "version": "0.2.0",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.9.5"
