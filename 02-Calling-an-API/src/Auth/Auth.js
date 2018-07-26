@@ -11,8 +11,9 @@ export default class Auth {
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
-    audience: AUTH_CONFIG.apiUrl,
+    audience: AUTH_CONFIG.audience,
     responseType: 'token id_token',
+    scope: 'openid profile email'
   });
 
   constructor() {
@@ -33,7 +34,7 @@ export default class Auth {
       if (err) {
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
-      } else if (authResult && authResult.accessToken) {
+      } else if (authResult) {
         this.logUserIn(authResult);
       }
 
@@ -45,7 +46,7 @@ export default class Auth {
     this.auth0.checkSession({}, (err, authResult) => {
       if (err) {
         this.logout();
-      } else if (authResult && authResult.accessToken) {
+      } else if (authResult) {
         this.logUserIn(authResult);
       }
     });
@@ -55,8 +56,20 @@ export default class Auth {
     this.expires = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
     this.accessToken = authResult.accessToken;
     this.userProfile = authResult.idTokenPayload;
-
     localStorage.setItem('loggedIn', 'true');
+  }
+
+  logout() {
+    this.expires = null;
+    this.accessToken = null;
+    this.userProfile = null;
+    localStorage.removeItem('loggedIn');
+
+    this.goTo('/home');
+  }
+
+  goTo(path) {
+    history.replace(path);
   }
 
   getAccessToken() {
@@ -71,22 +84,14 @@ export default class Auth {
     return this.accessToken;
   }
 
-  logout() {
-    this.expires = null;
-    this.accessToken = null;
-    this.userProfile = null;
-
-    localStorage.removeItem('loggedIn');
-
-    this.goTo('/home');
-  }
-
-  goTo(path) {
-    history.replace(path);
+  getUserProfile() {
+    return this.userProfile;
   }
 
   isTokenValid() {
-    return this.expires && (Date.now() < JSON.parse(this.expires)) && this.accessToken;
+    return this.expires
+      && this.accessToken
+      && (Date.now() < JSON.parse(this.expires));
   }
 
   isAuthenticated() {
