@@ -13,7 +13,7 @@ const handleAuthentication = ({location}) => {
   if (/access_token|id_token|error/.test(location.hash)) {
     auth.handleAuthentication();
   }
-}
+};
 
 export const makeMainRoutes = () => {
   return (
@@ -31,8 +31,8 @@ export const makeMainRoutes = () => {
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} /> 
-          }}/>        
+          }}/>
         </div>
       </Router>
   );
-}
+};
