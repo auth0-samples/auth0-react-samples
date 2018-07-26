@@ -6,24 +6,22 @@ export default class Auth {
   expires;
   accessToken;
   userProfile;
-  
+
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
     audience: AUTH_CONFIG.apiUrl,
     responseType: 'token id_token',
-    scope: 'openid profile read:messages'
   });
 
   constructor() {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
+    this.renewAuthentication = this.renewAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.getAccessToken = this.getAccessToken.bind(this);
-    this.getProfile = this.getProfile.bind(this);
-    this.goTo = this.goTo.bind(this);
   }
 
   login() {
@@ -33,51 +31,44 @@ export default class Auth {
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
       if (err) {
-        this.goTo('/home');
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       } else if (authResult && authResult.accessToken) {
-        this.storeToken(authResult);
-        this.goTo('/home');
+        this.logUserIn(authResult);
       }
+
+      this.goTo('/home');
     });
   }
 
   renewAuthentication() {
     this.auth0.checkSession({}, (err, authResult) => {
-        if (err) {
-          this.logout();
-        } else if (authResult && authResult.accessToken) {
-          this.storeToken(authResult);
-          this.goTo('/home');
-        }
+      if (err) {
+        this.logout();
+      } else if (authResult && authResult.accessToken) {
+        this.logUserIn(authResult);
       }
-    );
+    });
   }
 
-  storeToken(authResult) {
+  logUserIn(authResult) {
     this.expires = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
     this.accessToken = authResult.accessToken;
+    this.userProfile = authResult.idTokenPayload;
 
     localStorage.setItem('loggedIn', 'true');
   }
 
   getAccessToken() {
+    if (!this.isTokenValid()) {
+      this.renewAuthentication();
+    }
+
     if (!this.accessToken) {
       throw new Error('No access token found');
     }
 
     return this.accessToken;
-  }
-
-  getProfile(cb) {
-    let accessToken = this.getAccessToken();
-    this.auth0.client.userInfo(accessToken, (err, profile) => {
-      if (profile) {
-        this.userProfile = profile;
-      }
-      cb(err, profile);
-    });
   }
 
   logout() {
@@ -92,6 +83,10 @@ export default class Auth {
 
   goTo(path) {
     history.replace(path);
+  }
+
+  isTokenValid() {
+    return this.expires && (Date.now() < JSON.parse(this.expires)) && this.accessToken;
   }
 
   isAuthenticated() {
