@@ -16,6 +16,7 @@ export default class Auth {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
+    this.renewAuthentication = this.renewAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
   }
 
@@ -29,7 +30,7 @@ export default class Auth {
         this.goTo('/home');
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
-      } else if (authResult && authResult.idToken) {
+      } else if (authResult) {
         this.storeDetails(authResult);
         this.goTo('/home');
       }
@@ -38,25 +39,23 @@ export default class Auth {
 
   renewAuthentication() {
     this.auth0.checkSession({}, (err, authResult) => {
-        if (err) {
-          this.logout();
-        } else if (authResult && authResult.idToken) {
-          this.storeDetails(authResult);
-          this.goTo('/home');
-        }
+      if (err) {
+        this.logout();
+      } else if (authResult) {
+        console.log(authResult);
+        this.storeDetails(authResult);
+        this.goTo('/home');
       }
-    );
+    });
   }
 
   storeDetails(authResult) {
     this.userProfile = authResult.idTokenPayload;
-
     localStorage.setItem('loggedIn', 'true');
   }
 
   logout() {
     this.userProfile = null;
-
     localStorage.removeItem('loggedIn');
 
     this.goTo('/home');
