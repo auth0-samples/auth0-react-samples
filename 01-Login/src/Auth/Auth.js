@@ -9,7 +9,8 @@ export default class Auth {
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
-    responseType: 'id_token',
+    responseType: 'token id_token',
+    scope: 'openid profile email'
   });
 
   constructor() {
@@ -17,6 +18,7 @@ export default class Auth {
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.renewAuthentication = this.renewAuthentication.bind(this);
+    this.getUserProfile = this.getUserProfile.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
   }
 
@@ -27,13 +29,13 @@ export default class Auth {
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
       if (err) {
-        this.goTo('/home');
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       } else if (authResult) {
         this.logUserIn(authResult);
-        this.goTo('/home');
       }
+
+      this.goTo('/home');
     });
   }
 
@@ -42,9 +44,7 @@ export default class Auth {
       if (err) {
         this.logout();
       } else if (authResult) {
-        console.log(authResult);
         this.logUserIn(authResult);
-        this.goTo('/home');
       }
     });
   }
@@ -63,6 +63,10 @@ export default class Auth {
 
   goTo(path) {
     history.replace(path);
+  }
+
+  getUserProfile() {
+    return this.userProfile;
   }
 
   isAuthenticated() {
