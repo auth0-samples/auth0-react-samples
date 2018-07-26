@@ -31,7 +31,7 @@ export default class Auth {
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       } else if (authResult) {
-        this.storeDetails(authResult);
+        this.logUserIn(authResult);
         this.goTo('/home');
       }
     });
@@ -43,13 +43,13 @@ export default class Auth {
         this.logout();
       } else if (authResult) {
         console.log(authResult);
-        this.storeDetails(authResult);
+        this.logUserIn(authResult);
         this.goTo('/home');
       }
     });
   }
 
-  storeDetails(authResult) {
+  logUserIn(authResult) {
     this.userProfile = authResult.idTokenPayload;
     localStorage.setItem('loggedIn', 'true');
   }
