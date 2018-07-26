@@ -12,7 +12,7 @@ Clone the repo or download it from the React quickstart page in Auth0's document
 
 ```bash
 npm install -g create-react-app
-cd 03-Calling-an-API
+cd 02-Calling-an-API
 npm install
 ```
 
@@ -20,7 +20,7 @@ npm install
 
 ## Set up a new API
 
-More complete documentation is available at [React Calling an API](https://auth0.com/docs/quickstart/spa/react/03-calling-an-api).
+More complete documentation is available at [React Calling an API](https://auth0.com/docs/quickstart/spa/react/02-calling-an-api).
 
 From the Auth0 dashboard, select the APIs section and select "Create API":
 
