@@ -21,6 +21,7 @@ export default class Auth {
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.renewAuthentication = this.renewAuthentication.bind(this);
+    this.getUserProfile = this.getUserProfile.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.getAccessToken = this.getAccessToken.bind(this);
   }

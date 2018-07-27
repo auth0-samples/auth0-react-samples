@@ -29,13 +29,7 @@ export const makeMainRoutes = () => {
               <Profile auth={auth} {...props} />
             )
           )} />
-          <Route path="/ping" render={(props) => (
-            !auth.isAuthenticated() ? (
-              <Redirect to="/home"/>
-            ) : (
-              <Ping auth={auth} {...props} />
-            )
-          )} />
+          <Route path="/ping" render={(props) => <Ping auth={auth} {...props} />} />
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} /> 

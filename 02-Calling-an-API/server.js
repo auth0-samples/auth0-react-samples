@@ -28,6 +28,10 @@ const checkJwt = jwt({
   algorithms: ['RS256']
 });
 
+app.get('/api/public', function(req, res) {
+  res.json({ message: "Hello from an insecure endpoint! You don't need to even be logged in to see this." });
+});
+
 app.get('/api/private', checkJwt, function(req, res) {
   res.json({ message: "Hello from a secure endpoint! You needed to be authenticated to see this." });
 });
