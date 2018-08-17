@@ -7,13 +7,13 @@ export default class Auth {
   accessToken;
   userProfile;
   userScopes;
-  requestedScopes = 'openid profile read:messages write:messages';
+  requestedScopes = 'openid profile email write:messages';
 
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
-    audience: AUTH_CONFIG.apiUrl,
+    audience: AUTH_CONFIG.audience,
     responseType: 'token id_token',
     scope: this.requestedScopes
   });
@@ -22,11 +22,11 @@ export default class Auth {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
+    this.renewAuthentication = this.renewAuthentication.bind(this);
+    this.getUserProfile = this.getUserProfile.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
-    this.userHasScopes = this.userHasScopes.bind(this);
     this.getAccessToken = this.getAccessToken.bind(this);
-    this.getProfile = this.getProfile.bind(this);
-    this.goTo = this.goTo.bind(this);
+    this.userHasScopes = this.userHasScopes.bind(this);
   }
 
   login() {
@@ -36,52 +36,32 @@ export default class Auth {
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
       if (err) {
-        this.goTo('/home');
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
-      } else if (authResult && authResult.accessToken) {
-        this.storeToken(authResult);
-        this.goTo('/home');
+      } else if (authResult) {
+        this.logUserIn(authResult);
       }
+
+      this.goTo('/home');
     });
   }
 
   renewAuthentication() {
     this.auth0.checkSession({}, (err, authResult) => {
-        if (err) {
-          this.logout();
-        } else if (authResult && authResult.accessToken) {
-          this.storeToken(authResult);
-          this.goTo('/home');
-        }
+      if (err) {
+        this.logout();
+      } else if (authResult) {
+        this.logUserIn(authResult);
       }
-    );
-  }
-
-  storeToken(authResult) {
-    this.expires = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-    this.accessToken = authResult.accessToken;
-    this.userScopes = JSON.stringify(authResult.scope || this.requestedScopes || '');
-
-    localStorage.setItem('loggedIn', 'true');
-  }
-
-  getAccessToken() {
-    if (!this.accessToken) {
-      throw new Error('No access token found');
-    }
-
-    return this.accessToken;
-  }
-
-  getProfile(cb) {
-    let accessToken = this.getAccessToken();
-    this.auth0.client.userInfo(accessToken, (err, profile) => {
-      if (profile) {
-        this.userProfile = profile;
-      }
-      cb(err, profile);
     });
+  }
+
+  logUserIn(authResult) {
+    this.expires = (authResult.expiresIn * 1000) + new Date().getTime();
+    this.accessToken = authResult.accessToken;
+    this.userProfile = authResult.idTokenPayload;
+    this.userScopes = JSON.stringify(authResult.scope || this.requestedScopes || '');
+    localStorage.setItem('loggedIn', 'true');
   }
 
   logout() {
@@ -89,7 +69,6 @@ export default class Auth {
     this.accessToken = null;
     this.userProfile = null;
     this.userScopes = null;
-
     localStorage.removeItem('loggedIn');
 
     this.goTo('/home');
@@ -97,6 +76,28 @@ export default class Auth {
 
   goTo(path) {
     history.replace(path);
+  }
+
+  getAccessToken() {
+    if (!this.isTokenValid()) {
+      this.renewAuthentication();
+    }
+
+    if (!this.accessToken) {
+      throw new Error('No access token found');
+    }
+
+    return this.accessToken;
+  }
+
+  getUserProfile() {
+    return this.userProfile;
+  }
+
+  isTokenValid() {
+    return this.expires
+      && this.accessToken
+      && Date.now() < this.expires;
   }
 
   isAuthenticated() {

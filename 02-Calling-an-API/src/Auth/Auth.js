@@ -54,7 +54,7 @@ export default class Auth {
   }
 
   logUserIn(authResult) {
-    this.expires = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+    this.expires = (authResult.expiresIn * 1000) + new Date().getTime();
     this.accessToken = authResult.accessToken;
     this.userProfile = authResult.idTokenPayload;
     localStorage.setItem('loggedIn', 'true');
@@ -92,7 +92,7 @@ export default class Auth {
   isTokenValid() {
     return this.expires
       && this.accessToken
-      && (Date.now() < JSON.parse(this.expires));
+      && Date.now() < this.expires;
   }
 
   isAuthenticated() {

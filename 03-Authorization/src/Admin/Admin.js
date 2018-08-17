@@ -7,13 +7,16 @@ class Admin extends Component {
   componentWillMount() {
     this.setState({ message: '' });
   }
+
   adminPing() {
     const { getAccessToken } = this.props.auth;
     const headers = { 'Authorization': `Bearer ${getAccessToken()}`}
+    
     axios.post(`${API_URL}/admin`, {}, { headers })
       .then(response => this.setState({ message: response.data.message }))
       .catch(error => this.setState({ message: error.message }));
   }
+
   render() {
     const { message } = this.state;
     return (

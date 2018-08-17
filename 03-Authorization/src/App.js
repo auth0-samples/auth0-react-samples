@@ -41,18 +41,6 @@ class App extends Component {
               Home
             </Button>
             {
-              !isAuthenticated() && (
-                  <Button
-                    id="qsLoginBtn"
-                    bsStyle="primary"
-                    className="btn-margin"
-                    onClick={this.login.bind(this)}
-                  >
-                    Log In
-                  </Button>
-                )
-            }
-            {
               isAuthenticated() && (
                   <Button
                     bsStyle="primary"
@@ -82,6 +70,18 @@ class App extends Component {
                     onClick={this.goTo.bind(this, 'admin')}
                   >
                     Admin
+                  </Button>
+                )
+            }
+            {
+              !isAuthenticated() && (
+                  <Button
+                    id="qsLoginBtn"
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.login.bind(this)}
+                  >
+                    Log In
                   </Button>
                 )
             }
