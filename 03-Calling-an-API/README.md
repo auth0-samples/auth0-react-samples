@@ -1,22 +1,26 @@
 # Auth0 React Calling an API
 
-This sample demonstrates how to make secure calls to an API after authenticating a user with Auth0. The calls to the API are made with the user's `access_token`. The sample makes use of Auth0's hosted login page which provides centralized authentication. The sample uses create-react-app.
+This sample demonstrates how to make secure calls to an API after authenticating a user with Auth0. The calls to the API are made with the user's `access_token`. The sample makes use of Auth0's hosted login page which provides centralized authentication.
 
 There is a [short screencast](https://www.youtube.com/watch?v=ti2zMJm34Cw) available.
 
 ## Getting Started
 
-If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. If you are using the server provided by the create-react-app, that URL is `http://localhost:3000/callback`.
+If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. The default URL is `http://localhost:3000/callback`.  Also configure **Allowed Web Origins** to the default application URL `http://localhost:3000`.
 
-Clone the repo or download it from the React quickstart page in Auth0's documentation. Install create-react-app globally and the dependencies for the app.
+Clone the repo or download it from the React quickstart page in Auth0's documentation.
+
+Open the first demo.
 
 ```bash
-npm install -g create-react-app
-cd 03-Calling-an-API
-npm install
+cd 01-Login
 ```
 
-> **Note:** If you are not using create-react-app but are using Babel, you need to add the `stage-0` preset.
+Install the dependencies for the app.
+
+```
+npm install
+```
 
 ## Set up a new API
 
@@ -35,7 +39,7 @@ You will also need to add in a new scope. `Scopes allow you to define the data t
 * In the name textbox, enter in `read:messages`.
 * Add a description for this scope ex: `permission to read messages` and click the 'add' button.
 
-## Set the Client ID and Domain
+## Set the Client ID, Domain, and API identifier
 
 If you download the sample from the quickstart page, it will come pre-populated with the **client ID** and **domain** for your application. If you clone the repo directly from Github, rename the `auth0-variables.js.example` file to `auth0-variables.js` and provide the **client ID** and **domain** there. This file is located in `src/Auth/`.
 
@@ -49,7 +53,7 @@ This file has two values, `AUTH0_AUDIENCE` and `AUTH0_DOMAIN`. If you download t
 
 ## Run the Application
 
-The development server that comes with create-react-app can be used to serve the application.
+The demo comes ready to serve locally using react-scripts.
 
 ```bash
 npm start
