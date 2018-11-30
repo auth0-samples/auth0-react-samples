@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 
 class Home extends Component {
-  getExpiryDate() {
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return JSON.stringify(new Date(expiresAt));
-  }
   render() {
-    const { isAuthenticated, login } = this.props.auth;
+    const { isAuthenticated, login, getExpiryDate } = this.props.auth;
     return (
       <div className="container">
         {isAuthenticated() &&
@@ -15,7 +11,7 @@ class Home extends Component {
             <h3>About Your Access Token</h3>
             <p>
               Your <code>access_token</code> has an expiry date of:{' '}
-              {this.getExpiryDate()}
+              {getExpiryDate()}
             </p>
             <p>
               The token has been scheduled for renewal, but you can also renew it manually from the navbar

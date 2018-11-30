@@ -13,14 +13,13 @@
     "jwks-rsa": "^1.1.1",
     "morgan": "^1.8.2",
     "npm-run-all": "^4.0.2",
-
     "auth0-js": "^9.0.0",
     "bootstrap": "^3.3.7",
-    "react": "^15.5.4",
-    "react-bootstrap": "^0.31.0",
-    "react-dom": "^15.5.4",
-    "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1",
+    "react": "^15.6.1",
+    "react-bootstrap": "^0.31.2",
+    "react-dom": "^15.6.1",
+    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2",
     "react-scripts": "^2.1.1"
   },
   "scripts": {
