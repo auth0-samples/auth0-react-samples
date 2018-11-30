@@ -1,14 +1,9 @@
 {
   "name": "calling-an-api",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "devDependencies": {
-    "react-scripts": "0.9.5"
-  },
   "dependencies": {
     "axios": "^0.16.2",
-    "auth0-js": "^9.0.0",
-    "bootstrap": "^3.3.7",
     "cors": "^2.8.1",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
@@ -18,11 +13,14 @@
     "jwks-rsa": "^1.1.1",
     "morgan": "^1.8.2",
     "npm-run-all": "^4.0.1",
+    "auth0-js": "^9.0.0",
+    "bootstrap": "^3.3.7",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
     "react-dom": "^15.5.4",
     "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "react-scripts": "^2.1.1"
   },
   "scripts": {
     "start": "npm-run-all --parallel server:start client:start",
@@ -31,5 +29,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
