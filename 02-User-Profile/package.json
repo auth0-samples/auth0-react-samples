@@ -1,24 +1,30 @@
 {
   "name": "user-profile",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "devDependencies": {
-    "react-scripts": "0.9.5"
-  },
   "dependencies": {
     "auth0-js": "^9.0.0",
     "bootstrap": "^3.3.7",
-    "history": "^4.6.1",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
     "react-dom": "^15.5.4",
     "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "react-scripts": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
