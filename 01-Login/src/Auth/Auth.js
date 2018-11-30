@@ -77,8 +77,8 @@ export default class Auth {
 
   logout() {
     // Remove tokens and expiry time
-    this.accessToken = '';
-    this.idToken = '';
+    this.accessToken = null;
+    this.idToken = null;
     this.expiresAt = 0;
 
     // Remove isLoggedIn flag from localStorage
