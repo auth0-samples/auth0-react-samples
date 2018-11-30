@@ -6,15 +6,19 @@ This sample demonstrates how to add authentication to a React application with A
 
 If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. If you are using the server provided by the create-react-app, that URL is `http://localhost:3000/callback`.
 
-Clone the repo or download it from the React quickstart page in Auth0's documentation. Install create-react-app globally and the dependencies for the app.
+Clone the repo or download it from the React quickstart page in Auth0's documentation.
+
+Open the first demo.
 
 ```bash
-npm install -g create-react-app
 cd 01-Login
-npm install
 ```
 
-> **Note:** If you are not using create-react-app but are using Babel, you need to add the `stage-0` preset.
+Install the dependencies for the app.
+
+```
+npm install
+```
 
 ## Set the Client ID and Domain
 
