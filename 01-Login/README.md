@@ -1,10 +1,10 @@
 # Auth0 React Login
 
-This sample demonstrates how to add authentication to a React application with Auth0. The sample makes use of Auth0's hosted login page which provides centralized authentication. The sample uses create-react-app.
+This sample demonstrates how to add authentication to a React application with Auth0. The sample makes use of Auth0's hosted login page which provides centralized authentication.
 
 ## Getting Started
 
-If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. If you are using the server provided by the create-react-app, that URL is `http://localhost:3000/callback`.
+If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. The default URL is `http://localhost:3000/callback`.
 
 Clone the repo or download it from the React quickstart page in Auth0's documentation.
 
@@ -26,7 +26,7 @@ If you download the sample from the quickstart page, it will come pre-populated 
 
 ## Run the Application
 
-The development server that comes with create-react-app can be used to serve the application.
+The demo comes ready to serve locally using react-scripts.
 
 ```bash
 npm start
