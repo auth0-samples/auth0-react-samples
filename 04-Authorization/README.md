@@ -8,10 +8,10 @@ If you haven't already done so, [sign up](https://auth0.com) for your free Auth0
 
 Clone the repo or download it from the React quickstart page in Auth0's documentation.
 
-Open the first demo.
+Open the demo.
 
 ```bash
-cd 01-Login
+cd 04-Authorization
 ```
 
 Install the dependencies for the app.
