@@ -1,7 +1,6 @@
 .DS_Store
 node_modules
 .env
-**/package-lock.json
 **/auth0-variables.js
 npm-debug.log
 .editorconfig
