@@ -1,20 +1,24 @@
 # Auth0 React User Profile
 
-This sample demonstrates how to get a user's profile using Auth0 in a React application. The sample uses create-react-app.
+This sample demonstrates how to get a user's profile using Auth0 in a React application.
 
 ## Getting Started
 
-If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. If you are using the server provided by the create-react-app, that URL is `http://localhost:3000/callback`.
+If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. The default URL is `http://localhost:3000/callback`. Also configure **Allowed Web Origins** to the default application URL `http://localhost:3000`.
 
-Clone the repo or download it from the React quickstart page in Auth0's documentation. Install create-react-app globally and the dependencies for the app.
+Clone the repo or download it from the React quickstart page in Auth0's documentation.
+
+Open the demo.
 
 ```bash
-npm install -g create-react-app
 cd 02-User-Profile
-npm install
 ```
 
-> **Note:** If you are not using create-react-app but are using Babel, you need to add the `stage-0` preset.
+Install the dependencies for the app.
+
+```
+npm install
+```
 
 ## Set the Client ID and Domain
 
@@ -22,7 +26,7 @@ If you download the sample from the quickstart page, it will come pre-populated 
 
 ## Run the Application
 
-The development server that comes with create-react-app can be used to serve the application.
+The demo comes ready to serve locally using react-scripts.
 
 ```bash
 npm start

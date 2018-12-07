@@ -1,40 +1,38 @@
 # Auth0 React Token Renewal
 
-This sample demonstrates how to renew `access_token`s in a React application with Auth0 using `checkSession`. For more information, read [our reference documentation](https://auth0.com/docs/libraries/auth0js#using-checksession-to-acquire-new-tokens). The sample uses the create-react-app.
+This sample demonstrates how to renew `access_token`s in a React application with Auth0 using `checkSession`. For more information, read [our reference documentation](https://auth0.com/docs/libraries/auth0js#using-checksession-to-acquire-new-tokens).
 
 ## Getting Started
 
-Create a new API in the [APIs section](https://manage.auth0.com/#/apis) and provide an identifier for it.
+If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. The default URL is `http://localhost:3000/callback`. Also configure **Allowed Web Origins** to the default application URL `http://localhost:3000`.
 
-Clone the repo or download it from the React quickstart page in Auth0's documentation. Install create-react-app and the dependencies for the app.
+Clone the repo or download it from the React quickstart page in Auth0's documentation.
+
+Open the demo.
 
 ```bash
-npm install -g create-react-app
 cd 05-Token-Renewal
+```
+
+Install the dependencies for the app.
+
+```
 npm install
 ```
 
-## Set the Client ID, Domain, and API URL
+## Set the Client ID and Domain
 
 If you download the sample from the quickstart page, it will come pre-populated with the **client ID** and **domain** for your application. If you clone the repo directly from Github, rename the `auth0-variables.js.example` file to `auth0-variables.js` and provide the **client ID** and **domain** there. This file is located in `src/Auth/`.
 
-## Set Up `Allowed Web Origins` in the dashboard
-
-In order to make `checkSession` work, you need to add the URL where the authorization request originates from, to the Allowed Web Origins list of your Auth0 client in the Dashboard under your client's Settings.
-
 ## Run the Application
 
-The development server that comes with create-react-app can be used to serve the application.
+The demo comes ready to serve locally using react-scripts.
 
 ```bash
 npm start
 ```
 
 The application will be served at `http://localhost:3000`.
-
-## Troubleshooting
-
-If you see an error on renewal saying `login_required`, that means you may be using the Auth0 dev keys for whichever social login you're testing. You'll need to add your own keys for this to work.
 
 ## Run the Application With Docker
 
