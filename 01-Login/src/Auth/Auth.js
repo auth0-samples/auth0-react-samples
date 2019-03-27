@@ -19,10 +19,10 @@ export default class Auth {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
-    this.isAuthenticated = this.isAuthenticated.bind(this);
     this.getAccessToken = this.getAccessToken.bind(this);
     this.getIdToken = this.getIdToken.bind(this);
     this.renewSession = this.renewSession.bind(this);
+    this.checkRenewSession = this.checkRenewSession.bind(this);
   }
 
   login() {
@@ -88,10 +88,16 @@ export default class Auth {
     history.replace('/home');
   }
 
-  isAuthenticated() {
+  get isAuthenticated() {
     // Check whether the current time is past the
     // access token's expiry time
     let expiresAt = this.expiresAt;
     return new Date().getTime() < expiresAt;
+  }
+
+  checkRenewSession() {
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      this.renewSession()
+    }
   }
 }

@@ -1,26 +1,19 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Navbar, Button } from 'react-bootstrap';
 import './App.css';
 
 class App extends Component {
-  goTo(route) {
-    this.props.history.replace(`/${route}`)
-  }
-
-  login() {
+  login = () => {
     this.props.auth.login();
-  }
+  };
 
-  logout() {
+  logout = () => {
     this.props.auth.logout();
-  }
+  };
 
   componentDidMount() {
-    const { renewSession } = this.props.auth;
-
-    if (localStorage.getItem('isLoggedIn') === 'true') {
-      renewSession();
-    }
+    this.props.auth.checkRenewSession();
   }
 
   render() {
@@ -33,32 +26,28 @@ class App extends Component {
             <Navbar.Brand>
               <a href="#">Auth0 - React</a>
             </Navbar.Brand>
-            <Button
-              bsStyle="primary"
-              className="btn-margin"
-              onClick={this.goTo.bind(this, 'home')}
-            >
+            <NavLink className="btn-margin btn btn-primary" to="/home">
               Home
-            </Button>
+            </NavLink>
             {
-              !isAuthenticated() && (
+              !isAuthenticated && (
                   <Button
                     id="qsLoginBtn"
                     bsStyle="primary"
                     className="btn-margin"
-                    onClick={this.login.bind(this)}
+                    onClick={this.login}
                   >
                     Log In
                   </Button>
                 )
             }
             {
-              isAuthenticated() && (
+              isAuthenticated && (
                   <Button
                     id="qsLogoutBtn"
                     bsStyle="primary"
                     className="btn-margin"
-                    onClick={this.logout.bind(this)}
+                    onClick={this.logout}
                   >
                     Log Out
                   </Button>
