@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Home extends Component {
+class Page1 extends Component {
   login() {
     this.props.auth.login();
   }
@@ -11,7 +11,7 @@ class Home extends Component {
         {
           isAuthenticated() && (
               <h4>
-                You are logged in! Here is your email address : {  this.props.auth.getEmail().email}
+                Thank you for logging in ! Here is your email address : {  this.props.auth.getEmail().email}
               </h4>
             )
         }
@@ -25,13 +25,13 @@ class Home extends Component {
                 >
                   Log In
                 </a>
-                {' '}to continue.
+                {' '}to view your email address.
               </h4>
             )
         }
       </div>
     );
   }
-}
 
-export default Home;
+}
+export default Page1;

@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { Navbar, Button } from 'react-bootstrap';
 import './App.css';
+import Auth from './Auth/Auth.js';
+
+const auth = new Auth();
+
 
 class App extends Component {
+  
+  
   goTo(route) {
     this.props.history.replace(`/${route}`)
   }
@@ -46,7 +52,7 @@ class App extends Component {
                     id="qsLoginBtn"
                     bsStyle="primary"
                     className="btn-margin"
-                    onClick={this.login.bind(this)}
+                    onClick={this.login.bind(this, 'page1')}
                   >
                     Log In
                   </Button>
@@ -58,7 +64,7 @@ class App extends Component {
                     id="qsLogoutBtn"
                     bsStyle="primary"
                     className="btn-margin"
-                    onClick={this.logout.bind(this)}
+                    onClick={this.logout.bind(this, 'callback')}
                   >
                     Log Out
                   </Button>

@@ -8,6 +8,7 @@
   "dependencies": {
     "auth0-js": "^9.0.0",
     "bootstrap": "^3.3.7",
+    "jwt-decode": "^2.2.0",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.2",
     "react-dom": "^15.6.1",

@@ -1,18 +1,20 @@
 import history from '../history';
 import auth0 from 'auth0-js';
-import { AUTH_CONFIG } from './auth0-variables';
+import jwtDecode from 'jwt-decode';
+import  {AUTH_CONFIG}  from './auth0-variables';
 
 export default class Auth {
   accessToken;
   idToken;
   expiresAt;
-
+  
+/*eslint no-restricted-globals:0*/
   auth0 = new auth0.WebAuth({
-    domain: AUTH_CONFIG.domain,
-    clientID: AUTH_CONFIG.clientId,
-    redirectUri: AUTH_CONFIG.callbackUrl,
+   domain: 'gustave01.auth0.com',
+    clientID: 'VB1PB4lnIe6EFsHmMMa3yuSTBYa5gn3a',
+    redirectUri: 'https://webdevbootcamp-cyuscyus.c9users.io/callback',
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid email'
   });
 
   constructor() {
@@ -33,6 +35,7 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
+        history.replace('/page1');
       } else if (err) {
         history.replace('/home');
         console.log(err);
@@ -52,7 +55,8 @@ export default class Auth {
   setSession(authResult) {
     // Set isLoggedIn flag in localStorage
     localStorage.setItem('isLoggedIn', 'true');
-
+    localStorage.setItem("accessToken", authResult.accessToken);
+    localStorage.setItem("id_token", authResult.idToken); 
     // Set the time that the access token will expire at
     let expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
     this.accessToken = authResult.accessToken;
@@ -97,5 +101,13 @@ export default class Auth {
     // access token's expiry time
     let expiresAt = this.expiresAt;
     return new Date().getTime() < expiresAt;
+  }
+    getEmail(){
+      if(localStorage.getItem("id_token")){
+         return jwtDecode(localStorage.getItem("id_token"));
+      }
+      else{
+          return{};
+      }
   }
 }
