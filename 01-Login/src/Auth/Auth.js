@@ -12,7 +12,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
    domain: 'gustave01.auth0.com',
     clientID: 'VB1PB4lnIe6EFsHmMMa3yuSTBYa5gn3a',
-    redirectUri: 'https://webdevbootcamp-cyuscyus.c9users.io/callback',
+    redirectUri: 'http://localhost:3000/callback',
     responseType: 'token id_token',
     scope: 'openid email'
   });

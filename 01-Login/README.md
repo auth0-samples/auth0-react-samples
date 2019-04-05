@@ -1,38 +1,37 @@
 # Auth0 React Login
 
-This sample demonstrates how to add authentication to a React application with Auth0. The sample makes use of Auth0's hosted login page which provides centralized authentication.
+This sample demonstrates how to add authentication to a React application with Auth0. The sample makes use of Auth0's hosted login page which provides centralized authentication and the user email is displayed when the user is authenticated.
 
 ## Getting Started
 
-If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. The default URL is `http://localhost:3000/callback`. Also configure **Allowed Web Origins** to the default application URL `http://localhost:3000`.
 
-Clone the repo or download it from the React quickstart page in Auth0's documentation.
-
+Clone the repo or download it from https://github.com/GustaveKar/auth0-react-samples.git
 Open the demo.
 
 ```bash
 cd 01-Login
 ```
 
-Install the dependencies for the app.
-
-```
-npm install
-```
 
 ## Set the Client ID and Domain
 
-If you download the sample from the quickstart page, it will come pre-populated with the **client ID** and **domain** for your application. If you clone the repo directly from Github, rename the `auth0-variables.js.example` file to `auth0-variables.js` and provide the **client ID** and **domain** there. This file is located in `src/Auth/`.
+The clientID and domain are already added when creating the auth object
 
 ## Run the Application
 
-The demo comes ready to serve locally using react-scripts.
+The demo comes ready to serve locally using react-scripts. 
+In case you encounter "react-scripts: not found" error, please delete the package.-lock.json file and the node_modules folder and run npm install.
 
 ```bash
 npm start
 ```
 
 The application will be served at `http://localhost:3000`.
+
+
+## Todo
+
+Fixing the App.test.js failure test and implementing some more unit test for the routing files
 
 ## Run the Application With Docker
 
