@@ -13,8 +13,8 @@ class Ping extends Component {
       .catch(error => this.setState({ message: error.message }));
   }
   securedPing() {
-    const { getAccessToken } = this.props.auth;
-    const headers = { 'Authorization': `Bearer ${getAccessToken()}`}
+    const { getIdToken } = this.props.auth;
+    const headers = { 'Authorization': `Bearer ${getIdToken()}`}
     axios.get(`${API_URL}/private`, { headers })
       .then(response => this.setState({ message: response.data.message }))
       .catch(error => this.setState({ message: error.message }));
