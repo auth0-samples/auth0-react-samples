@@ -1,32 +1,38 @@
 {
-    "name": "centralized-login",
-    "version": "0.2.0",
-    "private": true,
-    "devDependencies": {
-        "react-scripts": "^2.1.8"
-    },
-    "dependencies": {
-        "auth0-js": "^9.0.0",
-        "bootstrap": "^3.3.7",
-        "react": "^16.8.6",
-        "react-bootstrap": "^0.31.2",
-        "react-dom": "^16.8.6",
-        "react-router": "^5.0.0",
-        "react-router-dom": "^5.0.0"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test --env=jsdom",
-        "eject": "react-scripts eject"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "browserslist": [
-        ">0.2%",
-        "not dead",
-        "not ie <= 11",
-        "not op_mini all"
-    ]
+  "name": "auth0-react-01-login",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "now-build": "react-scripts build"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "@auth0/auth0-spa-js": "0.0.1-alpha.18",
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "highlight.js": "^9.15.6",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "reactstrap": "^8.0.0",
+    "samples-bootstrap-theme": "github:auth0-quickstarts/samples-bootstrap-theme"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

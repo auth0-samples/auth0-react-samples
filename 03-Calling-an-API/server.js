@@ -1,43 +1,44 @@
-const express = require('express');
-const app = express();
-const jwt = require('express-jwt');
-const jwtAuthz = require('express-jwt-authz');
-const jwksRsa = require('jwks-rsa');
-const cors = require('cors');
-const morgan = require('morgan');
-require('dotenv').config();
+const express = require("express");
+const morgan = require("morgan");
+const helmet = require("helmet");
+const jwt = require("express-jwt");
+const jwksRsa = require("jwks-rsa");
+const { join } = require("path");
+const authConfig = require("./src/auth_config.json");
 
-if (!process.env.AUTH0_DOMAIN || !process.env.AUTH0_AUDIENCE) {
-  throw 'Make sure you have AUTH0_DOMAIN, and AUTH0_AUDIENCE in your .env file'
+const app = express();
+
+const port = process.env.NODE_ENV === "production" ? 3000 : 3001;
+
+if (!authConfig.domain || !authConfig.audience) {
+  throw "Please make sure that auth_config.json is in place and populated";
 }
 
-app.use(cors());
-app.use(morgan('API Request (port 3001): :method :url :status :response-time ms - :res[content-length]'));
+app.use(morgan("dev"));
+app.use(helmet());
+app.use(express.static(join(__dirname, "build")));
 
 const checkJwt = jwt({
-  // Dynamically provide a signing key based on the kid in the header and the singing keys provided by the JWKS endpoint.
   secret: jwksRsa.expressJwtSecret({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
+    jwksUri: `https://${authConfig.domain}/.well-known/jwks.json`
   }),
 
-  // Validate the audience and the issuer.
-  audience: process.env.AUTH0_AUDIENCE,
-  issuer: `https://${process.env.AUTH0_DOMAIN}/`,
-  algorithms: ['RS256']
+  audience: authConfig.audience,
+  issuer: `https://${authConfig.domain}/`,
+  algorithm: ["RS256"]
 });
 
-const checkScopes = jwtAuthz([ 'read:messages' ]);
-
-app.get('/api/public', function(req, res) {
-  res.json({ message: "Hello from a public endpoint! You don't need to be authenticated to see this." });
+app.get("/api/external", checkJwt, (req, res) => {
+  res.send({
+    msg: "Your access token was successfully validated!"
+  });
 });
 
-app.get('/api/private', checkJwt, checkScopes, function(req, res) {
-  res.json({ message: "Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this." });
+app.use((_, res) => {
+  res.sendFile(join(__dirname, "build", "index.html"));
 });
 
-app.listen(3001);
-console.log('Server listening on http://localhost:3001. The React app will be built and served at http://localhost:3000.');
+app.listen(port, () => console.log(`Server listening on port ${port}`));

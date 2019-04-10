@@ -1,11 +1,36 @@
-FROM node:8.7-alpine
+FROM node:10-alpine as build
 
-WORKDIR /home/app
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git openssh
 
-ADD package.json /home/app
+RUN mkdir /app
+
+WORKDIR /app
+
+COPY package.json .
+
 RUN npm install
-ADD . /home/app
 
-CMD ["npm", "start"]
+COPY . .
+
+RUN npm run build
+
+# ---------------
+
+FROM node:10-alpine
+    
+RUN mkdir -p /app/build
+
+WORKDIR /app
+
+COPY --from=build /app/build ./build
+COPY --from=build /app/package.json .
+COPY --from=build /app/server.js .
+
+ENV NODE_ENV production
+
+RUN npm install --production
 
 EXPOSE 3000
+
+CMD ["node", "server.js"]
