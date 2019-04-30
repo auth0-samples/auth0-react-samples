@@ -82,249 +82,20 @@ This tutorial will help you get up and running the React app using the new SDK.
 
 ## Setting Up the Application
 
-### Installing initial dependencies
-After create a new React app using `create-react-app` we still need to install some dependencies that doesn't come with the boilerplate. These dependencies will help us with things like routing, styling and font icons. But, before that we need to move the current `dependencies` to `devDependencies` this is because we will be using a server to run the built app.
-
-```json
-- "dependencies": {
-+ "devDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
-  }
+Find a location on your drive where you want to create the project and run the following commands:
+```bash
+npx create-react-app my-app
+cd my-app
+npm start
 ```
+(npx comes with npm 5.2+ and higher, see [instructions for older npm versions](https://gist.github.com/gaearon/4064d3c23a77c74a3614c498a8bb1c5f))
 
-After that we can install the new dev dependencies.
+### Installing initial dependencies
+After create a new React app using `create-react-app` we still need to install `react-router`, which doesn't come as standard with the boilerplate project.
 
 ```bash
-npm i -D react-router-dom highlight.js reactstrap samples-bootstrap-theme \
-@fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
+npm i -D react-router-dom
 ```
-### Create the Home view and initial components
-We are going to create a serie of components in order to build our initial welcome page. Create a folder called `views` and then a Compoment called `Home.js`. This component will show a welcome message and some information. 
-
-```jsx
-// src/views/Home.js
-import React, { Fragment } from "react";
-
-import Hero from "../components/Hero";
-import Content from "../components/Content";
-
-const Home = () => (
-  <Fragment>
-    <Hero />
-    <hr />
-    <Content />
-  </Fragment>
-);
-
-export default Home;
-```
-
-As you can see our `Home.js` component is build with other component pieces. Create a folder called `Compoments` and inside create two new components called `Hero.js`, and `Content.js`.
-
-For our `Hero.js` compoment we need to move the `logo.svg` inside a folder called `assets`.
-
-```jsx
-// src/components/Hero.js
-import React from "react";
-
-import logo from "../assets/logo.svg";
-
-const Hero = () => (
-  <div className="text-center hero">
-    <img className="mb-3 app-logo" src={logo} alt="React logo" />
-    <h1 className="mb-4">React.js Sample Project</h1>
-
-    <p className="lead">
-      This is a sample application that demonstrates an authentication flow for
-      an SPA, using <a href="https://reactjs.org">React.js</a>
-    </p>
-  </div>
-);
-
-export default Hero;
-```
-
-Since we want to load the content more dinamically, we are going to create a file called `contentData.js` inside a new folder called `utils`. This data will be used inside the `Content.js` component.
-```js
-// utils/contentData.js
-const contentData = [
-  {
-    title: "Configure other identity providers",
-    link: "https://auth0.com/docs/connections",
-    description:
-      "Auth0 supports social providers as Facebook, Twitter, Instagram and 100+, Enterprise providers as Microsoft Office 365, Google Apps, Azure, and more. You can also use any OAuth2 Authorization Server."
-  },
-  {
-    title: "Enable Multifactor Authentication",
-    link: "https://auth0.com/docs/multifactor-authentication",
-    description:
-      "Add an extra layer of security by enabling Multi-factor Authentication, requiring your users to provide more than one piece of identifying information. Push notifications, authenticator apps, SMS, and DUO Security are supported."
-  },
-  {
-    title: "Anomaly Detection",
-    link: "https://auth0.com/docs/anomaly-detection",
-    description:
-      "Auth0 can detect anomalies and stop malicious attempts to access your application. Anomaly detection can alert you and your users of suspicious activity, as well as block further login attempts."
-  },
-  {
-    title: "Learn About Rules",
-    link: "https://auth0.com/docs/rules",
-    description:
-      "Rules are JavaScript functions that execute when a user authenticates to your application. They run once the authentication process is complete, and you can use them to customize and extend Auth0's capabilities."
-  }
-];
-
-export default contentData;
-```
-
-```jsx
-// src/components/Content.js
-import React, { Component } from "react";
-
-import { Row, Col } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import contentData from "../utils/contentData";
-
-class Content extends Component {
-  render() {
-    return (
-      <div className="next-steps">
-        <h2 className="mt-5 text-center">What can I do next?</h2>
-          <Row className="d-flex justify-content-between">
-            {contentData.map((col, i) => (
-              <Col key={i} md={5}>
-                <h6 className="mb-3">
-                  <a href={col.link}>
-                    <FontAwesomeIcon icon="link" />
-                    {col.title}
-                  </a>
-                </h6>
-                <p>{col.description}</p>
-              </Col>
-            ))}
-          </Row>
-      </div>
-    );
-  }
-}
-
-export default Content;
-
-```
-
-Another component that we need to create for our welcome page is the is the `Footer.js` component:
-
-```jsx
-// src/components/Footer.js
-import React from "react";
-
-const Footer = () => (
-  <footer>
-    <div className="logo" />
-    <p>
-      Sample project provided by <a href="https://auth0.com">Auth0</a>
-    </p>
-  </footer>
-);
-
-export default Footer;
-```
-
-### Editing the App component
-At the moment we have created our initial components but we need to use them. For that, we need to modify our `App.js` to look like the following code.
-
-```jsx
-// src/App.js
-import React, { Component, Fragment } from "react";
-import { Container } from "reactstrap";
-
-import Footer from "./components/Footer";
-import Home from "./views/Home";
-
-// styles
-import "samples-bootstrap-theme/dist/css/auth0-theme.css";
-import "./App.css";
-
-// fontawesome
-import initFontAwesome from "./utils/initFontAwesome";
-initFontAwesome();
-
-class App extends Component {
-  render() {
-    return (
-      <div id="app">
-        <Container className="mt-5">
-          <Home/>
-        </Container>
-        <Footer />
-      </div>
-    );
-  }
-}
-
-export default App;
-
-```
-
-We are almost ready for our first checkpoint. We need to setting up a few styles overrides, so replace the `App.css` with the following code.
-
-```css
-/* src/App.css */
-.next-steps .fa-link {
-  margin-right: 5px;
-}
-
-/* Fix for use only flexbox in content area */
-.next-steps .row {
-  margin-bottom: 0;
-}
-
-.next-steps .col-md-5 {
-  margin-bottom: 3rem;
-}
-
-@media (max-width: 768px) {
-  .next-steps .col-md-5 {
-    margin-bottom: 0;
-  }
-}
-
-.spinner {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  background-color: white;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-```
-
-and let's create a file called `initFontAwesome.js` inside our `utils` folder. This file will help us to initialize the Font Awesome library in React properly.
-
-```js
-/// src/utils/initFontAwesome.js
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
-
-function initFontAwesome() {
-  library.add(faLink);
-}
-
-export default initFontAwesome;
-```
-
-**Checkpoint 1:** At this point you can start testing how it looks so far. To start the app, run `npm run start` from the terminal to start the application.
-
-Now go and access it at [http://localhost:3000](http://localhost:3000). You should see the welcome message and a footer.
-
-![Checkpoint 1](docs/checkpoint-1.png)
 
 ### Create the Navbar component
 Create a new component called `Navbar.js`. This component will be responsable to show the authentication controls and a dropdown that will show the profile name and the link to go to the profile page.
@@ -552,124 +323,6 @@ handleLogoutClick = async event => {
 };
 ```
 
-Finally let's create a `Loading.js` component to show it while our SDK is ready to use in the render method of our `App.js` component. Please, don't forget to copy the `loading.svg` into the assets folder.
-
-```js
-// src/components/Loading.js
-import React from "react";
-import loading from "../assets/loading.svg";
-
-const Loading = () => (
-  <div className="spinner">
-    <img src={loading} alt="Loading" />
-  </div>
-);
-
-export default Loading;
-```
-
-If the loading state is true we will show the `Loading.js` component, if not we will show our `Home.js` but now we want to include the `Navbar.js` component and pass our `auth0` instance from the local state, including the login and logout methods that we defined before.
-
-```js
-// src/App.js
-import Loading from "./components/Loading";
-
-render() {
-  const { loading, auth0 } = this.state;
-
-  if (loading) {
-    return <Loading />;
-  }
-
-  return (
-    <div id="app">
-      <Container className="mt-5">
-        <NavBar
-          auth0={auth0}
-          handleLoginClick={this.handleLoginClick}
-          handleLogoutClick={this.handleLogoutClick}
-        />
-        <Home />
-      </Container>
-      <Footer />
-    </div>
-  )
-}
-```
-
-The final `App.js` should look like this.
-```jsx
-// src/App.js
-import React, { Component, Fragment } from "react";
-import { Container } from "reactstrap";
-import createAuth0Client from "@auth0/auth0-spa-js";
-
-import Loading from "./components/Loading";
-import NavBar from './components/NavBar';
-import Footer from "./components/Footer";
-import Home from "./views/Home";
-
-// auth0 config
-import config from "./auth_config";
-
-// styles
-import "samples-bootstrap-theme/dist/css/auth0-theme.css";
-import "./App.css";
-
-// fontawesome
-import initFontAwesome from "./utils/initFontAwesome";
-initFontAwesome();
-
-class App extends Component {
-  state = { loading: true, auth0: null };
-
-  async componentDidMount() {
-    try {
-      const auth0 = await createAuth0Client({
-        domain: config.domain,
-        client_id: config.clientId
-      });
-
-      this.setState({ loading: false, auth0 });
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  handleLoginClick = async () => {
-
-  };
-
-  handleLogoutClick = async event => {
-
-  };
-
-  render() {
-    const { loading, auth0 } = this.state;
-
-    if (loading) {
-      return <Loading />;
-    }
-
-    return (
-      <div id="app">
-        <Container className="mt-5">
-          <NavBar
-            auth0={auth0}
-            handleLoginClick={this.handleLoginClick}
-            handleLogoutClick={this.handleLogoutClick}
-          />
-          <Home />
-        </Container>
-        <Footer />
-      </div>
-    );
-  }
-}
-
-export default App;
-```
-
 ### Auth0 dashboard
 
 Access the [Auth0 dashboard](https://manage.auth0.com/#/applications) and go into the Applications section.
@@ -726,8 +379,6 @@ Additionally, we need to implement a `Callback.js` view so we can detect that an
 // src/views/Callback.js
 import React, { Component } from "react";
 
-import Loading from "../components/Loading";
-
 class Callback extends Component {
   async componentDidMount() {
     const { auth0, history } = this.props;
@@ -743,7 +394,7 @@ class Callback extends Component {
   }
 
   render() {
-    return <Loading />;
+    return <span>Loading...</span>;
   }
 }
 
@@ -795,7 +446,7 @@ render() {
 }
 ```
 
-**Checkpoint 2:** Run the project and click the "Log in" button. You should be taken to the Universal Login Page configured for your application. Go ahead and create a new user or log in using a social connection. After authenticating successfully, you will be redirected to callback page. This time, the result will be present in the URL query and the exchange will happen automatically. If everything went fine, you will end up with no query parameters in the URL, the user would now be logged in and the "Log out" button will be enabled.
+**Checkpoint** Run the project and click the "Log in" button. You should be taken to the Universal Login Page configured for your application. Go ahead and create a new user or log in using a social connection. After authenticating successfully, you will be redirected to callback page. This time, the result will be present in the URL query and the exchange will happen automatically. If everything went fine, you will end up with no query parameters in the URL, the user would now be logged in and the "Log out" button will be enabled.
 
 If at this part you see any errors on the Auth0 page, check that you have not forgotten to whitelist the callback URL or the allowed origins as explained initially.
 
@@ -818,103 +469,21 @@ handleLogoutClick = async event => {
 };
 ```
 
-**Checkpoint 3:** Being authenticated click the "Log out" button. Now the authentication cookies were cleared and the user is logged out. The "Log in" button will be enabled back again.
+**Checkpoint** Being authenticated click the "Log out" button. Now the authentication cookies were cleared and the user is logged out. The "Log in" button will be enabled back again.
 
 If at this part you see any errors on the Auth0 page, check that you have not forgotten to whitelist the logout url as explained initially.
 
 ### Reading the user profile
 
-Everytime a user is logged in you get the associated **user profile** information. Typically, is used to display their name and profile picture. In this guide you are going to display in a code block using the library `highlight.js`.
+Everytime a user is logged in you get the associated **user profile** information. Typically, is used to display their name and profile picture.
 
-Let's create a `Highlight.js` component.
-
-```jsx
-// src/components/Highlight.js
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-
-import hljs from "highlight.js/lib/highlight";
-import "highlight.js/styles/monokai-sublime.css";
-
-const registeredLanguages = {};
-
-class Highlight extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { loaded: false };
-    this.codeNode = React.createRef();
-  }
-
-  componentDidMount() {
-    const { language } = this.props;
-
-    if (language && !registeredLanguages[language]) {
-      try {
-        const newLanguage = require(`highlight.js/lib/languages/${language}`);
-        hljs.registerLanguage(language, newLanguage);
-        registeredLanguages[language] = true;
-
-        this.setState({ loaded: true }, this.highlight);
-      } catch (e) {
-        console.error(e);
-        throw Error(`Cannot register the language ${language}`);
-      }
-    } else {
-      this.setState({ loaded: true });
-    }
-  }
-
-  componentDidUpdate() {
-    this.highlight();
-  }
-
-  highlight = () => {
-    this.codeNode &&
-      this.codeNode.current &&
-      hljs.highlightBlock(this.codeNode.current);
-  };
-
-  render() {
-    const { language, children } = this.props;
-    const { loaded } = this.state;
-
-    if (!loaded) {
-      return null;
-    }
-
-    return (
-      <pre className="rounded">
-        <code ref={this.codeNode} className={language}>
-          {children}
-        </code>
-      </pre>
-    );
-  }
-}
-
-Highlight.propTypes = {
-  children: PropTypes.node.isRequired,
-  language: PropTypes.string
-};
-
-Highlight.defaultProps = {
-  language: "json"
-};
-
-export default Highlight;
-```
-
-Then, we need to create the `Profile.js` view where we will call the SPA SDK method `auth0.getUser()` in order to get the profile information for put it into the local state and render it into the `Highlight` component.
+We need to create the `Profile.js` view where we will call the SPA SDK method `auth0.getUser()` in order to get the profile information for put it into the local state and render it into the `Highlight` component.
 
 ```jsx
 // src/views/Profile.js
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Container, Row, Col } from "reactstrap";
-
-import Highlight from "../components/Highlight";
-import Loading from "../components/Loading";
 
 class Profile extends Component {
   state = { loading: true, profile: {} };
@@ -935,7 +504,7 @@ class Profile extends Component {
     const { loading, profile } = this.state;
 
     if (loading || !profile) {
-      return <Loading />;
+      return <span>Loading...</span>;
     }
 
     return (
@@ -954,7 +523,7 @@ class Profile extends Component {
           </Col>
         </Row>
         <Row>
-          <Highlight>{JSON.stringify(profile, null, 2)}</Highlight>
+          {JSON.stringify(profile, null, 2)}
         </Row>
       </Container>
     );
@@ -1001,7 +570,7 @@ Now is time to update our `App.js` in order to render the `Profile` view given t
 </div>
 ```
 
-**Checkpoint 4:** Go ahead and run the project one more time. Now if the user is authenticated and you navigate to the `/profile` page using the dropdown you will see its profile data. See how this content disappears when you log out.
+**Checkpoint** Go ahead and run the project one more time. Now if the user is authenticated and you navigate to the `/profile` page using the dropdown you will see its profile data. See how this content disappears when you log out.
 
 ![Checkpoint 4](docs/checkpoint-4.png)
 
@@ -1014,8 +583,6 @@ First we need to create a High-Order Component function that will wrap any compo
 // src/hocs/withAuhtentication.js
 
 import React, { Component } from "react";
-
-import Loading from "../components/Loading";
 
 function withAuthentication(WrappedComponent, auth0) {
   return class WithAuthentication extends Component {
@@ -1039,7 +606,7 @@ function withAuthentication(WrappedComponent, auth0) {
       const { loading } = this.state;
 
       if (loading) {
-        return <Loading />;
+        return <span>Loading...</span>;
       }
 
       return <WrappedComponent auth0={auth0} {...this.props} />;
@@ -1094,7 +661,7 @@ With the `PrivateRoute.js` component create we need to modify one last time our 
 + <PrivateRoute path="/profile" auth0={auth0} component={Profile} />
 ```
 
-**Checkpoint 5:** Run the project again. Now if the user is not authenticated and you navigate to the `/profile` you will be send though the authentication flow and will see the Profile page without issues.
+**Checkpoint** Run the project again. Now if the user is not authenticated and you navigate to the `/profile` you will be send though the authentication flow and will see the Profile page without issues.
 
 ## Create the server
 Our frontend code is ready. But, since we are running a SPA with a routing system it is a good idea to setting up a server that handles all request to response with our SPA. You will create a basic web server using [ExpressJS](https://expressjs.com). This will be used to serve our HTML page, along with any assets that it requires (JavaScript, CSS, etc).
@@ -1130,4 +697,4 @@ app.listen(3000, () => console.log("Listening on port 3000"));
 
 The server provides one enpoint which serves every other request to the `index.html` file, which will provide support for any client-side routing as all routes go to the same page. The app also serves all of the static files, such as the `.js` and `.css` files from the `/public` folder.
 
-**Checkpoint 6:** If you want to run the project using the server, you need to build the app running `npm run build` and then run the server with `node server.js`. Everything should work as before but much faster because we are serving production code.
+**Checkpoint** If you want to run the project using the server, you need to build the app running `npm run build` and then run the server with `node server.js`. Everything should work as before but much faster because we are serving production code.
