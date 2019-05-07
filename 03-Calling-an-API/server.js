@@ -11,7 +11,9 @@ const app = express();
 const port = process.env.NODE_ENV === "production" ? 3000 : 3001;
 
 if (!authConfig.domain || !authConfig.audience) {
-  throw "Please make sure that auth_config.json is in place and populated";
+  throw new Error(
+    "Please make sure that auth_config.json is in place and populated"
+  );
 }
 
 app.use(morgan("dev"));

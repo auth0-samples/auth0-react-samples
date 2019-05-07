@@ -514,9 +514,9 @@ import React, { Component } from "react";
 
 export default function withAuthentication(WrappedComponent, auth0) {
   return class WithAuthentication extends Component {
-    state = { loading: true };
+    state = { loading: true, isAuthenticated: false };
 
-    async componentDidMount() {
+    async componentWillMount() {
       const { path } = this.props;
       const isAuthenticated = await auth0.isAuthenticated();
 
@@ -527,11 +527,13 @@ export default function withAuthentication(WrappedComponent, auth0) {
         });
       }
 
-      this.setState({ loading: false });
+      this.setState({ loading: false, isAuthenticated });
     }
 
     render() {
-      const { loading } = this.state;
+      const { loading, isAuthenticated } = this.state;
+
+      if (!isAuthenticated) return;
 
       if (loading) {
         return <span>Loading...</span>;

@@ -8,8 +8,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "now-build": "react-scripts build",
-    "dev": "npm-run-all --parallel start backend-dev",
-    "backend-dev": "nodemon server.js"
+    "server": "nodemon server.js",
+    "dev": "npm-run-all --parallel start server"
   },
   "dependencies": {
     "express": "^4.16.4",
