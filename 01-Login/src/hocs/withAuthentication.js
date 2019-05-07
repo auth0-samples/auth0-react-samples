@@ -4,7 +4,7 @@ import Loading from "../components/Loading";
 
 function withAuthentication(WrappedComponent, auth0) {
   return class WithAuthentication extends Component {
-    state = { loading: true };
+    state = { loading: true, isAuthenticated: false };
 
     async componentDidMount() {
       const { path } = this.props;
@@ -17,11 +17,13 @@ function withAuthentication(WrappedComponent, auth0) {
         });
       }
 
-      this.setState({ loading: false });
+      this.setState({ loading: false, isAuthenticated });
     }
 
     render() {
-      const { loading } = this.state;
+      const { loading, isAuthenticated } = this.state;
+
+      if (!isAuthenticated) return null;
 
       if (loading) {
         return <Loading />;
