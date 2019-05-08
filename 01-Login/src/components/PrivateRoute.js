@@ -4,8 +4,8 @@ import { Route } from "react-router-dom";
 
 import withAuthentication from "../hocs/withAuthentication";
 
-const PrivateRoute = ({ component: Component, path, auth0, ...rest }) => {
-  const ComponentWithAuthentication = withAuthentication(Component, auth0);
+const PrivateRoute = ({ component: Component, path, ...rest }) => {
+  const ComponentWithAuthentication = withAuthentication(Component);
   const render = props => (
     <ComponentWithAuthentication path={path} {...props} />
   );
@@ -19,8 +19,7 @@ PrivateRoute.propTypes = {
   path: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string)
-  ]).isRequired,
-  auth0: PropTypes.object.isRequired
+  ]).isRequired
 };
 
 export default PrivateRoute;

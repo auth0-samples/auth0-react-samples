@@ -1,37 +1,37 @@
-import React, { Component } from "react";
-
+import React, { useEffect, useState } from "react";
 import Loading from "../components/Loading";
+import { useAuth0 } from "../react-auth0-spa";
 
-function withAuthentication(WrappedComponent, auth0) {
-  return class WithAuthentication extends Component {
-    state = { loading: true, isAuthenticated: false };
+function withAuthentication(WrappedComponent) {
+  const WithAuthentication = props => {
+    const [loading, setLoading] = useState(true);
+    const { isAuthenticated, loginWithRedirect } = useAuth0();
+    const { path } = props;
 
-    async componentDidMount() {
-      const { path } = this.props;
-      const isAuthenticated = await auth0.isAuthenticated();
+    useEffect(() => {
+      const fn = async () => {
+        if (!isAuthenticated) {
+          await loginWithRedirect({
+            redirect_uri: window.location.origin,
+            appState: { targetUrl: path }
+          });
+        }
 
-      if (!isAuthenticated) {
-        await auth0.loginWithRedirect({
-          redirect_uri: `${window.location.origin}/callback`,
-          appState: { targetUrl: path }
-        });
-      }
+        setLoading(false);
+      };
+      fn();
+    }, [isAuthenticated, loginWithRedirect, props, path]);
 
-      this.setState({ loading: false, isAuthenticated });
+    if (!isAuthenticated) return null;
+
+    if (loading) {
+      return <Loading />;
     }
 
-    render() {
-      const { loading, isAuthenticated } = this.state;
-
-      if (!isAuthenticated) return null;
-
-      if (loading) {
-        return <Loading />;
-      }
-
-      return <WrappedComponent auth0={auth0} {...this.props} />;
-    }
+    return <WrappedComponent {...props} />;
   };
+
+  return WithAuthentication;
 }
 
 export default withAuthentication;
