@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
-import { useAuth0 } from "../react-auth0-spa";
-
 import Highlight from "../components/Highlight";
+import { useAuth0 } from "../react-auth0-spa";
 
 const ExternalApi = () => {
   const [showResult, setShowResult] = useState(false);
