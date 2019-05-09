@@ -28,21 +28,14 @@ const App = () => {
   return (
     <div id="app">
       <Router>
-        <Switch>
-          <Route
-            path="/"
-            render={() => (
-              <>
-                <NavBar />
-                <Container className="mt-5">
-                  <Route path="/" exact component={Home} />
-                  <PrivateRoute path="/profile" component={Profile} />
-                </Container>
-                <Footer />
-              </>
-            )}
-          />
-        </Switch>
+        <NavBar />
+        <Container className="mt-5">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <PrivateRoute path="/profile" component={Profile} />
+          </Switch>
+        </Container>
+        <Footer />
       </Router>
     </div>
   );
