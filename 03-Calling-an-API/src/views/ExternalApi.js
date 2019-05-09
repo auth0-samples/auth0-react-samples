@@ -1,17 +1,17 @@
-import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
 import { Button } from "reactstrap";
+import { useAuth0 } from "../react-auth0-spa";
 
 import Highlight from "../components/Highlight";
 
-class ExternalApi extends Component {
-  state = { showResult: false, apiMessage: {} };
+const ExternalApi = () => {
+  const [showResult, setShowResult] = useState(false);
+  const [apiMessage, setApiMessage] = useState("");
+  const { getTokenSilently } = useAuth0();
 
-  callApi = async () => {
-    const { auth0 } = this.props;
-
+  const callApi = async () => {
     try {
-      const token = await auth0.getTokenSilently();
+      const token = await getTokenSilently();
 
       const response = await fetch("/api/external", {
         headers: {
@@ -21,43 +21,36 @@ class ExternalApi extends Component {
 
       const responseData = await response.json();
 
-      this.setState({ showResult: true, apiMessage: responseData });
+      setShowResult(true);
+      setApiMessage(responseData);
     } catch (error) {
       console.error(error);
     }
   };
 
-  render() {
-    const { apiMessage, showResult } = this.state;
+  return (
+    <>
+      <div className="mb-5">
+        <h1>External API</h1>
+        <p>
+          Ping an external API by clicking the button below. This will call the
+          external API using an access token, and the API will validate it using
+          the API's audience value.
+        </p>
 
-    return (
-      <Fragment>
-        <div className="mb-5">
-          <h1>External API</h1>
-          <p>
-            Ping an external API by clicking the button below. This will call
-            the external API using an access token, and the API will validate it
-            using the API's audience value.
-          </p>
+        <Button color="primary" className="mt-5" onClick={callApi}>
+          Ping API
+        </Button>
+      </div>
 
-          <Button color="primary" className="mt-5" onClick={this.callApi}>
-            Ping API
-          </Button>
+      <div className="result-block-container">
+        <div className={`result-block ${showResult && "show"}`}>
+          <h6 className="muted">Result</h6>
+          <Highlight>{JSON.stringify(apiMessage, null, 2)}</Highlight>
         </div>
-
-        <div className="result-block-container">
-          <div className={`result-block ${showResult && "show"}`}>
-            <h6 className="muted">Result</h6>
-            <Highlight>{JSON.stringify(apiMessage, null, 2)}</Highlight>
-          </div>
-        </div>
-      </Fragment>
-    );
-  }
-}
-
-ExternalApi.propTypes = {
-  auth0: PropTypes.object.isRequired
+      </div>
+    </>
+  );
 };
 
 export default ExternalApi;
