@@ -20,8 +20,7 @@ ReactDOM.render(
   <Auth0Provider
     domain={config.domain}
     client_id={config.clientId}
-    leeway={60}
-    redirect_callback={onRedirectCallback}
+    onRedirectCallback={onRedirectCallback}
   >
     <App />
   </Auth0Provider>,
