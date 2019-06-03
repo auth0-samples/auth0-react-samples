@@ -12,12 +12,12 @@ defaults: &defaults
           name: Replace Auth0 test credentials
           command: |
             echo "export const AUTH_CONFIG = {" >> $AUTH0_CFG
-            echo "  clientId: '$AUTH0_TEST_CLIENT_ID'," >> $AUTH0_CFG
+            echo "  clientID: '$AUTH0_TEST_CLIENT_ID'," >> $AUTH0_CFG
             echo "  domain: '$AUTH0_TEST_DOMAIN'," >> $AUTH0_CFG
             echo "  callbackUrl: 'http://localhost:3000/callback'," >> $AUTH0_CFG
             echo "  apiUrl: '$AUTH0_TEST_AUDIENCE'" >> $AUTH0_CFG
             echo "}" >> $AUTH0_CFG
-          
+
       - run:
           name: Build pull request
           command: |
@@ -28,7 +28,7 @@ defaults: &defaults
           command: |
             sleep 10
             docker run --network host --rm appropriate/curl --retry 8 --retry-connrefused -v localhost:3000
-      - run: 
+      - run:
           name: Run tests
           command: |
             docker create --network host --name tester codeception/codeceptjs codeceptjs run-multiple --all --steps --verbose
@@ -48,14 +48,14 @@ defaults: &defaults
 
 # Jobs and Workflows
 version: 2
-jobs: 
+jobs:
   checkout:
     machine: true
     steps:
       - checkout
       - run: git clone https://github.com/auth0-samples/spa-quickstarts-tests scripts
       - persist_to_workspace:
-          root: ~/ 
+          root: ~/
           paths:
             - project
             - scripts
