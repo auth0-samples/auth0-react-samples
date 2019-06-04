@@ -11,7 +11,7 @@ export default class Auth {
 
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
-    clientID: AUTH_CONFIG.clientId,
+    clientID: AUTH_CONFIG.clientID,
     redirectUri: AUTH_CONFIG.callbackUrl,
     responseType: 'token id_token',
     scope: 'openid profile'
