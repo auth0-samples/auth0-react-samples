@@ -1,0 +1,52 @@
+{
+  "name": "auth0-react-03-calling-an-api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "now-build": "react-scripts build",
+    "server": "nodemon server.js",
+    "dev": "npm-run-all --parallel start server"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-jwt": "^5.3.1",
+    "helmet": "^3.18.0",
+    "jwks-rsa": "^1.4.0",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "@auth0/auth0-spa-js": "1.0.0-beta.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "highlight.js": "^9.15.6",
+    "nodemon": "^1.19.0",
+    "npm-run-all": "^4.1.5",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "3.0.0",
+    "reactstrap": "^8.0.0",
+    "samples-bootstrap-theme": "github:auth0-quickstarts/samples-bootstrap-theme"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "http://localhost:3001"
+}
