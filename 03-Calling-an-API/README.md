@@ -87,7 +87,7 @@ This file has two values, `AUTH0_AUDIENCE` and `AUTH0_DOMAIN`. If you download t
 
 By default, the Access Token does not contain any authorization information. To limit access to your resources based on authorization, you must use scopes. Read more about scopes in the [scopes documentation](/scopes).
 
-In the Auth0 dashboard, in the [APIs section](${manage_url}/#/apis), click **Scopes**. Add any scopes you need to limit access to your API resources.
+In the Auth0 dashboard, in the [APIs section](https://manage.auth0.com/#/apis), click **Scopes**. Add any scopes you need to limit access to your API resources.
 
 > **Note:** You can give any names to your scopes. A common pattern is `<action>:<resource>`. The example below uses the name `read:messages` for a scope.
 
@@ -101,7 +101,7 @@ Add your scopes to the `scope` key.
 
 auth0 = new auth0.WebAuth({
   // ...
-  audience: "${apiIdentifier}",
+  audience: "YOUR AUTH0 API IDENTIFIER",
   scope: "openid profile read:messages"
 });
 ```
@@ -136,17 +136,17 @@ class Ping extends Component {
   securedPing() {
     const { getAccessToken } = this.props.auth;
     const API_URL = "http://<your-url>.com/api";
-    const headers = { Authorization: `Bearer <%= "${getAccessToken()}" %>` };
+    const headers = { Authorization: `Bearer ${getAccessToken()}` };
     axios
-      .get(`<%= "${API_URL}" %>/private`, { headers })
+      .get(`${API_URL}/private`, { headers })
       .then(response => this.setState({ message: response.data.message }))
       .catch(error => this.setState({ message: error.message }));
   }
   securedScopedPing() {
     const { getAccessToken } = this.props.auth;
-    const headers = { Authorization: `Bearer <%= "${getAccessToken()}" %>` };
+    const headers = { Authorization: `Bearer ${getAccessToken()}` };
     axios
-      .get(`<%= "${API_URL}" %>/private-scoped`, { headers })
+      .get(`${API_URL}/private-scoped`, { headers })
       .then(response => this.setState({ message: response.data.message }))
       .catch(error => this.setState({ message: error.message }));
   }
