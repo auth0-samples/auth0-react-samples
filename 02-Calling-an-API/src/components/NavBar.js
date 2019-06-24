@@ -29,7 +29,7 @@ const NavBar = () => {
 
   const logoutWithRedirect = () =>
     logout({
-      redirect_uri: window.location.origin
+      returnTo: window.location.origin
     });
 
   return (
