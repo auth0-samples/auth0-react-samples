@@ -25,14 +25,16 @@ RUN apk update && apk upgrade && apk add yarn git
 
 WORKDIR /app
 
-COPY --from=build /app/build ./build
 COPY --from=build /app/package.json .
-COPY --from=build /app/server.js .
-
-ENV NODE_ENV production
 
 RUN yarn install --production
 
+COPY --from=build /app/build ./build
+COPY --from=build /app/src/auth_config.json ./src/auth_config.json
+COPY --from=build /app/server.js .
+
 EXPOSE 3000
+
+ENV NODE_ENV production
 
 CMD ["node", "server.js"]

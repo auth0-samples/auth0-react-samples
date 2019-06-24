@@ -1,10 +1,6 @@
-# Sample 01 - Logging In and Gated Content
+# Sample 02 - Calling an External API
 
-This sample demonstrates:
-
-- Logging in to Auth0 using Redirect Mode
-- Accessing profile information that has been provided in the ID token
-- Gated content. The `/profile` route is not accessible without having first logged in
+For this scenario, an API endpoint `/api/external` has been included in the Express server that requires a bearer token to be supplied as a bearer token in the `Authorization` header (as provided during the authentication flow). This uses the [`express-jwt`](https://github.com/auth0/express-jwt) middleware to validate the token against the identifier of your API as set up in the Auth0 dashboard, as well as checking that the signature is valid.
 
 ## Project setup
 
@@ -27,14 +23,17 @@ To do this, first copy `src/auth_config.json.example` into a new file in the sam
 ```json
 {
   "domain": "{YOUR AUTH0 DOMAIN}",
-  "clientId": "{YOUR AUTH0 CLIENT ID}"
+  "clientId": "{YOUR AUTH0 CLIENT ID}",
+  "audience": "{YOUR AUTH0 API_IDENTIFIER}"
 }
 ```
 
 ### Compiles and hot-reloads for development
 
+This compiles and serves the React app, and starts the backend API server on port 3001. Calls to `http://localhost:3000/api/*` routes will be proxied through to the backend:
+
 ```bash
-npm run start
+npm run dev
 ```
 
 ## Deployment
@@ -55,7 +54,7 @@ To build and run the Docker image, run `exec.sh`, or `exec.ps1` on Windows.
 npm run test
 ```
 
-# What is Auth0?
+## What is Auth0?
 
 Auth0 helps you to:
 
