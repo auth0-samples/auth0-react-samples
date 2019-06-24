@@ -27,6 +27,11 @@ const NavBar = () => {
     setIsOpen({ isOpen: !isOpen });
   };
 
+  const logoutWithRedirect = () =>
+    logout({
+      redirect_uri: window.location.origin
+    });
+
   return (
     <div className="nav-container">
       <Navbar color="light" light expand="md">
@@ -94,7 +99,10 @@ const NavBar = () => {
                     >
                       <span className="icon icon-profile" /> Profile
                     </DropdownItem>
-                    <DropdownItem id="qsLogoutBtn" onClick={() => logout({})}>
+                    <DropdownItem
+                      id="qsLogoutBtn"
+                      onClick={() => logoutWithRedirect()}
+                    >
                       <span className="icon icon-power" /> Log out
                     </DropdownItem>
                   </DropdownMenu>
@@ -141,7 +149,7 @@ const NavBar = () => {
                   <RouterNavLink
                     to="#"
                     id="qsLogoutBtn"
-                    onClick={() => logout({})}
+                    onClick={() => logoutWithRedirect()}
                   >
                     Log out
                   </RouterNavLink>
