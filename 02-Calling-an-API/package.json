@@ -18,7 +18,7 @@
     "morgan": "^1.9.1"
   },
   "devDependencies": {
-    "@auth0/auth0-spa-js": "1.0.0-beta.2",
+    "@auth0/auth0-spa-js": "^1.0.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
