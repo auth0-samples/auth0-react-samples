@@ -10,9 +10,7 @@
   },
   "dependencies": {
     "express": "^4.16.4",
-    "morgan": "^1.9.1"
-  },
-  "devDependencies": {
+    "morgan": "^1.9.1",
     "@auth0/auth0-spa-js": "^1.0.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
@@ -25,6 +23,7 @@
     "reactstrap": "^8.0.0",
     "samples-bootstrap-theme": "github:auth0-quickstarts/samples-bootstrap-theme"
   },
+  "devDependencies": {},
   "eslintConfig": {
     "extends": "react-app"
   },
