@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
   Collapse,
@@ -22,10 +23,7 @@ import { useAuth0 } from "../react-auth0-spa";
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
-
-  const toggle = () => {
-    setIsOpen({ isOpen: !isOpen });
-  };
+  const toggle = () => setIsOpen(!isOpen);
 
   const logoutWithRedirect = () =>
     logout({
@@ -82,10 +80,11 @@ const NavBar = () => {
                     <img
                       src={user.picture}
                       alt="Profile"
-                      className="nav-user-profile"
+                      className="nav-user-profile rounded-circle"
+                      width="50"
                     />
                   </DropdownToggle>
-                  <DropdownMenu right>
+                  <DropdownMenu>
                     <DropdownItem header>{user.name}</DropdownItem>
                     <DropdownItem
                       tag={RouterNavLink}
@@ -93,13 +92,14 @@ const NavBar = () => {
                       className="dropdown-profile"
                       activeClassName="router-link-exact-active"
                     >
-                      <span className="icon icon-profile" /> Profile
+                      <FontAwesomeIcon icon="user" className="mr-3" /> Profile
                     </DropdownItem>
                     <DropdownItem
                       id="qsLogoutBtn"
                       onClick={() => logoutWithRedirect()}
                     >
-                      <span className="icon icon-power" /> Log out
+                      <FontAwesomeIcon icon="power-off" className="mr-3" /> Log
+                      out
                     </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
@@ -120,19 +120,24 @@ const NavBar = () => {
               </Nav>
             )}
             {isAuthenticated && (
-              <Nav className="d-md-none" navbar>
+              <Nav
+                className="d-md-none justify-content-between"
+                navbar
+                style={{ minHeight: 170 }}
+              >
                 <NavItem>
                   <span className="user-info">
                     <img
                       src={user.picture}
                       alt="Profile"
-                      className="nav-user-profile d-inline-block"
+                      className="nav-user-profile d-inline-block rounded-circle mr-3"
+                      width="50"
                     />
                     <h6 className="d-inline-block">{user.name}</h6>
                   </span>
                 </NavItem>
                 <NavItem>
-                  <span className="icon icon-profile" />
+                  <FontAwesomeIcon icon="user" className="mr-3" />
                   <RouterNavLink
                     to="/profile"
                     activeClassName="router-link-exact-active"
@@ -141,7 +146,7 @@ const NavBar = () => {
                   </RouterNavLink>
                 </NavItem>
                 <NavItem>
-                  <span className="icon icon-power" />
+                  <FontAwesomeIcon icon="power-off" className="mr-3" />
                   <RouterNavLink
                     to="#"
                     id="qsLogoutBtn"
