@@ -26,18 +26,18 @@ const App = () => {
   }
 
   return (
-    <div id="app">
-      <Router>
+    <Router>
+      <div id="app" className="d-flex flex-column h-100">
         <NavBar />
-        <Container className="mt-5">
+        <Container className="flex-grow-1 mt-5">
           <Switch>
             <Route path="/" exact component={Home} />
             <PrivateRoute path="/profile" component={Profile} />
           </Switch>
         </Container>
         <Footer />
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 };
 
