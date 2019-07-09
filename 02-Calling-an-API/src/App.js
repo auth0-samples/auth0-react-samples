@@ -12,7 +12,6 @@ import ExternalApi from "./views/ExternalApi";
 import { useAuth0 } from "./react-auth0-spa";
 
 // styles
-import "samples-bootstrap-theme/dist/css/auth0-theme.css";
 import "./App.css";
 
 // fontawesome

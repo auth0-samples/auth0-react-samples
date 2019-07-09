@@ -28,8 +28,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0",
-    "reactstrap": "^8.0.0",
-    "samples-bootstrap-theme": "github:auth0-quickstarts/samples-bootstrap-theme"
+    "reactstrap": "^8.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.0"
