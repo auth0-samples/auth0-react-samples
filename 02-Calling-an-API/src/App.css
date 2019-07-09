@@ -29,3 +29,11 @@
   left: 0;
   right: 0;
 }
+
+.result-block-container .result-block {
+  opacity: 0;
+}
+
+.result-block-container .result-block.show {
+  opacity: 1;
+}
