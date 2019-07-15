@@ -54,6 +54,10 @@ To build and run the Docker image, run `exec.sh`, or `exec.ps1` on Windows.
 npm run test
 ```
 
+## Frequently Asked Questions
+
+We are compiling a list of questions and answers regarding the new JavaScript SDK - if you're having issues running the sample applications, [check the FAQ](https://github.com/auth0/auth0-spa-js/blob/master/FAQ.md)!
+
 ## What is Auth0?
 
 Auth0 helps you to:
