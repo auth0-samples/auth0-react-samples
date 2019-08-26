@@ -26,8 +26,8 @@ To do this, first copy `src/auth_config.json.example` into a new file in the sam
 
 ```json
 {
-  "domain": "{YOUR AUTH0 DOMAIN}",
-  "clientId": "{YOUR AUTH0 CLIENT ID}"
+	"domain": "{YOUR AUTH0 DOMAIN}",
+	"clientId": "{YOUR AUTH0 CLIENT ID}"
 }
 ```
 
@@ -82,6 +82,7 @@ If you have found a bug or if you have a feature request, please report them at 
 ## Author
 
 [Auth0](https://auth0.com)
+Jaxcoder
 
 ## License
 
