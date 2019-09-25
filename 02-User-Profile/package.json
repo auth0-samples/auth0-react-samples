@@ -7,7 +7,7 @@
     },
     "dependencies": {
         "auth0-js": "^9.0.0",
-        "bootstrap": "^3.3.7",
+        "bootstrap": "^3.4.1",
         "react": "^16.8.6",
         "react-bootstrap": "^0.31.2",
         "react-dom": "^16.8.6",
