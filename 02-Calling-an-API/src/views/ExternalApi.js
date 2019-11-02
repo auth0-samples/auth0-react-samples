@@ -3,7 +3,7 @@ import { Button } from "reactstrap";
 import Highlight from "../components/Highlight";
 import { useAuth0 } from "../react-auth0-spa";
 
-const ExternalApi = () => {
+const ExternalApi = props => {
   const [showResult, setShowResult] = useState(false);
   const [apiMessage, setApiMessage] = useState("");
   const { getTokenSilently } = useAuth0();
@@ -12,7 +12,7 @@ const ExternalApi = () => {
     try {
       const token = await getTokenSilently();
 
-      const response = await fetch("/api/external", {
+      const response = await fetch(`${props.apiServer}/api/external`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

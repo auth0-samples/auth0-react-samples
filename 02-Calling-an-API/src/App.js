@@ -19,7 +19,7 @@ import "./App.css";
 import initFontAwesome from "./utils/initFontAwesome";
 initFontAwesome();
 
-const App = () => {
+const App = props => {
   const { loading } = useAuth0();
 
   if (loading) {
@@ -34,7 +34,12 @@ const App = () => {
           <Switch>
             <Route path="/" exact component={Home} />
             <PrivateRoute path="/profile" component={Profile} />
-            <PrivateRoute path="/external-api" component={ExternalApi} />
+            <PrivateRoute
+              path="/external-api"
+              render={rest => (
+                <ExternalApi apiServer={props.apiServer} {...rest} />
+              )}
+            />
           </Switch>
         </Container>
         <Footer />

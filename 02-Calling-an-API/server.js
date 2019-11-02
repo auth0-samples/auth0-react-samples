@@ -5,6 +5,7 @@ const jwt = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
 const { join } = require("path");
 const authConfig = require("./src/auth_config.json");
+const cors = require("cors");
 
 const app = express();
 
@@ -16,6 +17,7 @@ if (!authConfig.domain || !authConfig.audience) {
   );
 }
 
+app.use(cors());
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(express.static(join(__dirname, "build")));
