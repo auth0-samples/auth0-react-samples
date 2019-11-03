@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "npm-run-all --parallel spa server",
+    "start": "npm-run-all --parallel spa apiserver",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "spa": "react-scripts start",
     "server": "node server.js",
     "server:dev": "nodemon server.js",
+    "apiserver": "node ApiServer.js",
+    "apiserver:dev": "nodemon ApiServer.js",
     "dev": "npm-run-all --parallel spa server:dev"
   },
   "dependencies": {
