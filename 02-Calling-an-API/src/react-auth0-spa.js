@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import createAuth0Client from "@auth0/auth0-spa-js";
+import config from "./auth_config.json";
 import history from "./utils/history";
 
 const DEFAULT_REDIRECT_CALLBACK = () =>
@@ -17,9 +18,11 @@ export const Auth0Provider = ({
   const [auth0Client, setAuth0] = useState();
   const [loading, setLoading] = useState(true);
   const [popupOpen, setPopupOpen] = useState(false);
+  const [apiServerURL, setApiServerURL] = useState();
 
   useEffect(() => {
     const initAuth0 = async () => {
+      setApiServerURL(config.apiServerURL);
       const auth0FromHook = await createAuth0Client(initOptions);
       setAuth0(auth0FromHook);
 
@@ -74,6 +77,7 @@ export const Auth0Provider = ({
         popupOpen,
         loginWithPopup,
         handleRedirectCallback,
+        apiServerURL,
         getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
         loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
         getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),

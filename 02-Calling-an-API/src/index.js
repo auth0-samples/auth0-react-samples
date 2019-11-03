@@ -23,7 +23,7 @@ ReactDOM.render(
     redirect_uri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
   >
-    <App apiServer={config.apiServer} />
+    <App />
   </Auth0Provider>,
   document.getElementById("root")
 );

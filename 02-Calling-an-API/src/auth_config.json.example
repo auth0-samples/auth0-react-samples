@@ -2,5 +2,5 @@
   "domain": "{DOMAIN}",
   "clientId": "{CLIENT_ID}",
   "audience": "{API_IDENTIFIER}",
-  "apiServer": "http://localhost:3001"
+  "apiServerURL": "http://localhost:3001"
 }
