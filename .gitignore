@@ -4,6 +4,3 @@ node_modules
 **/auth0-variables.js
 npm-debug.log
 .editorconfig
-.idea/workspace.xml
-.idea/vcs.xml
-.idea/encodings.xml
