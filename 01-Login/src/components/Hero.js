@@ -9,7 +9,7 @@ const Hero = () => (
 
     <p className="lead">
       This is a sample application that demonstrates an authentication flow for
-      an SPA, using <a href="https://reactjs.org">React.js</a>
+      a SPA, using <a href="https://reactjs.org">React.js</a>
     </p>
   </div>
 );
