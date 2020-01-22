@@ -18,16 +18,16 @@ const PrivateRoute = ({ component: Component, path, location, ...rest }) => {
   }, [isAuthenticated, loginWithRedirect, path, location]);
 
   const render = props =>
-      isAuthenticated === true ? <Component {...props} /> : null;
+    isAuthenticated === true ? <Component {...props} /> : null;
 
   return <Route path={path} render={render} {...rest} />;
 };
 
 PrivateRoute.propTypes = {
   component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
-      .isRequired,
+    .isRequired,
   location: PropTypes.shape({
-    pathName: PropTypes.string.isRequired
+    pathname: PropTypes.string.isRequired
   }).isRequired,
   path: PropTypes.oneOfType([
     PropTypes.string,
