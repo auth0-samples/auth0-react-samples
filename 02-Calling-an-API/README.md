@@ -30,7 +30,7 @@ To do this, first copy `src/auth_config.json.example` into a new file in the sam
 
 ### Compiles and hot-reloads for development
 
-This compiles and serves the React app, and starts the backend API server on port 3001. Calls to `http://localhost:3000/api/*` routes will be proxied through to the backend:
+This compiles and serves the React app and starts the backend API server on port 3001. 
 
 ```bash
 npm run dev
