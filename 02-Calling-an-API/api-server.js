@@ -4,13 +4,13 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const jwt = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
-const { join } = require("path");
 const authConfig = require("./src/auth_config.json");
 
 const app = express();
 
 const port = process.env.API_PORT || 3001;
 const appPort = process.env.SERVER_PORT || 3000;
+const appOrigin = authConfig.appOrigin || `http://localhost:${appPort}`;
 
 if (!authConfig.domain || !authConfig.audience) {
   throw new Error(
@@ -20,7 +20,7 @@ if (!authConfig.domain || !authConfig.audience) {
 
 app.use(morgan("dev"));
 app.use(helmet());
-app.use(cors({ origin: `http://localhost:${appPort}` }));
+app.use(cors({ origin: appOrigin }));
 
 const checkJwt = jwt({
   secret: jwksRsa.expressJwtSecret({
