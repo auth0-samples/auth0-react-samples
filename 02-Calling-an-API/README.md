@@ -18,7 +18,7 @@ yarn install
 
 The project needs to be configured with your Auth0 domain and client ID in order for the authentication flow to work.
 
-To do this, first copy `src/auth_config.json.example` into a new file in the same folder called `src/auth_config.json`, and replace the values with your own Auth0 application credentials, and optionally the base urls of your application and API:
+To do this, first copy `src/auth_config.json.example` into a new file in the same folder called `src/auth_config.json`, and replace the values with your own Auth0 application credentials, and optionally the base URLs of your application and API:
 
 ```json
 {
