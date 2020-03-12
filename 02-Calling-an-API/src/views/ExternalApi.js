@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Button } from "reactstrap";
 import Highlight from "../components/Highlight";
 import { useAuth0 } from "../react-auth0-spa";
+import config from "../auth_config.json";
+
+const { apiOrigin = "http://localhost:3001" } = config;
 
 const ExternalApi = () => {
   const [showResult, setShowResult] = useState(false);
@@ -12,7 +15,7 @@ const ExternalApi = () => {
     try {
       const token = await getTokenSilently();
 
-      const response = await fetch("/api/external", {
+      const response = await fetch(`${apiOrigin}/api/external`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
