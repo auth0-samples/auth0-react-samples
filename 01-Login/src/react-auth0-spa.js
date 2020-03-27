@@ -51,6 +51,10 @@ export const Auth0Provider = ({
       await auth0Client.loginWithPopup(params);
     } catch (error) {
       console.error(error);
+      if (error.popup) {
+        error.popup.close();
+      }
+      return;
     } finally {
       setPopupOpen(false);
     }
