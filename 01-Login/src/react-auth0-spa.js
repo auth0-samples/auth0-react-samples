@@ -70,6 +70,7 @@ export const Auth0Provider = ({
   return (
     <Auth0Context.Provider
       value={{
+        auth0Client,
         isAuthenticated,
         user,
         loading,
