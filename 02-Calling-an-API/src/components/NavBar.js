@@ -22,7 +22,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, isAuthenticated, login, logout } = useAuth0();
+  const { user, isAuthenticated, login, logout, isLoading } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
 
   const logoutWithRedirect = () =>
@@ -48,7 +48,7 @@ const NavBar = () => {
                   Home
                 </NavLink>
               </NavItem>
-              {isAuthenticated && (
+              {isAuthenticated && !isLoading && (
                 <NavItem>
                   <NavLink
                     tag={RouterNavLink}
@@ -62,7 +62,7 @@ const NavBar = () => {
               )}
             </Nav>
             <Nav className="d-none d-md-block" navbar>
-              {!isAuthenticated && (
+              {!isAuthenticated && !isLoading && (
                 <NavItem>
                   <Button
                     id="qsLoginBtn"
@@ -74,7 +74,7 @@ const NavBar = () => {
                   </Button>
                 </NavItem>
               )}
-              {isAuthenticated && (
+              {isAuthenticated && !isLoading && (
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret id="profileDropDown">
                     <img
@@ -105,7 +105,7 @@ const NavBar = () => {
                 </UncontrolledDropdown>
               )}
             </Nav>
-            {!isAuthenticated && (
+            {!isAuthenticated && !isLoading && (
               <Nav className="d-md-none" navbar>
                 <NavItem>
                   <Button
@@ -119,7 +119,7 @@ const NavBar = () => {
                 </NavItem>
               </Nav>
             )}
-            {isAuthenticated && (
+            {isAuthenticated && !isLoading && (
               <Nav
                 className="d-md-none justify-content-between"
                 navbar

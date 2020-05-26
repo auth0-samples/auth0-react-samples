@@ -6,9 +6,9 @@ import Loading from "../components/Loading";
 import { useAuth0, withLoginRequired } from "@auth0/auth0-react";
 
 const Profile = () => {
-  const { loading, user } = useAuth0();
+  const { isLoading, user } = useAuth0();
 
-  if (loading || !user) {
+  if (isLoading || !user) {
     return <Loading />;
   }
 
