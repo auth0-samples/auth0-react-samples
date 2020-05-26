@@ -19,6 +19,9 @@ ReactDOM.render(
   <Auth0Provider
     domain={config.domain}
     client_id={config.clientId}
+    audience="http://localhost/"
+    cacheLocation="localstorage"
+    useRefreshTokens={true}
     redirect_uri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
   >
