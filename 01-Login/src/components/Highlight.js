@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import hljs from "highlight.js/lib/highlight";
+import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
 
 const registeredLanguages = {};
@@ -63,11 +63,11 @@ class Highlight extends Component {
 
 Highlight.propTypes = {
   children: PropTypes.node.isRequired,
-  language: PropTypes.string
+  language: PropTypes.string,
 };
 
 Highlight.defaultProps = {
-  language: "json"
+  language: "json",
 };
 
 export default Highlight;
