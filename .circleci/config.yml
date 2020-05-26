@@ -61,13 +61,6 @@ jobs:
       - SAMPLE_PATH: 01-Login
     <<: *defaults
 
-  02-api:
-    machine: true
-    environment:
-      - AUTH0_CFG: 02-Calling-an-API/src/auth_config.json
-      - SAMPLE_PATH: 02-Calling-an-API
-    <<: *defaults
-
 workflows:
   version: 2
   quickstarts_login:
@@ -75,11 +68,6 @@ workflows:
       - checkout:
           context: Quickstart SPA Test
       - 01-login:
-          context: Quickstart SPA Test
-          requires:
-            - checkout
-
-      - 02-api:
           context: Quickstart SPA Test
           requires:
             - checkout
