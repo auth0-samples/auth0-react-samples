@@ -7,6 +7,7 @@ import { useAuth0, withLoginRequired } from "@auth0/auth0-react";
 
 const Profile = () => {
   const { isLoading, user } = useAuth0();
+  const u: any = user;
 
   if (isLoading || !user) {
     return <Loading />;
@@ -17,14 +18,14 @@ const Profile = () => {
       <Row className="align-items-center profile-header mb-5 text-center text-md-left">
         <Col md={2}>
           <img
-            src={user.picture}
+            src={u.picture}
             alt="Profile"
             className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
           />
         </Col>
         <Col md>
-          <h2>{user.name}</h2>
-          <p className="lead text-muted">{user.email}</p>
+          <h2>{u.name}</h2>
+          <p className="lead text-muted">{u.email}</p>
         </Col>
       </Row>
       <Row>
