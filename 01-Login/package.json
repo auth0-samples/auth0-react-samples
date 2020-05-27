@@ -16,10 +16,12 @@
     "prod": "npm-run-all --parallel server api-server"
   },
   "dependencies": {
-    "@auth0/auth0-react": "file:../../auth0-react/auth0-auth0-react-0.2.0.tgz",
+    "@auth0/auth0-react": "../../auth0-react/auth0-auth0-react-0.2.0.tgz",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "@types/highlight.js": "^9.12.4",
+    "@types/node": "^14.0.5",
     "@types/react": "^16.9.35",
     "@types/react-router-dom": "^5.1.5",
     "@types/reactstrap": "^8.4.2",
