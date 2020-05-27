@@ -19,9 +19,9 @@ import initFontAwesome from "./utils/initFontAwesome";
 initFontAwesome();
 
 const App = () => {
-  const { loading } = useAuth0();
+  const { isLoading } = useAuth0();
 
-  if (loading) {
+  if (isLoading) {
     return <Loading />;
   }
 
