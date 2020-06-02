@@ -3,7 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 
 import Highlight from "../components/Highlight";
 import Loading from "../components/Loading";
-import { useAuth0, withLoginRequired } from "@auth0/auth0-react";
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 
 const Profile = () => {
   const { isLoading, user } = useAuth0();
@@ -34,4 +34,4 @@ const Profile = () => {
   );
 };
 
-export default withLoginRequired(Profile);
+export default withAuthenticationRequired(Profile);

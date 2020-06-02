@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
 import Highlight from "../components/Highlight";
-import { useAuth0, withLoginRequired } from "@auth0/auth0-react";
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import config from "../auth_config.json";
 
 const { apiOrigin = "http://localhost:3001" } = config;
@@ -9,11 +9,11 @@ const { apiOrigin = "http://localhost:3001" } = config;
 const ExternalApi = () => {
   const [showResult, setShowResult] = useState(false);
   const [apiMessage, setApiMessage] = useState("");
-  const { getToken } = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
 
   const callApi = async () => {
     try {
-      const token = await getToken();
+      const token = await getAccessTokenSilently();
 
       const response = await fetch(`${apiOrigin}/api/external`, {
         headers: {
@@ -55,4 +55,4 @@ const ExternalApi = () => {
   );
 };
 
-export default withLoginRequired(ExternalApi);
+export default withAuthenticationRequired(ExternalApi);
