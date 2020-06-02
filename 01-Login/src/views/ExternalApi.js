@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "reactstrap";
+import { Button, Alert } from "reactstrap";
 import Highlight from "../components/Highlight";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import config from "../auth_config.json";
@@ -8,8 +8,36 @@ const { apiOrigin = "http://localhost:3001" } = config;
 
 const ExternalApi = () => {
   const [showResult, setShowResult] = useState(false);
-  const [apiMessage, setApiMessage] = useState("");
-  const { getAccessTokenSilently } = useAuth0();
+  const [apiMessage, setApiMessage] = useState();
+  const [error, setError] = useState({ error: "consent_required" });
+
+  const {
+    getAccessTokenSilently,
+    loginWithPopup,
+    getAccessTokenWithPopup,
+  } = useAuth0();
+
+  const handleConsent = async () => {
+    try {
+      await getAccessTokenWithPopup();
+      setError(null);
+    } catch (error) {
+      setError(error);
+    }
+
+    await callApi();
+  };
+
+  const handleLoginAgain = async () => {
+    try {
+      await loginWithPopup();
+      setError(null);
+    } catch (error) {
+      setError(error);
+    }
+
+    await callApi();
+  };
 
   const callApi = async () => {
     try {
@@ -30,9 +58,40 @@ const ExternalApi = () => {
     }
   };
 
+  const handle = (e, fn) => {
+    e.preventDefault();
+    fn();
+  };
+
   return (
     <>
       <div className="mb-5">
+        {error && error.error === "consent_required" && (
+          <Alert color="warning">
+            You need to{" "}
+            <a
+              href="#"
+              class="alert-link"
+              onClick={(e) => handle(e, handleConsent)}
+            >
+              consent to get access to users api
+            </a>
+          </Alert>
+        )}
+
+        {error && error.error === "login_required" && (
+          <Alert color="warning">
+            You need to{" "}
+            <a
+              href="#"
+              class="alert-link"
+              onClick={(e) => handle(e, handleLoginAgain)}
+            >
+              log in again
+            </a>
+          </Alert>
+        )}
+
         <h1>External API</h1>
         <p>
           Ping an external API by clicking the button below. This will call the
