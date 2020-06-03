@@ -27,7 +27,6 @@ const NavBar = () => {
     isAuthenticated,
     loginWithRedirect,
     logout,
-    isLoading,
   } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
 
@@ -54,7 +53,7 @@ const NavBar = () => {
                   Home
                 </NavLink>
               </NavItem>
-              {isAuthenticated && !isLoading && (
+              {isAuthenticated && (
                 <NavItem>
                   <NavLink
                     tag={RouterNavLink}
@@ -68,7 +67,7 @@ const NavBar = () => {
               )}
             </Nav>
             <Nav className="d-none d-md-block" navbar>
-              {!isAuthenticated && !isLoading && (
+              {!isAuthenticated && (
                 <NavItem>
                   <Button
                     id="qsLoginBtn"
@@ -80,7 +79,7 @@ const NavBar = () => {
                   </Button>
                 </NavItem>
               )}
-              {isAuthenticated && !isLoading && (
+              {isAuthenticated && (
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret id="profileDropDown">
                     <img
@@ -111,7 +110,7 @@ const NavBar = () => {
                 </UncontrolledDropdown>
               )}
             </Nav>
-            {!isAuthenticated && !isLoading && (
+            {!isAuthenticated && (
               <Nav className="d-md-none" navbar>
                 <NavItem>
                   <Button
@@ -125,7 +124,7 @@ const NavBar = () => {
                 </NavItem>
               </Nav>
             )}
-            {isAuthenticated && !isLoading && (
+            {isAuthenticated && (
               <Nav
                 className="d-md-none justify-content-between"
                 navbar

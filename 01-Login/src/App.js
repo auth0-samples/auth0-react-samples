@@ -19,9 +19,13 @@ import initFontAwesome from "./utils/initFontAwesome";
 initFontAwesome();
 
 const App = () => {
-  const { loading } = useAuth0();
+  const { isLoading, error } = useAuth0();
 
-  if (loading) {
+  if (error) {
+    return <div>Oops... {error.message}</div>;
+  }
+
+  if (isLoading) {
     return <Loading />;
   }
 
