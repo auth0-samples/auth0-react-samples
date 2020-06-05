@@ -11,9 +11,8 @@ const ExternalApi = () => {
   const [state, setState] = useState({
     showResult: false,
     apiMessage: "",
+    error: null,
   });
-
-  const [error, setError] = useState({ error: "consent_required" });
 
   const {
     getAccessTokenSilently,
@@ -24,9 +23,15 @@ const ExternalApi = () => {
   const handleConsent = async () => {
     try {
       await getAccessTokenWithPopup();
-      setError(null);
+      setState({
+        ...state,
+        error: null,
+      });
     } catch (error) {
-      setError(error);
+      setState({
+        ...state,
+        error: error.error,
+      });
     }
 
     await callApi();
@@ -35,9 +40,15 @@ const ExternalApi = () => {
   const handleLoginAgain = async () => {
     try {
       await loginWithPopup();
-      setError(null);
+      setState({
+        ...state,
+        error: null,
+      });
     } catch (error) {
-      setError(error);
+      setState({
+        ...state,
+        error: error.error,
+      });
     }
 
     await callApi();
@@ -61,7 +72,10 @@ const ExternalApi = () => {
         apiMessage: responseData,
       });
     } catch (error) {
-      console.error(error);
+      setState({
+        ...state,
+        error: error.error,
+      });
     }
   };
 
@@ -73,11 +87,11 @@ const ExternalApi = () => {
   return (
     <>
       <div className="mb-5">
-        {error && error.error === "consent_required" && (
+        {state.error === "consent_required" && (
           <Alert color="warning">
             You need to{" "}
             <a
-              href="#"
+              href="#/"
               class="alert-link"
               onClick={(e) => handle(e, handleConsent)}
             >
@@ -86,11 +100,11 @@ const ExternalApi = () => {
           </Alert>
         )}
 
-        {error && error.error === "login_required" && (
+        {state.error === "login_required" && (
           <Alert color="warning">
             You need to{" "}
             <a
-              href="#"
+              href="#/"
               class="alert-link"
               onClick={(e) => handle(e, handleLoginAgain)}
             >
