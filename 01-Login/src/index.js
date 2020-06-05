@@ -9,8 +9,8 @@ import history from "./utils/history";
 
 const onRedirectCallback = (appState) => {
   history.push(
-    appState && appState.targetUrl
-      ? appState.targetUrl
+    appState && appState.returnTo
+      ? appState.returnTo
       : window.location.pathname
   );
 };

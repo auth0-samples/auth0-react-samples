@@ -1,17 +1,22 @@
-# Sample 02 - Calling an External API
+# Auth0 React SDK Sample Application
 
-For this scenario, an API endpoint `/api/external` has been included in the Express server that requires a bearer token to be supplied as a bearer token in the `Authorization` header (as provided during the authentication flow). This uses the [`express-jwt`](https://github.com/auth0/express-jwt) middleware to validate the token against the identifier of your API as set up in the Auth0 dashboard, as well as checking that the signature is valid.
+This sample demonstrates the integration of [Auth0 React SDK](https://github.com/auth0/auth0-react) into a React application created using [create-react-app](https://reactjs.org/docs/create-a-new-react-app.html). The sample is a companion to the [Auth0 React SDK Quickstart](https://auth0.com/docs/quickstart/spa/auth0-react).
+
+This sample demonstrates the following use cases:
+
+* [Login](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/components/NavBar.js#L70-L80)
+* [Logout](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/components/NavBar.js#L102-L108)
+* [Showing the user profile](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/views/Profile.js)
+* [Protecting routes](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/views/Profile.js#L33)
+* [Calling APIs](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/views/ExternalApi.js)
 
 ## Project setup
 
-Use `yarn` or `npm` to install the project dependencies:
+Use `npm` to install the project dependencies:
 
 ```bash
-# Using npm..
-npm install
 
-# Using yarn..
-yarn install
+npm install
 ```
 
 ### Configuration

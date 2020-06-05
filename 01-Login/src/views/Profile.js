@@ -6,11 +6,7 @@ import Loading from "../components/Loading";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 
 const Profile = () => {
-  const { isLoading, user } = useAuth0();
-
-  if (isLoading || !user) {
-    return <Loading />;
-  }
+  const { user } = useAuth0();
 
   return (
     <Container className="mb-5">
@@ -34,4 +30,4 @@ const Profile = () => {
   );
 };
 
-export default withAuthenticationRequired(Profile);
+export default withAuthenticationRequired(Profile, () => <Loading/>);

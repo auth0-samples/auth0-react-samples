@@ -3,12 +3,16 @@ import { Button, Alert } from "reactstrap";
 import Highlight from "../components/Highlight";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import config from "../auth_config.json";
+import Loading from "../components/Loading";
 
 const { apiOrigin = "http://localhost:3001" } = config;
 
 const ExternalApi = () => {
-  const [showResult, setShowResult] = useState(false);
-  const [apiMessage, setApiMessage] = useState();
+  const [state, setState] = useState({
+    showResult: false,
+    apiMessage: "",
+  });
+
   const [error, setError] = useState({ error: "consent_required" });
 
   const {
@@ -51,8 +55,11 @@ const ExternalApi = () => {
 
       const responseData = await response.json();
 
-      setShowResult(true);
-      setApiMessage(responseData);
+      setState({
+        ...state,
+        showResult: true,
+        apiMessage: responseData,
+      });
     } catch (error) {
       console.error(error);
     }
@@ -105,13 +112,13 @@ const ExternalApi = () => {
       </div>
 
       <div className="result-block-container">
-        <div className={`result-block ${showResult && "show"}`}>
+        <div className={`result-block ${state.showResult && "show"}`}>
           <h6 className="muted">Result</h6>
-          <Highlight>{JSON.stringify(apiMessage, null, 2)}</Highlight>
+          <Highlight>{JSON.stringify(state.apiMessage, null, 2)}</Highlight>
         </div>
       </div>
     </>
   );
 };
 
-export default withAuthenticationRequired(ExternalApi);
+export default withAuthenticationRequired(ExternalApi, () => <Loading />);
