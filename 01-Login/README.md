@@ -4,18 +4,17 @@ This sample demonstrates the integration of [Auth0 React SDK](https://github.com
 
 This sample demonstrates the following use cases:
 
-* [Login](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/components/NavBar.js#L70-L80)
-* [Logout](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/components/NavBar.js#L102-L108)
-* [Showing the user profile](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/views/Profile.js)
-* [Protecting routes](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/views/Profile.js#L33)
-* [Calling APIs](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/views/ExternalApi.js)
+- [Login](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/components/NavBar.js#L72-L79)
+- [Logout](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/components/NavBar.js#L102-L108)
+- [Showing the user profile](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/views/Profile.js)
+- [Protecting routes](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/views/Profile.js#L33)
+- [Calling APIs](https://github.com/auth0-samples/auth0-react-samples/blob/migrate/auth0-react/01-Login/src/views/ExternalApi.js)
 
 ## Project setup
 
 Use `npm` to install the project dependencies:
 
 ```bash
-
 npm install
 ```
 
@@ -37,7 +36,7 @@ To do this, first copy `src/auth_config.json.example` into a new file in the sam
 
 ### Compiles and hot-reloads for development
 
-This compiles and serves the React app and starts the backend API server on port 3001. 
+This compiles and serves the React app and starts the backend API server on port 3001.
 
 ```bash
 npm run dev
