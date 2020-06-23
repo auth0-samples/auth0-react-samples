@@ -7,7 +7,7 @@ import Loading from "../components/Loading";
 
 const { apiOrigin = "http://localhost:3001" } = config;
 
-const ExternalApi = () => {
+export const ExternalApiComponent = () => {
   const [state, setState] = useState({
     showResult: false,
     apiMessage: "",
@@ -135,4 +135,6 @@ const ExternalApi = () => {
   );
 };
 
-export default withAuthenticationRequired(ExternalApi, () => <Loading />);
+export default withAuthenticationRequired(ExternalApiComponent, () => (
+  <Loading />
+));
