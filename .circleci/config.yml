@@ -40,6 +40,9 @@ jobs:
             sleep 10
             docker run --network host --rm appropriate/curl --retry 8 --retry-connrefused -v localhost:3000
       - run:
+          name: Run unit tests
+          command: yarn test
+      - run:
           name: Run tests
           command: |
             docker create --network host --name tester codeception/codeceptjs codeceptjs run-multiple --all --steps --verbose
