@@ -5,7 +5,7 @@ import Highlight from "../components/Highlight";
 import Loading from "../components/Loading";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 
-const Profile = () => {
+export const UnauthenticatedProfile = () => {
   const { user } = useAuth0();
 
   return (
@@ -30,4 +30,6 @@ const Profile = () => {
   );
 };
 
-export default withAuthenticationRequired(Profile, () => <Loading/>);
+export default withAuthenticationRequired(UnauthenticatedProfile, () => (
+  <Loading />
+));
