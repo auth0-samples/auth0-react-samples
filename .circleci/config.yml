@@ -46,11 +46,11 @@ jobs:
             docker run --network host --rm appropriate/curl --retry 8 --retry-connrefused -v localhost:3000
       - node/install-packages:
           pkg-manager: yarn
-          app-dir: $SAMPLE_PATH
+          app-dir: Sample-01
       - run:
           name: Run unit tests
           command: |
-            cd $SAMPLE_PATH
+            cd Sample-01
             yarn test
       - run:
           name: Run integration tests
