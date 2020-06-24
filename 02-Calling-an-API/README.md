@@ -32,7 +32,7 @@ To do this, first copy `src/auth_config.json.example` into a new file in the sam
 
 ### Compiles and hot-reloads for development
 
-This compiles and serves the React app and starts the backend API server on port 3001. 
+This compiles and serves the React app and starts the backend API server on port 3001.
 
 ```bash
 npm run dev
@@ -59,6 +59,10 @@ npm run test
 ## Frequently Asked Questions
 
 We are compiling a list of questions and answers regarding the new JavaScript SDK - if you're having issues running the sample applications, [check the FAQ](https://github.com/auth0/auth0-spa-js/blob/master/FAQ.md)!
+
+## Tutorial
+
+[Read the tutorial](./TUTORIAL.md) to see how to set up and call a custom API with Auth0 using [auth0-spa-js](https://github.com/auth0/auth0-spa-js).
 
 ## What is Auth0?
 
