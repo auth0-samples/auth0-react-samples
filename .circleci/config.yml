@@ -42,7 +42,8 @@ jobs:
       - run:
           name: Run unit tests
           command: |
-            cd $SAMPLE_PATH  
+            cd $SAMPLE_PATH
+            npm install  
             npm test
       - run:
           name: Run tests
