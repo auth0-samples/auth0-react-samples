@@ -30,4 +30,6 @@ export const ProfileComponent = () => {
   );
 };
 
-export default withAuthenticationRequired(ProfileComponent, () => <Loading />);
+export default withAuthenticationRequired(ProfileComponent, {
+  onRedirecting: () => <Loading />,
+});

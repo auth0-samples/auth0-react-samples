@@ -16,7 +16,7 @@
     "prod": "npm-run-all --parallel server api-server"
   },
   "dependencies": {
-    "@auth0/auth0-react": "^0.4.0",
+    "@auth0/auth0-react": "^1.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",

@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@auth0/auth0-react@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@auth0/auth0-react/-/auth0-react-0.4.0.tgz#af5150f58bc905942652e5c7254c443d8a579b5d"
-  integrity sha512-kbKWREGMr163tXGbJqZN2wEvBO8kNjlh7NZTznQYmnyAsXItTa4UgnA40rkETpJGpIzFOaLl6byeX9UwdVhnEQ==
+"@auth0/auth0-react@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@auth0/auth0-react/-/auth0-react-1.0.0.tgz#3eeced9557d54d4092032ecc071cd74052d09da7"
+  integrity sha512-AaGftJFXYsJNEHZq/PNNr5HVSOQCVjstBF2pD3gAwOrgjKO7fYoeNgKKQOcTLm/ge5vAkEBGgSBzWBj2SgZ38w==
   dependencies:
     "@auth0/auth0-spa-js" "^1.9.0"
 
