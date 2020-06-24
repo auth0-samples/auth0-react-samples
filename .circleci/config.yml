@@ -43,6 +43,8 @@ jobs:
           name: Run unit tests
           command: |
             cd $SAMPLE_PATH
+            node -v
+            npm -v
             npm install  
             npm test
       - run:
