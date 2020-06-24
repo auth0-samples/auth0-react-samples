@@ -16,11 +16,11 @@ jobs:
           paths:
             - project
             - scripts
-  01-login:
+  sample-01:
     machine: true
     environment:
-      - AUTH0_CFG: 01-Login/src/auth_config.json
-      - SAMPLE_PATH: 01-Login
+      - AUTH0_CFG: Sample-01/src/auth_config.json
+      - SAMPLE_PATH: Sample-01
     steps:
       - attach_workspace:
           at: ~/
@@ -66,7 +66,7 @@ workflows:
     jobs:
       - checkout:
           context: Quickstart SPA Test
-      - 01-login:
+      - sample-01:
           context: Quickstart SPA Test
           requires:
             - checkout
