@@ -59,6 +59,10 @@ npm run test
 
 We are compiling a list of questions and answers regarding the new JavaScript SDK - if you're having issues running the sample applications, [check the FAQ](https://github.com/auth0/auth0-spa-js/blob/master/FAQ.md)!
 
+## Tutorial
+
+[Read the tutorial](./TUTORIAL.md) to see how to integrate a React application with Auth0 using [auth0-spa-js](https://github.com/auth0/auth0-spa-js).
+
 # What is Auth0?
 
 Auth0 helps you to:
