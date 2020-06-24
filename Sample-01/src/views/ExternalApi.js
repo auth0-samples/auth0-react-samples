@@ -139,6 +139,6 @@ export const ExternalApiComponent = () => {
   );
 };
 
-export default withAuthenticationRequired(ExternalApiComponent, () => (
-  <Loading />
-));
+export default withAuthenticationRequired(ExternalApiComponent, {
+  onRedirecting: () => <Loading />,
+});
