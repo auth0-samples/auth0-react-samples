@@ -4,7 +4,9 @@
 # AUTH0_TEST_AUDIENCE = API Audience to use in test
 
 # Jobs and Workflows
-version: 2
+version: 2.1
+orbs:
+  node: circleci/node@3.0.0
 jobs:
   checkout:
     machine: true
@@ -22,6 +24,9 @@ jobs:
       - AUTH0_CFG: Sample-01/src/auth_config.json
       - SAMPLE_PATH: Sample-01
     steps:
+      - node/install:
+          install-yarn: true
+          node-version: latest
       - attach_workspace:
           at: ~/
       - run:
@@ -39,16 +44,13 @@ jobs:
           command: |
             sleep 10
             docker run --network host --rm appropriate/curl --retry 8 --retry-connrefused -v localhost:3000
+      - node/install-packages:
+          pkg-manager: yarn
       - run:
           name: Run unit tests
-          command: |
-            cd $SAMPLE_PATH
-            node -v
-            npm -v
-            npm install  
-            npm test
+          command: yarn test
       - run:
-          name: Run tests
+          name: Run integration tests
           command: |
             docker create --network host --name tester codeception/codeceptjs codeceptjs run-multiple --all --steps --verbose
             docker cp $(pwd)/lock_login_spa_test.js tester:/tests/lock_login_test.js
