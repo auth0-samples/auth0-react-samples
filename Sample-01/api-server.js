@@ -32,7 +32,7 @@ const checkJwt = jwt({
 
   audience: authConfig.audience,
   issuer: `https://${authConfig.domain}/`,
-  algorithm: ["RS256"]
+  algorithms: ["RS256"]
 });
 
 app.get("/api/external", checkJwt, (req, res) => {
