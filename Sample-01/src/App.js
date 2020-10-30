@@ -1,15 +1,15 @@
 import React from "react";
-import { Router, Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import { Container } from "reactstrap";
 
-import Loading from "./components/Loading";
+import Layout from "./components/Layout";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Home from "./views/Home";
 import Profile from "./views/Profile";
 import ExternalApi from "./views/ExternalApi";
-import { useAuth0 } from "@auth0/auth0-react";
-import history from "./utils/history";
+import { Auth0Provider } from "@auth0/auth0-react";
+import config from "./auth_config.json";
 
 // styles
 import "./App.css";
@@ -19,19 +19,21 @@ import initFontAwesome from "./utils/initFontAwesome";
 initFontAwesome();
 
 const App = () => {
-  const { isLoading, error } = useAuth0();
+  const history = useHistory();
 
-  if (error) {
-    return <div>Oops... {error.message}</div>;
-  }
-
-  if (isLoading) {
-    return <Loading />;
-  }
+  const onRedirectCallback = (appState) => {
+    history.replace(appState?.returnTo || window.location.pathname);
+  };
 
   return (
-    <Router history={history}>
-      <div id="app" className="d-flex flex-column h-100">
+    <Auth0Provider
+      domain={config.domain}
+      clientId={config.clientId}
+      audience={config.audience}
+      redirectUri={window.location.origin}
+      onRedirectCallback={onRedirectCallback}
+    >
+      <Layout>
         <NavBar />
         <Container className="flex-grow-1 mt-5">
           <Switch>
@@ -41,8 +43,8 @@ const App = () => {
           </Switch>
         </Container>
         <Footer />
-      </div>
-    </Router>
+      </Layout>
+    </Auth0Provider>
   );
 };
 
