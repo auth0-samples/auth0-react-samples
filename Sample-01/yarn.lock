@@ -2,25 +2,25 @@
 # yarn lockfile v1
 
 
-"@auth0/auth0-react@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@auth0/auth0-react/-/auth0-react-1.0.0.tgz#3eeced9557d54d4092032ecc071cd74052d09da7"
-  integrity sha512-AaGftJFXYsJNEHZq/PNNr5HVSOQCVjstBF2pD3gAwOrgjKO7fYoeNgKKQOcTLm/ge5vAkEBGgSBzWBj2SgZ38w==
+"@auth0/auth0-react@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@auth0/auth0-react/-/auth0-react-1.1.0.tgz#deeb5f1872f7c0d813cdb9115dfdf0a70a34e1c2"
+  integrity sha512-FqRzdSkraM2GFOl8NhdlpocALxCd9oNRxiPpIV0Lm5ophHUQRXaE8raTGjnPhHleJGJMw9XoEJ3ye9mjbkvweQ==
   dependencies:
-    "@auth0/auth0-spa-js" "^1.9.0"
+    "@auth0/auth0-spa-js" "^1.12.1"
 
-"@auth0/auth0-spa-js@^1.9.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@auth0/auth0-spa-js/-/auth0-spa-js-1.9.0.tgz#0f737f7ed0976f7bf036d3b0f5ba5768e7735ef1"
-  integrity sha512-p+9m13k8MMpIthoWso7pXxaEZq5tAon8GPUPU+Wu4hgDQyJZIzqtCMHcQT0qdzfK/KoZwmoifj4aOvJxKO9I4Q==
+"@auth0/auth0-spa-js@^1.12.1":
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/@auth0/auth0-spa-js/-/auth0-spa-js-1.13.1.tgz#d594d47c7120ff5a7e81dc8aa07cffa0a3b1477a"
+  integrity sha512-j4U5YUKyYHsGQSx7TIUyuWuKTZqWyom9aqqT6Hg2XzAcrM9tNM5Gja8EqtntCXnVp62FCTCQKUjYHyM+NEpndQ==
   dependencies:
-    abortcontroller-polyfill "^1.4.0"
-    browser-tabs-lock "^1.2.8"
-    core-js "^3.6.4"
+    abortcontroller-polyfill "^1.5.0"
+    browser-tabs-lock "1.2.9"
+    core-js "^3.6.5"
     es-cookie "^1.3.2"
-    fast-text-encoding "^1.0.1"
+    fast-text-encoding "^1.0.3"
     promise-polyfill "^8.1.3"
-    unfetch "^4.1.0"
+    unfetch "^4.2.0"
 
 "@babel/code-frame@7.8.3":
   version "7.8.3"
@@ -1958,10 +1958,10 @@ abbrev@1:
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
   integrity sha1-+PLIh60Qv2f2NPAFtph/7TF5qsg=
 
-abortcontroller-polyfill@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/abortcontroller-polyfill/-/abortcontroller-polyfill-1.4.0.tgz#0d5eb58e522a461774af8086414f68e1dda7a6c4"
-  integrity sha512-3ZFfCRfDzx3GFjO6RAkYx81lPGpUS20ISxux9gLxuKnqafNcFQo59+IoZqpO2WvQlyc287B62HDnDdNYRmlvWA==
+abortcontroller-polyfill@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/abortcontroller-polyfill/-/abortcontroller-polyfill-1.5.0.tgz#2c562f530869abbcf88d949a2b60d1d402e87a7c"
+  integrity sha512-O6Xk757Jb4o0LMzMOMdWvxpHWrQzruYBaUruFaIOfAQRnWFxfdXYobw12jrVHGtoXk6WiiyYzc0QWN9aL62HQA==
 
 accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.7:
   version "1.3.7"
@@ -2705,10 +2705,10 @@ browser-resolve@^1.11.3:
   dependencies:
     resolve "1.1.7"
 
-browser-tabs-lock@^1.2.8:
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/browser-tabs-lock/-/browser-tabs-lock-1.2.8.tgz#5642cad86df41111065a44c3ba744ce19b2af72f"
-  integrity sha1-VkLK2G30EREGWkTDunRM4Zsq9y8=
+browser-tabs-lock@1.2.9:
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/browser-tabs-lock/-/browser-tabs-lock-1.2.9.tgz#fa9568471c49de1dbe311a6da95f86794bbe1fdf"
+  integrity sha512-cczryjv6i6kAfTWKhhNW3LWhFDwzPazEsNG9IG2n6AeYzPVb1tUCY3aqTKeFJL0rKUnfSXto7esjrqY3fz+ugA==
 
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
   version "1.2.0"
@@ -3437,7 +3437,7 @@ core-js@^2.4.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
   integrity sha1-OIMUafmSK97Y7iHJ3EaYXgOZMIw=
 
-core-js@^3.5.0, core-js@^3.6.4:
+core-js@^3.5.0, core-js@^3.6.5:
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
   integrity sha1-c5XcJzrzf7LlDpvT2f6EEoUjHRo=
@@ -4847,10 +4847,10 @@ fast-levenshtein@~2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
-fast-text-encoding@^1.0.1:
+fast-text-encoding@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/fast-text-encoding/-/fast-text-encoding-1.0.3.tgz#ec02ac8e01ab8a319af182dae2681213cfe9ce53"
-  integrity sha1-7AKsjgGrijGa8YLa4mgSE8/pzlM=
+  integrity sha512-dtm4QZH9nZtcDt8qJiOH9fcQd1NAgi+K1O2DbE6GG1PPCK/BWfOH3idCTRQ4ImXRUOyopDEgDEnVEE7Y/2Wrig==
 
 faye-websocket@^0.10.0:
   version "0.10.0"
@@ -9672,10 +9672,10 @@ react-popper@^1.3.6:
     typed-styles "^0.0.7"
     warning "^4.0.2"
 
-react-router-dom@^5.0.0:
+react-router-dom@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-5.2.0.tgz#9e65a4d0c45e13289e66c7b17c7e175d0ea15662"
-  integrity sha1-nmWk0MReEyieZsexfH4XXQ6hVmI=
+  integrity sha512-gxAmfylo2QUjcwxI63RhQ5G85Qqt4voZpUXSEqCwykV0baaOTQDR1f0PmY8AELqIyVc0NEZUj0Gov5lNGcXgsA==
   dependencies:
     "@babel/runtime" "^7.1.2"
     history "^4.9.0"
@@ -11388,10 +11388,10 @@ undefsafe@^2.0.2:
   dependencies:
     debug "^2.2.0"
 
-unfetch@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-4.1.0.tgz#6ec2dd0de887e58a4dee83a050ded80ffc4137db"
-  integrity sha1-bsLdDeiH5YpN7oOgUN7YD/xBN9s=
+unfetch@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-4.2.0.tgz#7e21b0ef7d363d8d9af0fb929a5555f6ef97a3be"
+  integrity sha512-F9p7yYCn6cIW9El1zi0HI6vqpeIvBsr3dSuRO6Xuppb1u5rXpCPmMvLSyECLhybr9isec8Ohl0hPekMVrEinDA==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
