@@ -1,15 +1,15 @@
 import React from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import { Container } from "reactstrap";
 
-import Layout from "./components/Layout";
+import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Home from "./views/Home";
 import Profile from "./views/Profile";
 import ExternalApi from "./views/ExternalApi";
-import { Auth0Provider } from "@auth0/auth0-react";
-import config from "./auth_config.json";
+import { useAuth0 } from "@auth0/auth0-react";
+import history from "./utils/history";
 
 // styles
 import "./App.css";
@@ -19,21 +19,19 @@ import initFontAwesome from "./utils/initFontAwesome";
 initFontAwesome();
 
 const App = () => {
-  const history = useHistory();
+  const { isLoading, error } = useAuth0();
 
-  const onRedirectCallback = (appState) => {
-    history.replace(appState?.returnTo || window.location.pathname);
-  };
+  if (error) {
+    return <div>Oops... {error.message}</div>;
+  }
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
-    <Auth0Provider
-      domain={config.domain}
-      clientId={config.clientId}
-      audience={config.audience}
-      redirectUri={window.location.origin}
-      onRedirectCallback={onRedirectCallback}
-    >
-      <Layout>
+    <Router history={history}>
+      <div id="app" className="d-flex flex-column h-100">
         <NavBar />
         <Container className="flex-grow-1 mt-5">
           <Switch>
@@ -43,8 +41,8 @@ const App = () => {
           </Switch>
         </Container>
         <Footer />
-      </Layout>
-    </Auth0Provider>
+      </div>
+    </Router>
   );
 };
 
