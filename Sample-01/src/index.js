@@ -7,9 +7,20 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import config from "./auth_config.json";
 import history from "./utils/history";
 
+/*
+ By default the token is stored in memory
+
+ If you want to be logged in automaticly after refreshing the web-page
+ the token has to be stored in "localstorage"
+
+ Read here about security warnings:
+ https://auth0.com/docs/libraries/auth0-single-page-app-sdk
+*/
+const cacheLocation = "memory"; // "memory" or "localstorage"
+
 const onRedirectCallback = (appState) => {
   history.push(
-    appState && appState.returnTo
+    appState && appState.returnTo 
       ? appState.returnTo
       : window.location.pathname
   );
@@ -22,6 +33,7 @@ ReactDOM.render(
     audience={config.audience}
     redirectUri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
+    cacheLocation={cacheLocation}
   >
     <App />
   </Auth0Provider>,
