@@ -9,12 +9,12 @@ import history from "./utils/history";
 
 const onRedirectCallback = (appState) => {
   history.push(
-    appState && appState.returnTo
-      ? appState.returnTo
-      : window.location.pathname
+    appState && appState.returnTo ? appState.returnTo : window.location.pathname
   );
 };
 
+// Please see https://auth0.github.io/auth0-react/interfaces/auth0provideroptions.html
+// for a full list of the available properties on the provider
 ReactDOM.render(
   <Auth0Provider
     domain={config.domain}
