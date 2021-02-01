@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Alert } from "reactstrap";
 import Highlight from "../components/Highlight";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-import config from "../auth_config.json";
+import { config } from "../config";
 import Loading from "../components/Loading";
 
 const { apiOrigin = "http://localhost:3001" } = config;
@@ -120,7 +120,43 @@ export const ExternalApiComponent = () => {
           the API's audience value.
         </p>
 
-        <Button color="primary" className="mt-5" onClick={callApi}>
+        {!config.audience && (
+          <Alert color="warning">
+            <p>
+              You can't call the API at the moment because your application does
+              not have any configuration for <code>audience</code>.
+            </p>
+            <p>
+              The audience is the identifier of the API that you want to call
+              (see{" "}
+              <a href="https://auth0.com/docs/get-started/dashboard/tenant-settings#api-authorization-settings">
+                API Authorization Settings
+              </a>{" "}
+              for more info).
+            </p>
+            <p>
+              In this sample, you can configure the audience in a couple of
+              ways:
+              <ul>
+                <li>
+                  in the <code>src/index.js</code> file
+                </li>
+                <li>
+                  by specifying it in the <code>auth_config.json</code> file
+                  (see the <code>auth_config.json.example</code> file for an
+                  example of where it should go)
+                </li>
+              </ul>
+            </p>
+          </Alert>
+        )}
+
+        <Button
+          color="primary"
+          className="mt-5"
+          onClick={callApi}
+          disabled={!config.audience}
+        >
           Ping API
         </Button>
       </div>
