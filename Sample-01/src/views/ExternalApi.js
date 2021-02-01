@@ -114,17 +114,29 @@ export const ExternalApiComponent = () => {
         )}
 
         <h1>External API</h1>
+        <p class="lead">Ping an external API by clicking the button below.</p>
+
         <p>
-          Ping an external API by clicking the button below. This will call the
-          external API using an access token, and the API will validate it using
-          the API's audience value.
+          This will call a local API on port 3001 that would have been started
+          if you run <code>npm run dev</code>, using an access token. The API
+          will validate it using the API's audience value.
         </p>
 
         {!config.audience && (
           <Alert color="warning">
             <p>
               You can't call the API at the moment because your application does
-              not have any configuration for <code>audience</code>.
+              not have any configuration for <code>audience</code>, or it is
+              using the default value of <code>YOUR_API_IDENTIFIER</code>. You
+              might get this default value if you used the "Download Sample"
+              feature of{" "}
+              <a href="https://auth0.com/docs/quickstart/spa/react">
+                the quickstart guide
+              </a>
+              , but have not set an API up in your Auth0 Tenant. You can find
+              out more information on{" "}
+              <a href="https://auth0.com/docs/api">setting up APIs</a> in the
+              Auth0 Docs.
             </p>
             <p>
               The audience is the identifier of the API that you want to call
@@ -147,6 +159,10 @@ export const ExternalApiComponent = () => {
                   example of where it should go)
                 </li>
               </ul>
+            </p>
+            <p>
+              Once you have configured the value for <code>audience</code>,
+              please restart the app and try to use the "Ping API" button below.
             </p>
           </Alert>
         )}
