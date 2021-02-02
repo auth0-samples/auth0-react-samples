@@ -118,7 +118,7 @@ export const ExternalApiComponent = () => {
 
         <p>
           This will call a local API on port 3001 that would have been started
-          if you run <code>npm run dev</code>, using an access token. The API
+          if you run <code>npm run dev</code>. An access token is sent as part of the request's `Authorization` header and the API
           will validate it using the API's audience value.
         </p>
 
