@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Button, Alert } from "reactstrap";
 import Highlight from "../components/Highlight";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-import { config } from "../config";
+import { getConfig } from "../config";
 import Loading from "../components/Loading";
 
-const { apiOrigin = "http://localhost:3001" } = config;
-
 export const ExternalApiComponent = () => {
+  const { apiOrigin = "http://localhost:3001", audience } = getConfig();
+
   const [state, setState] = useState({
     showResult: false,
     apiMessage: "",
@@ -114,15 +114,18 @@ export const ExternalApiComponent = () => {
         )}
 
         <h1>External API</h1>
-        <p class="lead">Ping an external API by clicking the button below.</p>
+        <p className="lead">
+          Ping an external API by clicking the button below.
+        </p>
 
         <p>
           This will call a local API on port 3001 that would have been started
-          if you run <code>npm run dev</code>. An access token is sent as part of the request's `Authorization` header and the API
-          will validate it using the API's audience value.
+          if you run <code>npm run dev</code>. An access token is sent as part
+          of the request's `Authorization` header and the API will validate it
+          using the API's audience value.
         </p>
 
-        {!config.audience && (
+        {!audience && (
           <Alert color="warning">
             <p>
               You can't call the API at the moment because your application does
@@ -146,20 +149,21 @@ export const ExternalApiComponent = () => {
               </a>{" "}
               for more info).
             </p>
+
             <p>
               In this sample, you can configure the audience in a couple of
               ways:
-              <ul>
-                <li>
-                  in the <code>src/index.js</code> file
-                </li>
-                <li>
-                  by specifying it in the <code>auth_config.json</code> file
-                  (see the <code>auth_config.json.example</code> file for an
-                  example of where it should go)
-                </li>
-              </ul>
             </p>
+            <ul>
+              <li>
+                in the <code>src/index.js</code> file
+              </li>
+              <li>
+                by specifying it in the <code>auth_config.json</code> file (see
+                the <code>auth_config.json.example</code> file for an example of
+                where it should go)
+              </li>
+            </ul>
             <p>
               Once you have configured the value for <code>audience</code>,
               please restart the app and try to use the "Ping API" button below.
@@ -171,7 +175,7 @@ export const ExternalApiComponent = () => {
           color="primary"
           className="mt-5"
           onClick={callApi}
-          disabled={!config.audience}
+          disabled={!audience}
         >
           Ping API
         </Button>
