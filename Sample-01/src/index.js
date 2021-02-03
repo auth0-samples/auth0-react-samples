@@ -18,7 +18,7 @@ const onRedirectCallback = (appState) => {
 const providerConfig = {
   domain: config.domain,
   clientId: config.clientId,
-  ...{ audience: config.audience },
+  ...(config.audience ? { audience: config.audience } : null),
   redirectUri: window.location.origin,
   onRedirectCallback,
 };
