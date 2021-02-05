@@ -12,10 +12,16 @@ const port = process.env.API_PORT || 3001;
 const appPort = process.env.SERVER_PORT || 3000;
 const appOrigin = authConfig.appOrigin || `http://localhost:${appPort}`;
 
-if (!authConfig.domain || !authConfig.audience) {
-  throw new Error(
-    "Please make sure that auth_config.json is in place and populated"
+if (
+  !authConfig.domain ||
+  !authConfig.audience ||
+  authConfig.audience === "YOUR_API_IDENTIFIER"
+) {
+  console.log(
+    "Exiting: Please make sure that auth_config.json is in place and populated with valid domain and audience values"
   );
+
+  process.exit();
 }
 
 app.use(morgan("dev"));
@@ -27,17 +33,17 @@ const checkJwt = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: `https://${authConfig.domain}/.well-known/jwks.json`
+    jwksUri: `https://${authConfig.domain}/.well-known/jwks.json`,
   }),
 
   audience: authConfig.audience,
   issuer: `https://${authConfig.domain}/`,
-  algorithms: ["RS256"]
+  algorithms: ["RS256"],
 });
 
 app.get("/api/external", checkJwt, (req, res) => {
   res.send({
-    msg: "Your access token was successfully validated!"
+    msg: "Your access token was successfully validated!",
   });
 });
 

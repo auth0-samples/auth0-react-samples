@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Auth0Provider } from "@auth0/auth0-react";
-import config from "./auth_config.json";
 import history from "./utils/history";
+import { getConfig } from "./config";
 
 const onRedirectCallback = (appState) => {
   history.push(
@@ -15,14 +15,18 @@ const onRedirectCallback = (appState) => {
 
 // Please see https://auth0.github.io/auth0-react/interfaces/auth0provideroptions.html
 // for a full list of the available properties on the provider
+const config = getConfig();
+
+const providerConfig = {
+  domain: config.domain,
+  clientId: config.clientId,
+  ...(config.audience ? { audience: config.audience } : null),
+  redirectUri: window.location.origin,
+  onRedirectCallback,
+};
+
 ReactDOM.render(
-  <Auth0Provider
-    domain={config.domain}
-    clientId={config.clientId}
-    audience={config.audience}
-    redirectUri={window.location.origin}
-    onRedirectCallback={onRedirectCallback}
-  >
+  <Auth0Provider {...providerConfig}>
     <App />
   </Auth0Provider>,
   document.getElementById("root")
