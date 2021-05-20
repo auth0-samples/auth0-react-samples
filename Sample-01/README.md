@@ -44,6 +44,11 @@ To do this, first copy `src/auth_config.json.example` into a new file in the sam
 
 **Note**: Do not specify a value for `audience` here if you do not wish to use the API part of the sample.
 
+Make the following changes to your created Application in the auth0 console:
+- Allowed Callback URLs: http://localhost:3000
+- Allowed Web Origins: http://localhost:3000
+
+
 ## Run the sample
 
 ### Compile and hot-reload for development
