@@ -13,7 +13,7 @@ const onRedirectCallback = (appState) => {
   );
 };
 
-// Please see https://auth0.github.io/auth0-react/interfaces/auth0provideroptions.html
+// Please see https://auth0.github.io/auth0-react/interfaces/auth0_provider.auth0provideroptions.html
 // for a full list of the available properties on the provider
 const config = getConfig();
 
