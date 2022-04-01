@@ -7,12 +7,12 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@4.7.0
+  node: circleci/node@5.0.2
   
 jobs:
   checkout:
-    machine:
-      image: ubuntu-1604:202007-01
+    docker:
+      - image: cimg/node:lts
     steps:
       - checkout
       - run: git clone https://github.com/auth0-samples/spa-quickstarts-tests scripts
@@ -22,8 +22,8 @@ jobs:
             - project
             - scripts
   sample-01:
-    machine:
-      image: ubuntu-1604:202007-01
+    docker:
+      - image: cimg/node:lts
     environment:
       - AUTH0_CFG: Sample-01/src/auth_config.json
       - SAMPLE_PATH: Sample-01
