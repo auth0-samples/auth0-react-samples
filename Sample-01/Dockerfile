@@ -12,6 +12,8 @@ COPY package.json .
 RUN npm install -g npm@latest
 RUN npm install -g typescript@latest
 RUN npm install -g --force yarn@latest
+RUN npm install -g rimraf
+RUN rimraf node_modules
 
 RUN yarn install
 
@@ -25,7 +27,7 @@ FROM node:lts-alpine3.14
 
 RUN mkdir -p /app/build
 
-RUN apk update && apk upgrade && apk add yarn git
+RUN apk update && apk upgrade && apk add git
 
 WORKDIR /app
 
