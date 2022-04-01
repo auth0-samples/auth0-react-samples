@@ -5,8 +5,10 @@
 
 # Jobs and Workflows
 version: 2.1
+
 orbs:
   node: circleci/node@5.0.2
+  
 jobs:
   checkout:
     machine: true
@@ -19,7 +21,8 @@ jobs:
             - project
             - scripts
   sample-01:
-    machine: true
+    machine:
+      image: ubuntu-1604:202007-01
     environment:
       - AUTH0_CFG: Sample-01/src/auth_config.json
       - SAMPLE_PATH: Sample-01
