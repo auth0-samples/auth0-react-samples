@@ -1,13 +1,16 @@
-FROM node:10-alpine as build
+FROM node:lts-alpine3.14 as build
 
-RUN apk update && apk upgrade && \
-  apk add --no-cache bash git openssh yarn
+RUN apk update && \
+  apk upgrade && \
+  apk add --no-cache bash git openssh
 
 RUN mkdir /app
 
 WORKDIR /app
 
 COPY package.json .
+
+RUN npm install -g --force npm@latest typescript@latest yarn@latest
 
 RUN yarn install
 
@@ -17,11 +20,13 @@ RUN yarn build
 
 # ---------------
 
-FROM node:10-alpine
+FROM node:lts-alpine3.14
 
 RUN mkdir -p /app/build
 
-RUN apk update && apk upgrade && apk add yarn git
+RUN apk update && \
+  apk upgrade && \
+  apk add git
 
 WORKDIR /app
 

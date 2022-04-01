@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm-run-all --parallel spa api-server",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "spa": "react-scripts start",
     "server": "node server.js",
@@ -16,10 +16,14 @@
     "prod": "npm-run-all --parallel server api-server"
   },
   "dependencies": {
-    "@auth0/auth0-react": "^1.2.0",
+    "@auth0/auth0-react": "^1.9.0",
+    "@babel/core": "^7.17.8",
+    "@babel/plugin-syntax-flow": "^7.16.7",
+    "@babel/plugin-transform-react-jsx": "^7.17.3",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "autoprefixer": "^10.4.4",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-jwt": "^6.0.0",
@@ -28,18 +32,20 @@
     "jwks-rsa": "^1.12.2",
     "morgan": "^1.9.1",
     "npm-run-all": "^4.1.5",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.2",
-    "reactstrap": "^8.0.0"
+    "postcss": "^8.4.12",
+    "react": "^17.0",
+    "react-dom": "^17.0",
+    "react-router-dom": "^5.0",
+    "react-scripts": "^5.0",
+    "reactstrap": "^8.0",
+    "typescript": "^4.6.3"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.10.1",
-    "@testing-library/react": "^11.2.5",
-    "jest-environment-jsdom-sixteen": "^1.0.3",
-    "jest-fetch-mock": "^3.0.3",
-    "nodemon": "^2.0.4"
+    "@testing-library/jest-dom": "^5.0",
+    "@testing-library/react": "^12.0",
+    "jest-environment-jsdom": "^27.0",
+    "jest-fetch-mock": "^3.0",
+    "nodemon": "^2.0"
   },
   "eslintConfig": {
     "extends": "react-app"

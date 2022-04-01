@@ -5,11 +5,15 @@
 
 # Jobs and Workflows
 version: 2.1
+
 orbs:
-  node: circleci/node@3.0.0
+  node: circleci/node@5.0.2
+  docker: circleci/docker@2.0.3
+  
 jobs:
   checkout:
-    machine: true
+    docker:
+      - image: cimg/node:lts
     steps:
       - checkout
       - run: git clone https://github.com/auth0-samples/spa-quickstarts-tests scripts
@@ -19,21 +23,22 @@ jobs:
             - project
             - scripts
   sample-01:
-    machine: true
+    docker:
+      - image: cimg/node:lts
     environment:
       - AUTH0_CFG: Sample-01/src/auth_config.json
       - SAMPLE_PATH: Sample-01
     steps:
       - node/install:
           install-yarn: true
-          node-version: latest
       - attach_workspace:
           at: ~/
       - run:
           name: Replace Auth0 test credentials
           command: |
             echo "{ \"domain\": \"$AUTH0_TEST_DOMAIN\", \"clientId\": \"$AUTH0_TEST_CLIENT_ID\", \"audience\": \"$AUTH0_TEST_API_IDENTIFIER\" }" > $AUTH0_CFG
-
+      - setup_remote_docker:
+          version: 19.03.13
       - run:
           name: Build pull request
           command: |
