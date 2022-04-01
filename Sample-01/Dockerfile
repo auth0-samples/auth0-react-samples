@@ -1,6 +1,7 @@
 FROM node:lts-alpine3.14 as build
 
-RUN apk update && apk upgrade && \
+RUN apk update && \
+  apk upgrade && \
   apk add --no-cache bash git openssh
 
 RUN mkdir /app
@@ -9,13 +10,7 @@ WORKDIR /app
 
 COPY package.json .
 
-RUN npm install -g npm@latest
-RUN npm install -g typescript@latest
-RUN npm install -g --force yarn@latest
-RUN npm install -g rimraf
-
-RUN rimraf node_modules
-RUN yarn cache clean --all
+RUN npm install -g --force npm@latest typescript@latest yarn@latest
 
 RUN yarn install
 
@@ -29,7 +24,9 @@ FROM node:lts-alpine3.14
 
 RUN mkdir -p /app/build
 
-RUN apk update && apk upgrade && apk add git
+RUN apk update && \
+  apk upgrade && \
+  apk add git
 
 WORKDIR /app
 
