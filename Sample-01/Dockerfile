@@ -1,7 +1,7 @@
 FROM node:lts-alpine3.14 as build
 
 RUN apk update && apk upgrade && \
-  apk add --no-cache bash git openssh yarn
+  apk add --no-cache bash git openssh
 
 RUN mkdir /app
 
@@ -9,7 +9,7 @@ WORKDIR /app
 
 COPY package.json .
 
-RUN npm install -g typescript
+RUN npm install -g typescript yarn
 
 RUN yarn install
 
