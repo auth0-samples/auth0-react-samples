@@ -13,7 +13,9 @@ RUN npm install -g npm@latest
 RUN npm install -g typescript@latest
 RUN npm install -g --force yarn@latest
 RUN npm install -g rimraf
+
 RUN rimraf node_modules
+RUN yarn cache clean --all
 
 RUN yarn install
 
