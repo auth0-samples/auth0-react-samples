@@ -11,7 +11,8 @@ orbs:
   
 jobs:
   checkout:
-    machine: true
+    machine:
+      image: ubuntu-1604:202007-01
     steps:
       - checkout
       - run: git clone https://github.com/auth0-samples/spa-quickstarts-tests scripts
