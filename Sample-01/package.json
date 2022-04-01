@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm-run-all --parallel spa api-server",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "spa": "react-scripts start",
     "server": "node server.js",
@@ -41,11 +41,11 @@
     "typescript": "^4.6.3"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.10.1",
-    "@testing-library/react": "^11.2.5",
-    "jest-environment-jsdom-sixteen": "^1.0.3",
-    "jest-fetch-mock": "^3.0.3",
-    "nodemon": "^2.0.4"
+    "@testing-library/jest-dom": "^5.0",
+    "@testing-library/react": "^12.0",
+    "jest-environment-jsdom": "^27.0",
+    "jest-fetch-mock": "^3.0",
+    "nodemon": "^2.0"
   },
   "eslintConfig": {
     "extends": "react-app"
