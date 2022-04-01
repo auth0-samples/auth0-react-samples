@@ -31,8 +31,6 @@ jobs:
     steps:
       - node/install:
           install-yarn: true
-      - docker/install-docker-tools
-      - docker/check
       - attach_workspace:
           at: ~/
       - run:
