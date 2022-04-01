@@ -37,7 +37,8 @@ jobs:
           name: Replace Auth0 test credentials
           command: |
             echo "{ \"domain\": \"$AUTH0_TEST_DOMAIN\", \"clientId\": \"$AUTH0_TEST_CLIENT_ID\", \"audience\": \"$AUTH0_TEST_API_IDENTIFIER\" }" > $AUTH0_CFG
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 19.03.13
       - docker/build:
           image: $CIRCLE_JOB
           docker-context: ./$SAMPLE_PATH
