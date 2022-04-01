@@ -37,10 +37,12 @@ jobs:
           name: Replace Auth0 test credentials
           command: |
             echo "{ \"domain\": \"$AUTH0_TEST_DOMAIN\", \"clientId\": \"$AUTH0_TEST_CLIENT_ID\", \"audience\": \"$AUTH0_TEST_API_IDENTIFIER\" }" > $AUTH0_CFG
+      - docker/build:
+          image: $CIRCLE_JOB
+          docker-context: ./$SAMPLE_PATH
       - run:
           name: Build pull request
           command: |
-            docker build -t $CIRCLE_JOB ./$SAMPLE_PATH
             docker run -d -p 3000:3000 --name $CIRCLE_SHA1 $CIRCLE_JOB
       - run:
           name: Wait for app to be available
