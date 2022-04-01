@@ -9,7 +9,8 @@ WORKDIR /app
 
 COPY package.json .
 
-RUN npm install -g typescript yarn
+RUN npm install -g npm@latest
+RUN npm install -g typescript@latest yarn@latest
 
 RUN yarn install
 
