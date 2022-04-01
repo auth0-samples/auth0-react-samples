@@ -6,7 +6,7 @@
 # Jobs and Workflows
 version: 2.1
 orbs:
-  node: circleci/node@3.0.0
+  node: circleci/node@5.0.0
 jobs:
   checkout:
     machine: true
