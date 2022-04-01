@@ -6,7 +6,7 @@
 # Jobs and Workflows
 version: 2.1
 orbs:
-  node: circleci/node@5.0.0
+  node: circleci/node@5.0.2
 jobs:
   checkout:
     machine: true
@@ -26,14 +26,12 @@ jobs:
     steps:
       - node/install:
           install-yarn: true
-          node-version: latest
       - attach_workspace:
           at: ~/
       - run:
           name: Replace Auth0 test credentials
           command: |
             echo "{ \"domain\": \"$AUTH0_TEST_DOMAIN\", \"clientId\": \"$AUTH0_TEST_CLIENT_ID\", \"audience\": \"$AUTH0_TEST_API_IDENTIFIER\" }" > $AUTH0_CFG
-
       - run:
           name: Build pull request
           command: |
