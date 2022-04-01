@@ -40,6 +40,7 @@ jobs:
       - docker/build:
           image: $CIRCLE_JOB
           docker-context: ./$SAMPLE_PATH
+          path: ./$SAMPLE_PATH
       - run:
           name: Build pull request
           command: |
