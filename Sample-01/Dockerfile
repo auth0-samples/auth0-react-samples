@@ -1,4 +1,4 @@
-FROM node:10-alpine as build
+FROM node:lts-alpine3.14 as build
 
 RUN apk update && apk upgrade && \
   apk add --no-cache bash git openssh yarn
@@ -17,7 +17,7 @@ RUN yarn build
 
 # ---------------
 
-FROM node:10-alpine
+FROM node:lts-alpine3.14
 
 RUN mkdir -p /app/build
 
