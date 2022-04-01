@@ -8,6 +8,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.0.2
+  docker: circleci/docker@2.0.3
   
 jobs:
   checkout:
@@ -30,6 +31,8 @@ jobs:
     steps:
       - node/install:
           install-yarn: true
+      - docker/install-docker-tools
+      - docker/check
       - attach_workspace:
           at: ~/
       - run:
