@@ -1,3 +1,8 @@
+[![x-origin-ui-login](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/count/1awfey/master&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/1awfey/runs) [![renovate-app badge][renovate-badge]][renovate-app]
+
+[renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
+[renovate-app]: https://renovateapp.com/
+
 # Cross origin ui login with Cypress using Auth0
 
 ```bash
