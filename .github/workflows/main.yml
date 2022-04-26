@@ -1,0 +1,31 @@
+name: e2e
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  cypress-e2e-tests:
+    # strategy:
+    #   matrix:
+    #     machines: [1, 2]
+    needs: [install-dependencies]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Cypress e2e tests 🧪
+        uses: cypress-io/github-action@v3.0.3
+        with:
+          start: yarn dev # concurrently starts ui and api servers
+          wait-on: 'http://localhost:3000'
+          browser: chrome
+          # record: true
+          # parallel: true
+          # group: e2e-tests
+          # tag: e2e-tests
+        # env:
+        #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
