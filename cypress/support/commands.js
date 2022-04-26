@@ -19,14 +19,17 @@ Cypress.Commands.add("sessionLogin", (email, password) => {
 Cypress.Commands.add("dataSessionLogin", (email, password) => {
   const args = [email, password];
 
-  return cy.dataSession({
+  // cy.visit("/");
+  // cy.get("#qsLoginBtn").click();
+
+  cy.dataSession({
     name: `${email}-${password}`,
 
-    init: () => {
-      cy.log(
-        `**init()**: runs when there is nothing in cache. Yields the value to validate()`
-      );
-    },
+    // init: () => {
+    //   cy.log(
+    //     `**init()**: runs when there is nothing in cache. Yields the value to validate()`
+    //   );
+    // },
 
     validate: () => {
       cy.log(`**validate()**`);
@@ -43,17 +46,16 @@ Cypress.Commands.add("dataSessionLogin", (email, password) => {
       });
     },
 
-    recreate: () => {
-      cy.log(`**recreate()**:`);
-      Promise.resolve();
-    },
+    // recreate: () => {
+    //   cy.log(`**recreate()**:`);
+    //   Promise.resolve();
+    // },
 
-    onInvalidated: () => {
-      cy.log(`**onInvalidated**: runs when validate() returns false.
-           Will be called before the "setup" function executes.`);
-      Cypress.clearDataSession(sessionName);
-    },
+    // onInvalidated: () => {
+    //   cy.log(`**onInvalidated**`);
+    //   Cypress.clearDataSession(sessionName);
+    // },
 
-    shareAcrossSpecs: true,
+    // shareAcrossSpecs: true,
   });
 });
