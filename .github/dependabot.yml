@@ -1,0 +1,9 @@
+version: 2
+updates:
+  - package-ecosystem: "npm" 
+    directory: "/Sample-01" 
+    schedule:
+      interval: "daily"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
