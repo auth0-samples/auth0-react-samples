@@ -23,7 +23,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "autoprefixer": "^10.4.5",
+    "autoprefixer": "^10.4.8",
     "cors": "^2.8.5",
     "express": "^4.18.0",
     "express-jwt": "^6.1.2",
