@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Replace Auth0 test credentials
           command: |
-            echo "{ \"domain\": \"$AUTH0_TEST_DOMAIN\", \"clientId\": \"$AUTH0_TEST_CLIENT_ID\", \"audience\": \"$AUTH0_TEST_API_IDENTIFIER\" }" > $AUTH0_CFG
+            echo "{ \"domain\": \"$AUTH0_TEST_DOMAIN\", \"clientId\": \"$AUTH0_TEST_CLIENT_ID\", \"authorizationParams\": { \"audience\": \"$AUTH0_TEST_API_IDENTIFIER\" } }" > $AUTH0_CFG
 
       - run:
           name: Build pull request
