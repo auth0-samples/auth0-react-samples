@@ -19,7 +19,7 @@
     "@auth0/auth0-react": "^1.12",
     "@babel/core": "^7.20",
     "@babel/plugin-syntax-flow": "^7.18",
-    "@babel/plugin-transform-react-jsx": "^7.19",
+    "@babel/plugin-transform-react-jsx": "^7.20",
     "@fortawesome/fontawesome-svg-core": "^1.2",
     "@fortawesome/free-solid-svg-icons": "^5.8",
     "@fortawesome/react-fontawesome": "^0.2",
