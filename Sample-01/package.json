@@ -26,7 +26,7 @@
     "autoprefixer": "^10.4",
     "cors": "^2.8",
     "express": "^4.18",
-    "express-jwt": "^8.3.0",
+    "express-jwt": "^8.4.0",
     "helmet": "^4.4",
     "highlight.js": "^10.0",
     "jwks-rsa": "^3.0.0",
