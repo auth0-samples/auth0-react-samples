@@ -185,9 +185,7 @@ export const ExternalApiComponent = () => {
         {state.showResult && (
           <div className="result-block" data-testid="api-result">
             <h6 className="muted">Result</h6>
-            <Highlight>
-              <span>{JSON.stringify(state.apiMessage, null, 2)}</span>
-            </Highlight>
+            <Highlight text={JSON.stringify(state.apiMessage, null, 2)} />
           </div>
         )}
       </div>
