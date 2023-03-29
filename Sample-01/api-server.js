@@ -6,8 +6,7 @@ const {
   auth,
   InvalidTokenError,
   InvalidRequestError,
-  InsufficientScopeError,
-  requiredScopes,
+  InsufficientScopeError
 } = require("express-oauth2-jwt-bearer");
 const authConfig = require("./src/auth_config.json");
 
@@ -37,7 +36,7 @@ app.use(
   })
 );
 
-app.get("/api/external", requiredScopes('admin'), (req, res) => {
+app.get("/api/external", (req, res) => {
   res.send({
     msg: "Your access token was successfully validated!",
   });
