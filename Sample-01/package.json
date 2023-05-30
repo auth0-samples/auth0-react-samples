@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.1.0",
-    "@babel/core": "^7.21",
+    "@babel/core": "^7.22",
     "@babel/plugin-syntax-flow": "^7.21",
     "@babel/plugin-transform-react-jsx": "^7.21",
     "@fortawesome/fontawesome-svg-core": "^1.2",
