@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { render } from "@testing-library/react";
 import { ProfileComponent } from "../Profile";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -18,7 +18,6 @@ describe("The profile component", () => {
   });
 
   it("renders when loading = true", () => {
-    const div = document.createElement("div");
-    ReactDOM.render(<ProfileComponent />, div);
+    render(<ProfileComponent />);
   });
 });
