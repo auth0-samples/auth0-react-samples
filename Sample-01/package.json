@@ -36,7 +36,7 @@
     "react-dom": "^18",
     "react-router-dom": "^5.3",
     "react-scripts": "^5.0",
-    "reactstrap": "^9.1",
+    "reactstrap": "^9.2",
     "typescript": "^4.9"
   },
   "devDependencies": {
