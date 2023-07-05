@@ -30,7 +30,7 @@ const App = () => {
   }
 
   return (
-    <Router history={history} location={history.location} navigator={history} navigationType={history.action}>
+    <>
       <div id="app" className="d-flex flex-column h-100">
         <NavBar />
         <Container className="flex-grow-1 mt-5">
@@ -42,7 +42,7 @@ const App = () => {
         </Container>
         <Footer />
       </div>
-    </Router>
+    </>
   );
 };
 

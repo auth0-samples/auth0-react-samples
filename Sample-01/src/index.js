@@ -6,6 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 import { Auth0Provider } from "@auth0/auth0-react";
 import history from "./utils/history";
 import { getConfig } from "./config";
+import { BrowserRouter, useNavigate } from "react-router-dom";
 
 const onRedirectCallback = (appState) => {
   history.push(
@@ -27,13 +28,26 @@ const providerConfig = {
   },
 };
 
-const root = createRoot(document.getElementById('root'));
+
+const Auth0ProviderWithRedirectCallback = ({ children, ...props }) => {
+    const navigate = useNavigate();
+    const onRedirectCallback = (appState) => {
+      navigate((appState && appState.returnTo) || window.location.pathname);
+    };
+    return (
+      <Auth0Provider onRedirectCallback={onRedirectCallback} {...props}>
+        {children}
+      </Auth0Provider>
+    );
+  };
+
+const root = createRoot(document.getElementById("root"));
 root.render(
-  <Auth0Provider
-    {...providerConfig}
-  >
-    <App />
-  </Auth0Provider>,
+  <BrowserRouter>
+    <Auth0ProviderWithRedirectCallback {...providerConfig}>
+      <App />
+    </Auth0ProviderWithRedirectCallback>
+  </BrowserRouter>
 );
 
 // If you want your app to work offline and load faster, you can change
