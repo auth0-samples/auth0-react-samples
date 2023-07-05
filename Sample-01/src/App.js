@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Route, Switch } from "react-router-dom";
+import { Route, Router, Routes } from "react-router-dom";
 import { Container } from "reactstrap";
 
 import Loading from "./components/Loading";
@@ -30,15 +30,15 @@ const App = () => {
   }
 
   return (
-    <Router history={history}>
+    <Router history={history} location={history.location} navigator={history} navigationType={history.action}>
       <div id="app" className="d-flex flex-column h-100">
         <NavBar />
         <Container className="flex-grow-1 mt-5">
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/external-api" component={ExternalApi} />
-          </Switch>
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/external-api" element={<ExternalApi />} />
+          </Routes>
         </Container>
         <Footer />
       </div>

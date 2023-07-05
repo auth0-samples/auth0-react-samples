@@ -22,19 +22,14 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const {
-    user,
-    isAuthenticated,
-    loginWithRedirect,
-    logout,
-  } = useAuth0();
+  const { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
 
   const logoutWithRedirect = () =>
     logout({
-        logoutParams: {
-          returnTo: window.location.origin,
-        }
+      logoutParams: {
+        returnTo: window.location.origin,
+      },
     });
 
   return (
@@ -49,8 +44,7 @@ const NavBar = () => {
                 <NavLink
                   tag={RouterNavLink}
                   to="/"
-                  exact
-                  activeClassName="router-link-exact-active"
+                  exact="true"
                 >
                   Home
                 </NavLink>
@@ -60,8 +54,7 @@ const NavBar = () => {
                   <NavLink
                     tag={RouterNavLink}
                     to="/external-api"
-                    exact
-                    activeClassName="router-link-exact-active"
+                    exact="true"
                   >
                     External API
                   </NavLink>
@@ -97,7 +90,6 @@ const NavBar = () => {
                       tag={RouterNavLink}
                       to="/profile"
                       className="dropdown-profile"
-                      activeClassName="router-link-exact-active"
                     >
                       <FontAwesomeIcon icon="user" className="mr-3" /> Profile
                     </DropdownItem>
@@ -147,7 +139,6 @@ const NavBar = () => {
                   <FontAwesomeIcon icon="user" className="mr-3" />
                   <RouterNavLink
                     to="/profile"
-                    activeClassName="router-link-exact-active"
                   >
                     Profile
                   </RouterNavLink>
