@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import logo from "../assets/logo.png"; // Import your logo image
 
 import {
   Collapse,
@@ -32,16 +33,24 @@ const NavBar = () => {
 
   const logoutWithRedirect = () =>
     logout({
-        logoutParams: {
-          returnTo: window.location.origin,
-        }
+      logoutParams: {
+        returnTo: window.location.origin,
+      },
     });
 
   return (
     <div className="nav-container">
       <Navbar color="light" light expand="md" container={false}>
         <Container>
-          <NavbarBrand className="logo" />
+          {/* Add your logo before "Home" link */}
+          <NavbarBrand>
+            <img
+              src={logo}
+              alt="Your Logo"
+              width="100" // Adjust the width as needed
+            />
+          </NavbarBrand>
+
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
@@ -53,6 +62,16 @@ const NavBar = () => {
                   activeClassName="router-link-exact-active"
                 >
                   Home
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://demo.vectrflow.com" target="_blank">
+                  Discord
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://demo.vectrflow.com" target="_blank">
+                  Pricing
                 </NavLink>
               </NavItem>
               {isAuthenticated && (
@@ -164,6 +183,7 @@ const NavBar = () => {
                 </NavItem>
               </Nav>
             )}
+            {/* ... rest of your Navbar code ... */}
           </Collapse>
         </Container>
       </Navbar>

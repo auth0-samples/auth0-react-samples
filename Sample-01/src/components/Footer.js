@@ -1,10 +1,14 @@
 import React from "react";
-
+import logo from "../assets/flowise_logo.png";
 const Footer = () => (
   <footer className="bg-light p-3 text-center">
-    <div className="logo" />
+    <img
+              src={logo}
+              alt="Your Logo"
+              width="100" // Adjust the width as needed
+            />
     <p>
-      Sample project provided by <a href="https://auth0.com">Auth0</a>
+      Created by VectrFlow Innovations Lab
     </p>
   </footer>
 );
