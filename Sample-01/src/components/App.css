@@ -4,8 +4,8 @@
 }
 .software-company-website {
   background: #ffffff;
-  width: 1440px;
-  height: 11467px;
+  width: 1080px;
+  height: 4900px;
   position: left;
   overflow: hidden;
 }
@@ -43,7 +43,7 @@
   position: relative;
 }
 .h-1-primary-text-span {
-  color: var(--gray-gray-900, #1a202c);
+  color: var(--gray-gray-900, #0055ff);
   font: var(--headings-lite-h-1, 300 45px/71px "Inter", sans-serif);
 }
 .h-1-primary-text-span2 {
@@ -55,16 +55,16 @@
   font: 700 45px/71px "Inter", sans-serif;
 }
 .h-1-primary-text-span3 {
-  color: var(--gray-gray-900, #1a202c);
+  color: var(--gray-gray-900, #245bcb);
   font: var(--headings-lite-h-1, 300 45px/71px "Inter", sans-serif);
 }
 .h-1-primary-text-span4 {
-    color: var(--gray-gray-900, #1a202c);
+    color: var(--gray-gray-900, #1b469d);
     font: 300 50px/68px "Inter", sans-serif; /* Reduced font size */
   }
   
   .h-1-primary-text-span5 {
-    color: var(--gray-gray-900, #1a202c);
+    color: var(--gray-gray-900, #245bcb);
     font: var(
       --display-display-dilplay-h-1-bold,
       800 50px/68px "Inter",
@@ -93,8 +93,8 @@
   width: 531px;
   height: 58px;
 }
-.btn-primary {
-  background: #3d63ea;
+/* .btn-primary {
+  background: #ac46c9;
   border-radius: 5px;
   padding: 19px 30px 19px 30px;
   display: flex;
@@ -108,9 +108,27 @@
     --btn-shadow-box-shadow,
     0px 4px 49px 0px rgba(0, 0, 0, 0.15)
   );
+} */
+.btn-primary {
+  background: rgb(248, 248, 248);
+  border: 2px solid transparent;
+  border-image: linear-gradient(90deg, #3864B3 0%, #2F5597 31%, #EC73FF 83%);
+  border-image-slice: 1;
+  border-radius: 5px;
+  padding: 19px 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--btn-shadow-box-shadow, 0px 4px 49px 0px rgba(0, 0, 0, 0.15));
+  color: #3f3fe1; /* Set the font color to white */
+  background-clip: text;
 }
+
 .let-s-get-started {
-  color: var(--gray-gray-50, #fafafa);
+  color: var(--gray-gray-50, #8f26a9);
   text-align: left;
   font: var(--button-text-btn-lg, 600 14px/14px "Inter", sans-serif);
   position: relative;
@@ -131,8 +149,8 @@
   position: relative;
 }
 .web-development-1 {
-  width: 614px;
-  height: 546px;
+  width: 640px;
+  height: 480px;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -248,6 +266,7 @@
   position: absolute;
   left: 0px;
   top: 0px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 .rectangle-9 {
   background: rgba(0, 0, 0, 0.01);
@@ -351,7 +370,7 @@
   position: static;
 }
 .services-we-offer {
-  color: var(--gray-gray-900, #1a202c);
+  color: var(--gray-gray-900, #245bcb);
   text-align: center;
   font: var(--headings-headings-h-2, 700 35px/55px "Inter", sans-serif);
   position: absolute;
@@ -421,17 +440,6 @@
   margin-bottom: -5em; /* Adjust the value as needed */
 }
 
-h2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Centers both horizontally and vertically */
-  font-size: 24px;
-  font-weight: bold;
-  color: #333333;
-  margin-bottom: 10px;
-  transform: translateY(1980px); /* Moves it down by 1980 pixels */
-}
 
 .ellipse-4 {
   border-radius: 50%;
@@ -1547,9 +1555,12 @@ h2 {
   align-items: center;
   justify-content: flex-start;
   position: absolute;
-  left: 483px;
-  top: 7372px;
+  left: 563px;
+  top: 3600px;
+  font-weight: bold;
+  color: #3864B3; /* Change the color value to the desired font color */
 }
+
 .group-20 {
   position: absolute;
   inset: 0;
@@ -1658,7 +1669,7 @@ h2 {
   justify-content: flex-start;
   position: absolute;
   left: 102px;
-  top: 5573px;
+  top: 2200px;
 }
 .frame-53 {
   display: flex;
@@ -1822,7 +1833,9 @@ h2 {
   width: 720px;
   height: 420px;
   position: relative;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Add a shadow with horizontal and vertical offsets */
 }
+
 .frame-52 {
   display: flex;
   flex-direction: row;
@@ -1839,6 +1852,7 @@ h2 {
   width: 650px;
   height: 370px;
   position: relative;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 .our-delivery-model-helps-you-cut-costs-and-deliver-within-budget-span4 {
   color: var(--gray-gray-800, #2d3748);
@@ -1886,13 +1900,14 @@ h2 {
   width: 650px;
   height: 370px;
   position: relative;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 .card-sm {
   width: 604px;
   height: 237px;
   position: absolute;
   left: 102px;
-  top: 7585px;
+  top: 3700px;
 }
 .rectangle-21 {
   background: var(--gray-gray-50, #fafafa);
@@ -1976,7 +1991,7 @@ h2 {
   height: 237px;
   position: absolute;
   left: 731px;
-  top: 7585px;
+  top: 3700px;
 }
 .rectangle-272 {
   background: var(
@@ -2018,7 +2033,7 @@ h2 {
   height: 237px;
   position: absolute;
   left: 735px;
-  top: 7847px;
+  top: 3962px;
 }
 .rectangle-273 {
   background: var(
@@ -2060,7 +2075,7 @@ h2 {
   height: 237px;
   position: absolute;
   left: 735px;
-  top: 8108px;
+  top: 4223px;
 }
 .rectangle-274 {
   background: var(
@@ -2094,7 +2109,7 @@ h2 {
   height: 237px;
   position: absolute;
   left: 102px;
-  top: 8108px;
+  top: 4223px;
 }
 .rectangle-275 {
   background: var(
@@ -2136,7 +2151,7 @@ h2 {
   height: 237px;
   position: absolute;
   left: 102px;
-  top: 7847px;
+  top: 3962px;
 }
 .rectangle-276 {
   background: var(
@@ -2178,7 +2193,7 @@ h2 {
   height: 30px;
   position: absolute;
   left: 150px;
-  top: 7921px;
+  top: 4036px;
 }
 .code-perspective-matte2 {
   width: 29px;
@@ -2192,35 +2207,35 @@ h2 {
   height: 37px;
   position: absolute;
   left: 777px;
-  top: 7653px;
+  top: 3768px;
 }
 .shield-perspective-matte {
   width: 40px;
   height: 40px;
   position: absolute;
   left: 779px;
-  top: 7914px;
+  top: 4029px;
 }
 .padlock-perspective-matte {
   width: 29px;
   height: 30px;
   position: absolute;
   left: 784px;
-  top: 8179px;
+  top: 4294px;
 }
 .success-perspective-matte {
   width: 30px;
   height: 30px;
   position: absolute;
   left: 150px;
-  top: 8180px;
+  top: 4295px;
 }
 .rocket-perspective-matte {
   width: 34px;
   height: 35px;
   position: absolute;
   left: 148px;
-  top: 7654px;
+  top: 3769px;
 }
 .group-36 {
   position: absolute;
@@ -2437,6 +2452,9 @@ h2 {
   left: 189px;
   top: 10675px;
   width: 531px;
+}
+.navbar-nav.ml-auto > .nav-item {
+  margin-right: 15px; /* You can adjust this value as needed */
 }
 .nav-button2 {
   background: var(
@@ -3025,7 +3043,7 @@ h2 {
   height: 496px;
   position: absolute;
   left: 0px;
-  top: 10971px;
+  top: 4600px;
 }
 .rectangle-34 {
   background: #ffffff;

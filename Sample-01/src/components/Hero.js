@@ -19,32 +19,38 @@ import LC from "../assets/LC.png";
 import chat from "../assets/chat.png";
 const Hero = () => (
 <div class="software-company-website">
-  <div class="hero-wrapper">
-    <div class="hero-wrapper-text">
-      <div class="header-text">
-        <div class="h-1-primary-text">
-          <span
-            ><span class="h-1-primary-text-span"></span
-            ><span class="h-1-primary-text-span2">Low Code</span
-            ><span class="h-1-primary-text-span3"> ETL</span
-            ><span class="h-1-primary-text-span4"> <br /></span
-            ><span class="h-1-primary-text-span5">for Unstructured Data </span
-            ><span class="h-1-primary-text-span4"> <br /></span
-            ><span class="h-1-primary-text-span6">& GenAI Platform</span></span
-          >
-        </div>
-        
+<div class="hero-wrapper">
+  <div class="hero-wrapper-text">
+    <div class="header-text">
+      <div class="h-1-primary-text">
+        <span
+          ><span class="h-1-primary-text-span"></span
+          ><span class="h-1-primary-text-span2">Low Code</span
+          ><span class="h-1-primary-text-span3"> ETL</span
+          ><span class="h-1-primary-text-span4"> <br /></span
+          ><span class="h-1-primary-text-span5">for Unstructured Data</span
+          ><span class="h-1-primary-text-span4"> <br /></span
+          ><span class="h-1-primary-text-span6">& GenAI Platform</span></span
+        >
       </div>
-      {/* <div class="btn-primary">
-        <div class="let-s-get-started">Let’s get started!</div>
-      </div> */}
     </div>
-    <div class="hero-wrapper-image">
-      <div class="hero-wrapper-image-center">
+    <div class="btn-primary">
+      <div class="let-s-get-started">Let’s get started!</div>
+    </div>
+    <div className="additional-text">
+  A SaaS based low code ETL pipeline for creating high-quality vector embedding{<br />}{<br/>}{<br/>} of unstructured data to build Generative AI applications.
+</div>
+
+
+
+  </div>
+  <div class="hero-wrapper-image">
+    <div class="hero-wrapper-image-center">
       <img class="web-development-1" src={home} />
-      </div>
     </div>
   </div>
+</div>
+
   <div class="about-us-details">
     <div class="about-us-details-wrapper">
       <div class="deco-line"></div>
@@ -191,7 +197,8 @@ const Hero = () => (
   </div> */}
   
   <div class="heading-h-2-left4">
-    <div class="deco-line"></div>
+    <h2>Features of VectrFlow</h2>
+    
     
   </div>
   {/* <div class="group-20">

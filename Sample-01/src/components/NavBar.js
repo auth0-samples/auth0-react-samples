@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../assets/logo.png"; // Import your logo image
+import "./Navbar.css"
 
 import {
   Collapse,
@@ -47,7 +48,7 @@ const NavBar = () => {
             <img
               src={logo}
               alt="Your Logo"
-              width="100" // Adjust the width as needed
+              width="180" // Adjust the width as needed
             />
           </NavbarBrand>
 
@@ -66,12 +67,17 @@ const NavBar = () => {
               </NavItem>
               <NavItem>
                 <NavLink href="https://demo.vectrflow.com" target="_blank">
-                  Discord
+                  Solution
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="https://demo.vectrflow.com" target="_blank">
-                  Pricing
+                  Blog
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://demo.vectrflow.com" target="_blank">
+                  Documentation
                 </NavLink>
               </NavItem>
               {isAuthenticated && (

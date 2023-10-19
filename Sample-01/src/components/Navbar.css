@@ -1,0 +1,265 @@
+.navbar-light.bg-light .nav-link {
+    color: #041433;
+}
+
+.navbar {
+    background-color: #eff1f5;
+    padding: 0.375rem 0;
+    box-shadow: 0 1px 2px 0 #ffffff;
+}
+
+.navbar .router-link-exact-active {
+    color: #041433;
+    border-bottom: 3px solid #0066f9;
+}
+
+.navbar-brand {
+    margin-right: 60px;
+}
+
+.navbar-nav .nav-link {
+    color: #041433;
+    padding: 0 0 .5rem 0;
+    box-sizing: border-box;
+    margin: 0 40px 0 0;
+    font-weight: 400;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #000104;
+}
+
+.navbar-nav .btn {
+    min-width: 145px;
+}
+
+.nav-user-profile {
+    border-radius: 50% 50%;
+    max-width: 3.785rem;
+    height: auto;
+    box-shadow: 0 0 4px 0 #b3bac7;
+}
+
+.nav-item.dropdown .dropdown-toggle {
+    margin: 0;
+}
+
+.nav-item.dropdown .dropdown-name {
+    font-weight: 600;
+}
+
+.nav-item.dropdown .router-link-exact-active {
+    border: 0;
+}
+
+.nav-item.dropdown .dropdown-menu {
+    box-shadow: 0 0 4px 0 #b3bac7;
+}
+
+.nav-item.dropdown .dropdown-header {
+    border-bottom: 1px solid #b3bac7;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #041433;
+}
+
+.nav-item.dropdown .dropdown-item {
+    border-bottom: 1px solid #b3bac7;
+    padding: .55rem 1.5rem;
+}
+
+.nav-item.dropdown .dropdown-item .icon {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.nav-item.dropdown .dropdown-item:first-child:hover {
+    background: inherit;
+}
+
+.nav-item.dropdown .dropdown-item:last-child {
+    border-bottom: 0;
+}
+
+.navbar {
+    padding: 0.375 rem 0;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: inherit;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media (max-width: 767px) {
+    .nav-item {
+        margin-bottom: 1rem;
+    }
+
+    .nav-item .nav-link {
+        padding: 0 0 0 16px;
+    }
+
+    .nav-item .nav-link.router-link-exact-active {
+        border-bottom: 0;
+        border-left: 3px solid #0066f9;
+        padding-left: 13px !important;
+        vertical-align: middle;
+    }
+
+    .navbar-brand {
+        margin-left: 2.5rem;
+        vertical-align: top;
+    }
+
+    .navbar-toggler {
+        margin-right: 2.5rem;
+    }
+
+    .navbar-nav {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+    }
+
+    .navbar-nav:first-child {
+        margin-top: 1.5em;
+    }
+
+    .navbar-nav:last-child {
+        background: #fff;
+        box-shadow: 0 -1px 2px 0 #dfe3ec;
+        margin: 1.5em 0 0 0;
+        padding: 1.5em 2.5rem;
+    }
+
+    .navbar-nav:last-child li {
+        margin-bottom: 1em;
+    }
+
+    .navbar-nav:last-child li .icon {
+        margin-right: 1em;
+        vertical-align: middle;
+    }
+
+    .navbar-nav:last-child li a {
+        vertical-align: middle;
+        color: #041433;
+    }
+
+    .navbar-nav .user-info img {
+        margin-right: 1em;
+    }
+
+    .navbar-nav .btn-link {
+        padding: 0;
+        color: #041433;
+        min-width: 0;
+    }
+}
+
+.logo {
+    background-image: url(data:image/svg+xml;base64,...); /* Your logo data */
+    width: 2rem;
+    height: 2.25rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer {
+    background: #eff1f5;
+    box-shadow: 0 -1px 2px 0 #dfe3ec;
+    min-height: 132px;
+    text-align: center;
+    padding: 32px;
+}
+
+footer .logo {
+    margin: 0 auto 10px auto;
+}
+
+.hero {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.hero p.lead {
+    margin-bottom: 10rem;
+    font-size: 1.45rem;
+}
+
+.hero p.lead a {
+    font-weight: 500;
+}
+
+.hero .app-logo {
+    max-width: 7.5rem;
+}
+
+.next-steps {
+    padding: 0 32px;
+}
+
+.next-steps h2 {
+    margin-bottom: 4rem;
+}
+
+.next-steps .row {
+    margin-bottom: 3rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .result-block {
+        min-width: 700px;
+    }
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    color: rgb(156, 97, 181);
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+h6.muted {
+    color: #6c757d;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+a {
+    color: #0066f9;
+}
+
+.btn-primary {
+    background-color: #0066f9;
+    border: 1px solid #005ce0;
+}
+
+.btn {
+    border-radius: .1rem;
+}
