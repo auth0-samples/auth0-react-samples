@@ -168,7 +168,10 @@
         min-width: 0;
     }
 }
-
+.move-right {
+    margin-right: -100px; /* Adjust the margin as needed */
+  }
+  
 .logo {
     background-image: url(data:image/svg+xml;base64,...); /* Your logo data */
     width: 2rem;

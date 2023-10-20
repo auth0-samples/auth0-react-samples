@@ -38,7 +38,7 @@ const Hero = () => (
       <div class="let-s-get-started">Let’s get started!</div>
     </div>
     <div className="additional-text">
-  A SaaS based low code ETL pipeline for creating high-quality vector embedding{<br />}{<br/>}{<br/>} of unstructured data to build Generative AI applications.
+  A SaaS based low code ETL pipeline for creating high-quality vector embedding{<br />} of unstructured data to build Generative AI applications.
 </div>
 
 
@@ -52,6 +52,7 @@ const Hero = () => (
 </div>
 
   <div class="about-us-details">
+    
     <div class="about-us-details-wrapper">
       <div class="deco-line"></div>
       <div class="about-us-details-text">

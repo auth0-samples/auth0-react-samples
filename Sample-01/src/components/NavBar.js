@@ -45,41 +45,42 @@ const NavBar = () => {
         <Container>
           {/* Add your logo before "Home" link */}
           <NavbarBrand>
-            <img
-              src={logo}
-              alt="Your Logo"
-              width="180" // Adjust the width as needed
-            />
-          </NavbarBrand>
+  <img
+    src={logo}
+    alt="Your Logo"
+    width="180" // Adjust the width as needed
+    style={{ marginLeft: "-107px" }} // Add left margin as needed
+  />
+</NavbarBrand>
 
-          <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto" navbar>
-              <NavItem>
-                <NavLink
-                  tag={RouterNavLink}
-                  to="/"
-                  exact
-                  activeClassName="router-link-exact-active"
-                >
-                  Home
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://demo.vectrflow.com" target="_blank">
-                  Solution
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://demo.vectrflow.com" target="_blank">
-                  Blog
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://demo.vectrflow.com" target="_blank">
-                  Documentation
-                </NavLink>
-              </NavItem>
+<NavbarToggler onClick={toggle} />
+<Collapse isOpen={isOpen} navbar>
+  <Nav className="ml-auto" navbar>
+    <NavItem>
+      <NavLink
+        tag={RouterNavLink}
+        to="/"
+        exact
+        activeClassName="router-link-exact-active"
+      >
+        Home
+      </NavLink>
+    </NavItem>
+    <NavItem>
+      <NavLink href="https://demo.vectrflow.com" target="_blank">
+        Solution
+      </NavLink>
+    </NavItem>
+    <NavItem>
+      <NavLink href="https://demo.vectrflow.com" target="_blank">
+        Blog
+      </NavLink>
+    </NavItem>
+    <NavItem>
+      <NavLink href="https://demo.vectrflow.com" target="_blank">
+        Documentation
+      </NavLink>
+    </NavItem>
               {isAuthenticated && (
                 <NavItem>
                   <NavLink
@@ -94,18 +95,19 @@ const NavBar = () => {
               )}
             </Nav>
             <Nav className="d-none d-md-block" navbar>
-              {!isAuthenticated && (
-                <NavItem>
-                  <Button
-                    id="qsLoginBtn"
-                    color="primary"
-                    className="btn-margin"
-                    onClick={() => loginWithRedirect()}
-                  >
-                    Log in
-                  </Button>
-                </NavItem>
-              )}
+  {!isAuthenticated && (
+    <NavItem>
+      <Button
+        id="qsLoginBtn"
+        color="primary"
+        className="btn-margin move-right" // Add the move-right class
+        onClick={() => loginWithRedirect()}
+      >
+        Log in
+      </Button>
+    </NavItem>
+  )}
+
               {isAuthenticated && (
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret id="profileDropDown">

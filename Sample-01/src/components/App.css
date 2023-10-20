@@ -126,6 +126,16 @@
   color: #3f3fe1; /* Set the font color to white */
   background-clip: text;
 }
+.btn-primary:hover {
+  background: linear-gradient(
+    225deg,
+    rgba(56, 100, 179, 1) 0%,    /* Color: #3864B3 */
+    rgba(47, 85, 151, 1) 31%,   /* Color: #2F5597 */
+    rgba(236, 115, 255, 1) 83% /* Color: #EC73FF */
+  );
+}
+
+
 
 .let-s-get-started {
   color: var(--gray-gray-50, #8f26a9);
@@ -142,6 +152,16 @@
   flex-shrink: 0;
   position: relative;
 }
+/* .hero-wrapper-image {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 104px;
+  top: 148px;
+} */
 .hero-wrapper-image-center {
   flex-shrink: 0;
   width: 640px;
@@ -370,17 +390,20 @@
   position: static;
 }
 .services-we-offer {
+  font-family: 'Barlow'; /* Use 'Barlow' as the preferred font */
+  
   color: var(--gray-gray-900, #245bcb);
   text-align: center;
   font: var(--headings-headings-h-2, 700 35px/55px "Inter", sans-serif);
   position: absolute;
   top: 847px;
-  left: 50%; /* Add this property to move the text to the center horizontally */
-  transform: translateX(-50%); /* Add this property to align the text perfectly at the center */
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   white-space: nowrap;
   height: 41px;
 }
+
 .features-heading {
   color: var(--gray-gray-900, #1a202c);
   text-align: center; /* Center the text horizontally */
@@ -1549,6 +1572,7 @@
   top: 5367px;
 }
 .heading-h-2-left4 {
+  font-family: 'Barlow` , sans-serif;';
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -1699,6 +1723,8 @@
   position: relative;
 }
 .build-the-right-team-to-scale {
+
+  font-family: 'Barlow';
   color: var(--gray-gray-900, #1a202c);
   text-align: center;
   font: var(--headings-headings-h-3, 600 28px/136.02% "Inter", sans-serif);
@@ -1937,9 +1963,11 @@
   position: static;
 }
 .rectangle-27 {
-  background: var(
-    --gradient-dark-bg,
-    linear-gradient(225deg, rgba(41, 39, 46, 1) 0%, rgba(39, 39, 46, 1) 100%)
+  background: linear-gradient(
+    225deg,
+    rgba(56, 100, 179, 1) 0%,    /* Color: #3864B3 */
+    rgba(47, 85, 151, 1) 31%,   /* Color: #2F5597 */
+    rgba(236, 115, 255, 1) 83% /* Color: #EC73FF */
   );
   border-radius: 10px;
   width: 59px;
@@ -1994,13 +2022,11 @@
   top: 3700px;
 }
 .rectangle-272 {
-  background: var(
-    --gradient-info-bg,
-    linear-gradient(
-      225deg,
-      rgba(104, 219, 242, 1) 0.009999999747378752%,
-      rgba(80, 156, 245, 1) 100%
-    )
+  background: linear-gradient(
+    225deg,
+    rgba(56, 100, 179, 1) 0%,    /* Color: #3864B3 */
+    rgba(47, 85, 151, 1) 31%,   /* Color: #2F5597 */
+    rgba(236, 115, 255, 1) 83% /* Color: #EC73FF */
   );
   border-radius: 10px;
   width: 59px;
@@ -2009,6 +2035,7 @@
   left: 0px;
   top: 0px;
 }
+
 .unlike-other-companies-we-are-a-ux-first-development-company-projects-are-driven-by-designers-and-they-make-sure-design-and-experiences-translate-to-code-span4 {
   color: var(--gray-gray-700, #4a5568);
   font: var(--paragraphs-default, 400 14px/162.02% "Inter", sans-serif);
@@ -2036,13 +2063,11 @@
   top: 3962px;
 }
 .rectangle-273 {
-  background: var(
-    --gradient-success-bg,
-    linear-gradient(
-      225deg,
-      rgba(103, 233, 241, 1) 0%,
-      rgba(36, 231, 149, 1) 100%
-    )
+  background: linear-gradient(
+    225deg,
+    rgba(56, 100, 179, 1) 0%,    /* Color: #3864B3 */
+    rgba(47, 85, 151, 1) 31%,   /* Color: #2F5597 */
+    rgba(236, 115, 255, 1) 83% /* Color: #EC73FF */
   );
   border-radius: 10px;
   width: 59px;
@@ -2078,9 +2103,11 @@
   top: 4223px;
 }
 .rectangle-274 {
-  background: var(
-    --gradient-primary-bg,
-    linear-gradient(225deg, rgba(247, 102, 128, 1) 0%, rgba(87, 0, 123, 1) 100%)
+  background: linear-gradient(
+    225deg,
+    rgba(56, 100, 179, 1) 0%,    /* Color: #3864B3 */
+    rgba(47, 85, 151, 1) 31%,   /* Color: #2F5597 */
+    rgba(236, 115, 255, 1) 83% /* Color: #EC73FF */
   );
   border-radius: 10px;
   width: 59px;
@@ -2112,13 +2139,11 @@
   top: 4223px;
 }
 .rectangle-275 {
-  background: var(
-    --gradient-warning-bg,
-    linear-gradient(
-      225deg,
-      rgba(255, 239, 94, 1) 0%,
-      rgba(247, 147, 111, 1) 100%
-    )
+  background: linear-gradient(
+    225deg,
+    rgba(56, 100, 179, 1) 0%,    /* Color: #3864B3 */
+    rgba(47, 85, 151, 1) 31%,   /* Color: #2F5597 */
+    rgba(236, 115, 255, 1) 83% /* Color: #EC73FF */
   );
   border-radius: 10px;
   width: 59px;
@@ -2154,13 +2179,11 @@
   top: 3962px;
 }
 .rectangle-276 {
-  background: var(
-    --gradient-tertiary-bg,
-    linear-gradient(
-      224.47deg,
-      rgba(255, 146, 174, 1) 2.604166604578495%,
-      rgba(255, 61, 154, 1) 100%
-    )
+  background: linear-gradient(
+    225deg,
+    rgba(56, 100, 179, 1) 0%,    /* Color: #3864B3 */
+    rgba(47, 85, 151, 1) 31%,   /* Color: #2F5597 */
+    rgba(236, 115, 255, 1) 83% /* Color: #EC73FF */
   );
   border-radius: 10px;
   width: 59px;
