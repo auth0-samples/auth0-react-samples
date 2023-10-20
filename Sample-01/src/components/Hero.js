@@ -4,7 +4,7 @@ import logo from "../assets/flowise_logo.png";
 import sampleAppImage from "../assets/webimg.png";
 import temp from "../assets/templates.png";
 import "./App.css"; // Import your CSS file
-import home from "../assets/VF1.gif";
+import home from "../assets/VFG.png";
 import transform from "../assets/transform.png";
 import extract from "../assets/extract.png";
 import load from "../assets/load.png";
@@ -51,7 +51,7 @@ const Hero = () => (
   </div>
 </div>
 
-  <div class="about-us-details">
+  {/* <div class="about-us-details">
     
     <div class="about-us-details-wrapper">
       <div class="deco-line"></div>
@@ -93,20 +93,20 @@ const Hero = () => (
         </svg>
       </div>
     </div>
-  </div>
+  </div> */}
   {/* <div class="abou-us-video"> */}
-    <div class="video-wrappper">
+    {/* <div class="video-wrappper">
       <img class="rectangle-8" src={about} />
-    </div>
+    </div> */}
     
     
   {/* </div> */}
   <div class="ellipse-180"></div>
-  <div class="ellipse-181"></div>
+  {/* <div class="ellipse-181"></div> */}
   
   {/* <div class="group-15">
     <div class="our-service-wrapper"> */}
-      <div class="rectangle-5"></div>
+      {/* <div class="rectangle-5"></div>
       <div class="group-8">
         <div class="services-we-offer">The Pipeline: Extract, Transform and Load</div>
         <div class="slider-nodes"></div>
@@ -193,7 +193,7 @@ const Hero = () => (
         src={load}
       />
       <div class="line-1"></div>
-      <div class="line-2"></div>
+      <div class="line-2"></div> */}
     {/* </div>
   </div> */}
   
@@ -236,7 +236,7 @@ const Hero = () => (
       <div class="frame-46"></div>
       <img class="rectangle-17" src={build} />
     </div>
-    <div class="frame-52">
+    {/* <div class="frame-52">
       <img class="rectangle-18" src={build}/>
       <div class="way-building-details">
         <div class="frame-47">
@@ -261,8 +261,8 @@ const Hero = () => (
         </div>
         
       </div>
-    </div>
-    <div class="frame-51">
+    </div> */}
+    {/* <div class="frame-51">
       <div class="way-building-details">
         <div class="frame-47">
           <div class="build-the-right-team-to-scale">
@@ -284,16 +284,10 @@ const Hero = () => (
             </div>
           </div>
         </div>
-        {/* <div class="person-badge">
-          <img class="ellipse-1852" src="ellipse-1852.png" />
-          <div class="frame-50">
-            <div class="jeewa-markram">Jeewa markram</div>
-            <div class="ceo">CEO</div>
-          </div>
-        </div> */}
+        
       </div>
       <img class="rectangle-19" src={chat} />
-    </div>
+    </div> */}
   </div>
 
   <div class="card-sm">
@@ -454,7 +448,7 @@ const Hero = () => (
   <div class="footer-section">
     <div class="rectangle-34"></div>
     <div class="group-78">
-      <div class="group-72">
+      {/* <div class="group-72">
         <div class="group-71">
           <div
             class="lorem-ipsum-is-simply-dummy-text-of-the-printing-and-typesetting-industry"
@@ -586,13 +580,13 @@ const Hero = () => (
             <div class="contact-us3">Contact us</div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
-    <img class="google-page-speed-1" src={logo} />
+    {/* <img class="google-page-speed-1" src={logo} /> */}
     <div class="_2023-copyright-by-agency-solutions-all-rights-reserved">
       © 2023 Copyright by VectrFlow. All rights reserved.
     </div>
-    <div class="line-35"></div>
+    {/* <div class="line-35"></div> */}
   </div>
   
 </div>
