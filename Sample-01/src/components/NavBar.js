@@ -50,6 +50,7 @@ const NavBar = () => {
     alt="Your Logo"
     width="180" // Adjust the width as needed
     style={{ marginLeft: "-107px" }} // Add left margin as needed
+    position="relative"
   />
 </NavbarBrand>
 

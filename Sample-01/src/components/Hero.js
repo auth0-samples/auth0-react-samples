@@ -4,7 +4,7 @@ import logo from "../assets/flowise_logo.png";
 import sampleAppImage from "../assets/webimg.png";
 import temp from "../assets/templates.png";
 import "./App.css"; // Import your CSS file
-import home from "../assets/VFG.png";
+import home from "../assets/VF1.gif";
 import transform from "../assets/transform.png";
 import extract from "../assets/extract.png";
 import load from "../assets/load.png";
@@ -101,7 +101,7 @@ const Hero = () => (
     
     
   {/* </div> */}
-  <div class="ellipse-180"></div>
+  {/* <div class="ellipse-180"></div> */}
   {/* <div class="ellipse-181"></div> */}
   
   {/* <div class="group-15">
