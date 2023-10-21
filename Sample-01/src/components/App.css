@@ -47,24 +47,48 @@
   font: var(--headings-lite-h-1, 300 45px/71px "Inter", sans-serif);
 }
 .h-1-primary-text-span2 {
-  color: linear-gradient(
-    180deg,
-    rgba(222, 67, 150, 1) 0%,
-    rgba(13, 28, 159, 0) 100%
+  background-image: linear-gradient(
+    90deg,
+    rgba(56, 100, 179, 1) 0%,
+    rgba(47, 85, 151, 1) 31%,
+    rgba(236, 115, 255, 1) 83%
   );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font: 700 45px/71px "Inter", sans-serif;
 }
 .h-1-primary-text-span3 {
-  color: var(--gray-gray-900, #245bcb);
+  background-image: linear-gradient(
+    90deg,
+    rgba(56, 100, 179, 1) 0%,
+    rgba(47, 85, 151, 1) 31%,
+    rgba(236, 115, 255, 1) 83%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font: var(--headings-lite-h-1, 300 45px/71px "Inter", sans-serif);
 }
 .h-1-primary-text-span4 {
-    color: var(--gray-gray-900, #1b469d);
+  background-image: linear-gradient(
+    90deg,
+    rgba(56, 100, 179, 1) 0%,
+    rgba(47, 85, 151, 1) 31%,
+    rgba(236, 115, 255, 1) 83%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
     font: 300 50px/68px "Inter", sans-serif; /* Reduced font size */
   }
   
   .h-1-primary-text-span5 {
-    color: var(--gray-gray-900, #245bcb);
+    background-image: linear-gradient(
+    90deg,
+    rgba(56, 100, 179, 1) 0%,
+    rgba(47, 85, 151, 1) 31%,
+    rgba(236, 115, 255, 1) 83%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
     font: var(
       --display-display-dilplay-h-1-bold,
       800 50px/68px "Inter",
@@ -73,11 +97,14 @@
   }
   
   .h-1-primary-text-span6 {
-    color: linear-gradient(
-      225deg,
-      rgba(247, 102, 111, 1) 0%,
-      rgba(64, 106, 255, 1) 100%
-    );
+    background-image: linear-gradient(
+    90deg,
+    rgba(56, 100, 179, 1) 0%,
+    rgba(47, 85, 151, 1) 31%,
+    rgba(236, 115, 255, 1) 83%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
     font: var(
       --display-display-dilplay-h-1-bold,
       800 50px/68px "Inter",
