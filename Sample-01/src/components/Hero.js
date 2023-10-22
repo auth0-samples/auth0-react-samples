@@ -25,8 +25,8 @@ const Hero = () => (
       <div class="h-1-primary-text">
         <span
           ><span class="h-1-primary-text-span"></span
-          ><span class="h-1-primary-text-span2">Low Code</span
-          ><span class="h-1-primary-text-span3"> ETL</span
+          ><span class="h-1-primary-text-span2">Low Code ETL</span
+          ><span class="h-1-primary-text-span3"></span
           ><span class="h-1-primary-text-span4"> <br /></span
           ><span class="h-1-primary-text-span5">for Unstructured Data</span
           ><span class="h-1-primary-text-span4"> <br /></span
