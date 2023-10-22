@@ -8,7 +8,7 @@
   height: 2150px;
   position: absolute;
   overflow: hidden;
-  left: 140px; /* Adjust the value as needed to move it to the left */
+  left: 130px; /* Adjust the value as needed to move it to the left */
 }
 
 .hero-wrapper {
@@ -649,6 +649,6 @@
     text-align: left;
     font: var(--footer-footer-sm, 400 14px/10px "Inter", sans-serif);
     position: absolute;
-    left: calc(50% - 250px);
+    left: calc(50% - 175px);
     top: -2561px;
   }      
