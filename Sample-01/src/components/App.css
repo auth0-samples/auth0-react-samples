@@ -56,7 +56,7 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font: 700 45px/71px "Inter", sans-serif;
+  font: 1000 45px/71px "Inter", sans-serif;
 }
 .h-1-primary-text-span3 {
   background-image: linear-gradient(
@@ -186,9 +186,10 @@
     align-items: center;
     justify-content: flex-start;
     position: absolute;
-    left: 35%;
+    left: 34%;
     top: 1150px;
     font-weight: bold;
+    font: 1000 45px/71px "Inter", sans-serif;
     background-image: linear-gradient(
     90deg,
     rgba(56, 100, 179, 1) 0%,
