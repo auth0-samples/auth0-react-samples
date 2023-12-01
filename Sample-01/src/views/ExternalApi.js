@@ -10,8 +10,10 @@ export const ExternalApiComponent = () => {
 
   const [state, setState] = useState({
     showResult: false,
-    apiMessage: "",
+    showApiError: false,
     error: null,
+    apiMessage: "",
+    apiError: null,
   });
 
   const {
@@ -64,12 +66,27 @@ export const ExternalApiComponent = () => {
         },
       });
 
+      if (!response.ok) {
+        const apiError = response.headers.get('content-type')?.includes('application/json')
+          ? JSON.stringify(await response.json(), null, 2)
+          : await response.text();
+        setState({
+          ...state,
+          showApiError: true,
+          showResult: false,
+          apiError
+        });
+        return;
+      }
+
       const responseData = await response.json();
 
       setState({
         ...state,
         showResult: true,
         apiMessage: responseData,
+        apiError: null,
+        showApiError: false
       });
     } catch (error) {
       setState({
@@ -185,9 +202,14 @@ export const ExternalApiComponent = () => {
         {state.showResult && (
           <div className="result-block" data-testid="api-result">
             <h6 className="muted">Result</h6>
-            <Highlight>
-              <span>{JSON.stringify(state.apiMessage, null, 2)}</span>
-            </Highlight>
+            <Highlight text={JSON.stringify(state.apiMessage, null, 2)} />
+          </div>
+        )}
+
+        {state.showApiError && (
+          <div className="result-block" data-testid="api-result">
+            <h6 className="muted">Error</h6>
+            <Highlight text={state.apiError} />
           </div>
         )}
       </div>
