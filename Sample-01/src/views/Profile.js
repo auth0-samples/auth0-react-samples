@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
+import { jwtDecode } from "jwt-decode";
 
 import Highlight from "../components/Highlight";
 import Loading from "../components/Loading";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 
 export const ProfileComponent = () => {
-  const { user } = useAuth0();
+  const { user, getIdTokenClaims, getAccessTokenSilently } = useAuth0();
+
+  const [accessTokenForView, setAccessTokenForView] = useState();
+  const [decodedAccessTokenForView, setDecodedAccessTokenForView] = useState();
+  const [claimsForView, setClaimsForView] = useState();
+
+  useEffect(() => {
+    const getTokenContents = async () => {
+      const token = await getAccessTokenSilently();
+      setAccessTokenForView(token);
+      setDecodedAccessTokenForView(jwtDecode(token));
+      setClaimsForView(await getIdTokenClaims());
+    };
+
+    getTokenContents();
+  }, [getAccessTokenSilently, getIdTokenClaims]);
 
   return (
     <Container className="mb-5">
@@ -24,7 +40,22 @@ export const ProfileComponent = () => {
         </Col>
       </Row>
       <Row>
+        <h2>`user` object</h2>
         <Highlight>{JSON.stringify(user, null, 2)}</Highlight>
+      </Row>
+      <Row>
+        <h2>`accessToken` object</h2>
+        <Highlight>{JSON.stringify(accessTokenForView, null, 2)}</Highlight>
+      </Row>
+      <Row>
+        <h2>Decoded `accessToken` object</h2>
+        <Highlight>
+          {JSON.stringify(decodedAccessTokenForView, null, 2)}
+        </Highlight>
+      </Row>
+      <Row>
+        <h2>ID Token claims</h2>
+        <Highlight>{JSON.stringify(claimsForView, null, 2)}</Highlight>
       </Row>
     </Container>
   );

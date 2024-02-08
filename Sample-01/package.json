@@ -29,6 +29,7 @@
     "express-oauth2-jwt-bearer": "^1.6.0",
     "helmet": "^4.4",
     "highlight.js": "^10.0",
+    "jwt-decode": "^4.0.0",
     "morgan": "^1.9",
     "npm-run-all": "^4.1",
     "postcss": "^8.4",

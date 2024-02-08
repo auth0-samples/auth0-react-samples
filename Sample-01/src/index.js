@@ -24,16 +24,15 @@ const providerConfig = {
   authorizationParams: {
     redirect_uri: window.location.origin,
     ...(config.audience ? { audience: config.audience } : null),
+    ...(config.scope ? { scope: config.scope } : null),
   },
 };
 
-const root = createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById("root"));
 root.render(
-  <Auth0Provider
-    {...providerConfig}
-  >
+  <Auth0Provider {...providerConfig}>
     <App />
-  </Auth0Provider>,
+  </Auth0Provider>
 );
 
 // If you want your app to work offline and load faster, you can change
