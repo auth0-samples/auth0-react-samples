@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17",
-    "@testing-library/react": "^14.1",
+    "@testing-library/react": "^14.2",
     "jest-environment-jsdom": "^27.0",
     "jest-fetch-mock": "^3.0",
     "nodemon": "^2.0"
