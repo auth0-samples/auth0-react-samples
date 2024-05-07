@@ -20,6 +20,7 @@ const config = getConfig();
 const providerConfig = {
   domain: config.domain,
   clientId: config.clientId,
+  cacheLocation:"localstorage",
   onRedirectCallback,
   authorizationParams: {
     redirect_uri: window.location.origin,

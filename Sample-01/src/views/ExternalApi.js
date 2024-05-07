@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Button, Alert } from "reactstrap";
 import Highlight from "../components/Highlight";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
@@ -19,6 +19,38 @@ export const ExternalApiComponent = () => {
     loginWithPopup,
     getAccessTokenWithPopup,
   } = useAuth0();
+
+  // The code below will cause the /external-api page to loop infinitely
+  useEffect(() => {
+    let active = true;
+
+    const fn = async () => {
+      try {
+        console.log("getAccessTokenSilently");
+        const token = await getAccessTokenSilently({
+          cacheMode: "off",
+          authorizationParams: {
+            my_custom_parameter: "test",
+            myCustomParam: "test",
+          },
+        });
+        console.log(token);
+      } catch (error) {
+        if (active) {
+          setState({
+            ...state,
+            error: error.error,
+          });
+        }
+      }
+    };
+
+    fn();
+
+    return () => {
+      active = false;
+    }
+  }, [getAccessTokenSilently, state]);
 
   const handleConsent = async () => {
     try {
@@ -56,7 +88,14 @@ export const ExternalApiComponent = () => {
 
   const callApi = async () => {
     try {
-      const token = await getAccessTokenSilently();
+      const token = await getAccessTokenSilently({
+          // cacheMode: "off",
+          authorizationParams: {
+            my_custom_parameter: "test",
+            myCustomParam: "test",
+          },
+        }
+      );
 
       const response = await fetch(`${apiOrigin}/api/external`, {
         headers: {

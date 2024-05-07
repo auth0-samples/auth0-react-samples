@@ -16,7 +16,7 @@
     "prod": "npm-run-all --parallel server api-server"
   },
   "dependencies": {
-    "@auth0/auth0-react": "^2.2.0",
+    "@auth0/auth0-react": "^2.2.4",
     "@babel/core": "^7.23",
     "@babel/plugin-syntax-flow": "^7.23",
     "@babel/plugin-transform-react-jsx": "^7.23",
