@@ -1,4 +1,10 @@
-The MIT License (MIT)
+LICENSEyarn run testyarn run buildyarn run dev{
+  "domain": "{YOUR AUTH0 DOMAIN}",
+  "clientId": "{YOUR AUTH0 CLIENT ID}",
+  "audience": "{YOUR AUTH0 API_IDENTIFIER}",
+  "appOrigin": "{OPTIONAL: THE BASE URL OF YOUR APPLICATION (default: http://localhost:3000)}",
+  "apiOrigin": "{OPTIONAL: THE BASE URL OF YOUR API (default: http://localhost:3001)}"
+}http://localhost:3000http://localhost:3001The MIT License (MIT)
 
 Copyright (c) 2017 Auth0, Inc. <support@auth0.com> (http://auth0.com)
 
