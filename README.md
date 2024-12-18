@@ -30,6 +30,13 @@ If you have found a bug or if you have a feature request, please report them at 
 
 [Auth0](https://auth0.com)
 
+## Deploy to Netlify
+You can deploy this example as a site on your own to explore and experiment with, by clicking this button.
+After deploy, install Auth0 by Okta extension in Netlify and follow the steps to create an App.
+
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/auth0-samples/auth0-react-samples"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" height=30px></a>
+
+
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](./LICENSE) file for more info.
