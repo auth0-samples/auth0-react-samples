@@ -127,9 +127,9 @@ export const ExternalApiComponent = () => {
             <p>
               You can't call the API at the moment because your application does
               not have any configuration for <code>audience</code>, or it is
-              using the default value of <code>{yourApiIdentifier}</code>. You
-              might get this default value if you used the "Download Sample"
-              feature of{" "}
+              using the default value of{" "}
+              <code>&#123;yourApiIdentifier&#125;</code>. You might get this
+              default value if you used the "Download Sample" feature of{" "}
               <a href="https://auth0.com/docs/quickstart/spa/react">
                 the quickstart guide
               </a>
