@@ -4,3 +4,5 @@ node_modules
 **/auth0-variables.js
 npm-debug.log
 .editorconfig
+.yarn/
+.yarnrc.yml
