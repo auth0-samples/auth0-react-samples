@@ -34,6 +34,7 @@
     "postcss": "^8.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-json-view": "^1.21.3",
     "react-router-dom": "^5.3",
     "react-scripts": "^5.0",
     "reactstrap": "^9.2",

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Alert } from "reactstrap";
 import Highlight from "../components/Highlight";
+import ReactJson from "react-json-view";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { getConfig } from "../config";
 import Loading from "../components/Loading";
@@ -102,7 +103,7 @@ export const ExternalApiComponent = () => {
             You need to{" "}
             <a
               href="#/"
-              class="alert-link"
+              className="alert-link"
               onClick={(e) => handle(e, handleLoginAgain)}
             >
               log in again
@@ -182,9 +183,14 @@ export const ExternalApiComponent = () => {
         {state.showResult && (
           <div className="result-block" data-testid="api-result">
             <h6 className="muted">Result</h6>
-            <Highlight>
+            {/* <Highlight>
               <span>{JSON.stringify(state.apiMessage, null, 2)}</span>
-            </Highlight>
+            </Highlight> */}
+            <ReactJson
+              src={state.apiMessage}
+              theme="monokai"
+              style={{ fontSize: "1.1rem" }}
+              />
           </div>
         )}
       </div>

@@ -38,9 +38,9 @@ class Highlight extends Component {
   }
 
   highlight = () => {
-    this.codeNode &&
-      this.codeNode.current &&
+    this.codeNode?.current &&
       hljs.highlightBlock(this.codeNode.current);
+    console.log(this.codeNode.current);
   };
 
   render() {
