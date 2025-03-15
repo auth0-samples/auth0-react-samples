@@ -10,7 +10,12 @@ WORKDIR /app
 
 COPY package.json .
 
-RUN npm install -g --force npm@latest typescript@latest yarn@latest && corepack enable && yarn set version stable
+RUN npm install -g --force npm@latest && \
+  typescript@latest && \
+  yarn@latest
+
+RUN corepack enable && \
+  yarn set version stable
 
 RUN yarn install
 
