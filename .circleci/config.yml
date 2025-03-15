@@ -38,7 +38,7 @@ jobs:
           command: |
             echo "{ \"domain\": \"$AUTH0_TEST_DOMAIN\", \"clientId\": \"$AUTH0_TEST_CLIENT_ID\", \"audience\": \"$AUTH0_TEST_API_IDENTIFIER\" }" > $AUTH0_CFG
       - setup_remote_docker:
-          version: 19.03.13
+          version: 20.10.24
       - run:
           name: Build pull request
           command: |
