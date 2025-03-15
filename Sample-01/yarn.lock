@@ -4005,7 +4005,7 @@ __metadata:
     autoprefixer: ^10.4
     cors: ^2.8
     express: ^4.18
-    express-oauth2-jwt-bearer: ^1.6.0
+    express-oauth2-jwt-bearer: ^1.6.1
     helmet: ^4.4
     jest-environment-jsdom: ^27.0
     jest-fetch-mock: ^3.0
@@ -6420,12 +6420,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-oauth2-jwt-bearer@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "express-oauth2-jwt-bearer@npm:1.6.0"
+"express-oauth2-jwt-bearer@npm:^1.6.1":
+  version: 1.6.1
+  resolution: "express-oauth2-jwt-bearer@npm:1.6.1"
   dependencies:
-    jose: ^4.13.1
-  checksum: 9ad8634d5484a287f7b9a7d29845b44a9902c802fd0e081b2b0ed83cf3f6ce77b5a93274b4a915f3b45a378564be370a0e901cb85a70d38c9ff851127b22961b
+    jose: ^4.15.5
+  checksum: bb7e5cde2186ea1008a8d09552bab1e6425e5e64259d61b9bfc9f4de0f8af0ee3acf34483ee6374317489d4e905deb5758a193345deb492c3a7bf77cc931077a
   languageName: node
   linkType: hard
 
@@ -8645,10 +8645,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:^4.13.1":
-  version: 4.13.1
-  resolution: "jose@npm:4.13.1"
-  checksum: 89be959573beee69bd443493887d78799fd42340b45afa2c6681beda30314bcdfa5575f6977203c199e4c3e0ec2fc18d3c94745e7f0d59db51dedfae0efee63d
+"jose@npm:^4.15.5":
+  version: 4.15.9
+  resolution: "jose@npm:4.15.9"
+  checksum: 41abe1c99baa3cf8a78ebbf93da8f8e50e417b7a26754c4afa21865d87527b8ac2baf66de2c5f6accc3f7d7158658dae7364043677236ea1d07895b040097f15
   languageName: node
   linkType: hard
 

@@ -1,4 +1,4 @@
-FROM node:lts-alpine3.14 as build
+FROM node:lts-alpine3.14 AS build
 
 RUN apk update && \
   apk upgrade && \
