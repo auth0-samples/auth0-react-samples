@@ -1,4 +1,4 @@
-FROM node:lts-alpine3.14 AS build
+FROM node:alpine3.21 AS build
 
 RUN apk update && \
   apk upgrade && \
@@ -20,7 +20,7 @@ RUN yarn build
 
 # ---------------
 
-FROM node:lts-alpine3.14
+FROM node:alpine3.21
 
 RUN mkdir -p /app/build && \
   apk update && \
