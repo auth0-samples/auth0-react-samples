@@ -7,9 +7,9 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@5.0.2
-  docker: circleci/docker@2.0.3
-  
+  node: circleci/node@7.1.0
+  docker: circleci/docker@2.8.2
+
 jobs:
   checkout:
     docker:
@@ -26,8 +26,8 @@ jobs:
     docker:
       - image: cimg/node:lts
     environment:
-      - AUTH0_CFG: Sample-01/src/auth_config.json
-      - SAMPLE_PATH: Sample-01
+      AUTH0_CFG: Sample-01/src/auth_config.json
+      SAMPLE_PATH: Sample-01
     steps:
       - node/install:
           install-yarn: true

@@ -22,11 +22,11 @@ RUN yarn build
 
 FROM node:lts-alpine3.14
 
-RUN mkdir -p /app/build
-
-RUN apk update && \
+RUN mkdir -p /app/build && \
+  apk update && \
   apk upgrade && \
-  apk add git
+  apk add git && \
+  rm -rf /var/cache/apk/*
 
 WORKDIR /app
 
