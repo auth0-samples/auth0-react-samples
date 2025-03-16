@@ -13,7 +13,7 @@ orbs:
 jobs:
   checkout:
     docker:
-      - image: cimg/node:lts
+      - image: cimg/node:22.1.0
     steps:
       - checkout
       - run: git clone https://github.com/auth0-samples/spa-quickstarts-tests scripts
