@@ -8,7 +8,6 @@ version: 2.1
 
 orbs:
   node: circleci/node@7.1.0
-  yarn: circleci/yarn@4.0.0
 #  docker: circleci/docker@2.8.2
 
 jobs:
@@ -32,6 +31,7 @@ jobs:
     steps:
       - node/install:
           install-yarn: true
+          yarn-version: 3.2.4
       - attach_workspace:
           at: ~/
       - run:
