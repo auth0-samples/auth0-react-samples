@@ -35,22 +35,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auth0/auth0-react@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "@auth0/auth0-react@npm:2.2.0"
+"@auth0/auth0-react@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "@auth0/auth0-react@npm:2.3.0"
   dependencies:
-    "@auth0/auth0-spa-js": ^2.1.0
+    "@auth0/auth0-spa-js": ^2.1.3
   peerDependencies:
-    react: ^16.11.0 || ^17 || ^18
-    react-dom: ^16.11.0 || ^17 || ^18
-  checksum: 309d5c287670667a4e67a939ce3ae2e1701e522786b29b0dfa11d22e918a158a38fc492cd509783b9b4eea1cdf3bcaeb95997cc8fffe99fb7fd1c9bfb6e104f5
+    react: ^16.11.0 || ^17 || ^18 || ^19
+    react-dom: ^16.11.0 || ^17 || ^18 || ^19
+  checksum: a3511ddff46d20a02afe4dd4933ef08fecba50964308562df28a6e05b182e54c94fb1f76aab9a1313903ff9f49935bd34d57fd2f619e592898e46c16fa87dd3e
   languageName: node
   linkType: hard
 
-"@auth0/auth0-spa-js@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@auth0/auth0-spa-js@npm:2.1.0"
-  checksum: 43151a56b9d1408071cbf2094a2b034d1ea3819cf0c4667f14afd8b6410d0268f12489e0b271a3e00fa24d52de4072cfad7089c002a1c82fca65b68c57962d73
+"@auth0/auth0-spa-js@npm:^2.1.3":
+  version: 2.1.3
+  resolution: "@auth0/auth0-spa-js@npm:2.1.3"
+  checksum: aff5f3ab8a15ad63e9956e638ea13955dea22268b0d46d93561ae7accce0147198fc01203cbfe65637d709836c7ecf6a7efc5d38742dd0e251eb1387849efff5
   languageName: node
   linkType: hard
 
@@ -3993,7 +3993,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "auth0-react-sample@workspace:."
   dependencies:
-    "@auth0/auth0-react": ^2.2.0
+    "@auth0/auth0-react": ^2.3.0
     "@babel/core": ^7.23
     "@babel/plugin-syntax-flow": ^7.23
     "@babel/plugin-transform-react-jsx": ^7.23
