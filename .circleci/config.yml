@@ -8,6 +8,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@7.1.0
+  yarn: circleci/yarn@4.0.0
 #  docker: circleci/docker@2.8.2
 
 jobs:
