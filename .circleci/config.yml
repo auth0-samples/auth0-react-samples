@@ -13,7 +13,7 @@ orbs:
 jobs:
   checkout:
     docker:
-      - image: cimg/node:22.1.0
+      - image: cimg/node:20.2.0
     steps:
       - checkout
       - run: git clone https://github.com/auth0-samples/spa-quickstarts-tests scripts
@@ -24,7 +24,7 @@ jobs:
             - scripts
   sample-01:
     docker:
-      - image: cimg/node:22.1.0
+      - image: cimg/node:20.2.0
     environment:
       AUTH0_CFG: Sample-01/src/auth_config.json
       SAMPLE_PATH: Sample-01
