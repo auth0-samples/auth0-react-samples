@@ -30,7 +30,8 @@ jobs:
       SAMPLE_PATH: Sample-01
     steps:
       - node/install:
-          install-yarn: true
+          install-yarn: false
+      - yarn/install:
           yarn-version: 3.2.4
       - attach_workspace:
           at: ~/
