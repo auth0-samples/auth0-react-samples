@@ -62,5 +62,5 @@
       "last 1 safari version"
     ]
   },
-  "packageManager": "yarn@3.2.4+sha512.bb197bb586aabeca42ce9113e2235af3edaeac5797d26c99067e58d401d4eb43fbd51b644431434dd2a5f612ee65ffcd20262016c62f3608eb39fbfa6eeb1de7"
+  "packageManager": "yarn@1.22.22"
 }
