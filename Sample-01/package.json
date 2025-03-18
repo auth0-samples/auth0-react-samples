@@ -16,7 +16,7 @@
     "prod": "npm-run-all --parallel server api-server"
   },
   "dependencies": {
-    "@auth0/auth0-react": "^2.2.0",
+    "@auth0/auth0-react": "^2.3.0",
     "@babel/core": "^7.23",
     "@babel/plugin-syntax-flow": "^7.23",
     "@babel/plugin-transform-react-jsx": "^7.23",
@@ -26,7 +26,7 @@
     "autoprefixer": "^10.4",
     "cors": "^2.8",
     "express": "^4.18",
-    "express-oauth2-jwt-bearer": "^1.6.0",
+    "express-oauth2-jwt-bearer": "^1.6.1",
     "helmet": "^4.4",
     "highlight.js": "^10.0",
     "morgan": "^1.9",
@@ -34,6 +34,7 @@
     "postcss": "^8.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-json-view": "^1.21.3",
     "react-router-dom": "^5.3",
     "react-scripts": "^5.0",
     "reactstrap": "^9.2",
@@ -60,5 +61,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "packageManager": "yarn@1.22.22"
 }

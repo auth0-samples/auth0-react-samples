@@ -8,7 +8,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.0.2
-  docker: circleci/docker@2.0.3
+#  docker: circleci/docker@2.8.2
   
 jobs:
   checkout:
@@ -24,7 +24,7 @@ jobs:
             - scripts
   sample-01:
     docker:
-      - image: cimg/node:lts
+      - image: cimg/node:22.1.0
     environment:
       - AUTH0_CFG: Sample-01/src/auth_config.json
       - SAMPLE_PATH: Sample-01
