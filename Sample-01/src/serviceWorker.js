@@ -44,8 +44,10 @@ export function register(config) {
           console.log(
             'This web app is being served cache-first by a service ' +
               'worker. To learn more, visit https://bit.ly/CRA-PWA'
-          );
-        });
+          )
+        }).catch((error) => {
+          console.error('Error during service worker registration:', error);
+        })
       } else {
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, config);
@@ -75,9 +77,7 @@ function registerValidSW(swUrl, config) {
               );
 
               // Execute callback
-              if (config && config.onUpdate) {
-                config.onUpdate(registration);
-              }
+              config?.onUpdate?.(registration);
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a
@@ -85,9 +85,7 @@ function registerValidSW(swUrl, config) {
               console.log('Content is cached for offline use.');
 
               // Execute callback
-              if (config && config.onSuccess) {
-                config.onSuccess(registration);
-              }
+              config?.onSuccess?.(registration);
             }
           }
         };
@@ -112,7 +110,11 @@ function checkValidServiceWorker(swUrl, config) {
         navigator.serviceWorker.ready.then(registration => {
           registration.unregister().then(() => {
             window.location.reload();
-          });
+          }).catch(error => {
+            console.error('Error during service worker unregistration:', error);
+          }     );
+        }).catch(error => {
+          console.error('Error waiting for serviceWorker.ready:', error);
         });
       } else {
         // Service worker found. Proceed as normal.
@@ -130,6 +132,8 @@ export function unregister() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(registration => {
       registration.unregister();
+    }).catch(error => {
+      console.error('Error during service worker unregistration:', error);
     });
   }
 }
