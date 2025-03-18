@@ -24,13 +24,15 @@ jobs:
             - scripts
   sample-01:
     docker:
-      - image: cimg/node:22.1.0
+      - image: cimg/base:stable
     environment:
       AUTH0_CFG: Sample-01/src/auth_config.json
       SAMPLE_PATH: Sample-01
     steps:
       - node/install:
+          node-version: "22.14.0"
           install-yarn: true
+      - run: node --version
       - attach_workspace:
           at: ~/
       - run:
@@ -39,6 +41,7 @@ jobs:
             echo "{ \"domain\": \"$AUTH0_TEST_DOMAIN\", \"clientId\": \"$AUTH0_TEST_CLIENT_ID\", \"audience\": \"$AUTH0_TEST_API_IDENTIFIER\" }" > $AUTH0_CFG
       - setup_remote_docker:
           version: 20.10.24
+      - run: node --version
       - run:
           name: Build pull request
           command: |
