@@ -29,6 +29,8 @@ jobs:
       AUTH0_CFG: Sample-01/src/auth_config.json
       SAMPLE_PATH: Sample-01
     steps:
+      - run: nvm install "22.14.0"
+      - run: nvm use "22.14.0"
       - node/install:
           node-version: "22.14.0"
           install-yarn: true
@@ -45,6 +47,8 @@ jobs:
       - run:
           name: Build pull request
           command: |
+            nvm use "22.14.0"
+            node --version
             docker build -t $CIRCLE_JOB ./$SAMPLE_PATH
             docker run -d -p 3000:3000 --name $CIRCLE_SHA1 $CIRCLE_JOB
       - run:
