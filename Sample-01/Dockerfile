@@ -1,4 +1,7 @@
-FROM node:alpine3.21 AS build
+ARG NODE_VERSION=22.14.0
+ARG ALPINE_VERSION=3.21
+
+FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS build
 
 RUN apk update && \
   apk upgrade && \
@@ -20,7 +23,7 @@ RUN yarn build
 
 # ---------------
 
-FROM node:alpine3.21
+FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION}
 
 RUN mkdir -p /app/build && \
   apk update && \
