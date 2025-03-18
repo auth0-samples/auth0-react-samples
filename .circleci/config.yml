@@ -9,11 +9,11 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.2
 #  docker: circleci/docker@2.8.2
-  
+
 jobs:
   checkout:
     docker:
-      - image: cimg/node:lts
+      - image: cimg/node:20.2.0
     steps:
       - checkout
       - run: git clone https://github.com/auth0-samples/spa-quickstarts-tests scripts
@@ -26,8 +26,8 @@ jobs:
     docker:
       - image: cimg/node:22.1.0
     environment:
-      - AUTH0_CFG: Sample-01/src/auth_config.json
-      - SAMPLE_PATH: Sample-01
+      AUTH0_CFG: Sample-01/src/auth_config.json
+      SAMPLE_PATH: Sample-01
     steps:
       - node/install:
           install-yarn: true
@@ -38,7 +38,7 @@ jobs:
           command: |
             echo "{ \"domain\": \"$AUTH0_TEST_DOMAIN\", \"clientId\": \"$AUTH0_TEST_CLIENT_ID\", \"audience\": \"$AUTH0_TEST_API_IDENTIFIER\" }" > $AUTH0_CFG
       - setup_remote_docker:
-          version: 19.03.13
+          version: 20.10.24
       - run:
           name: Build pull request
           command: |

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Alert } from "reactstrap";
-import Highlight from "../components/Highlight";
+import ReactJson from "react-json-view";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { getConfig } from "../config";
 import Loading from "../components/Loading";
@@ -89,7 +89,7 @@ export const ExternalApiComponent = () => {
             You need to{" "}
             <a
               href="#/"
-              class="alert-link"
+              className="alert-link"
               onClick={(e) => handle(e, handleConsent)}
             >
               consent to get access to users api
@@ -102,7 +102,7 @@ export const ExternalApiComponent = () => {
             You need to{" "}
             <a
               href="#/"
-              class="alert-link"
+              className="alert-link"
               onClick={(e) => handle(e, handleLoginAgain)}
             >
               log in again
@@ -117,7 +117,7 @@ export const ExternalApiComponent = () => {
 
         <p>
           This will call a local API on port 3001 that would have been started
-          if you run <code>npm run dev</code>. An access token is sent as part
+          if you run <code>yarn run dev</code>. An access token is sent as part
           of the request's `Authorization` header and the API will validate it
           using the API's audience value.
         </p>
@@ -182,9 +182,17 @@ export const ExternalApiComponent = () => {
         {state.showResult && (
           <div className="result-block" data-testid="api-result">
             <h6 className="muted">Result</h6>
-            <Highlight>
+            {/* <Highlight>
               <span>{JSON.stringify(state.apiMessage, null, 2)}</span>
-            </Highlight>
+            </Highlight> */}
+            <ReactJson
+              src={state.apiMessage}
+              theme="monokai"
+              name={false}
+              displayObjectSize={false}
+              displayDataTypes={false}
+              style={{ fontSize: "1.1rem", lineHeight: 1.1 }}
+            />
           </div>
         )}
       </div>
