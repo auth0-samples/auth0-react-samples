@@ -16,9 +16,9 @@ jobs:
       - image: cimg/node:20.2.0
     steps:
       - checkout
-      - run: git clone https://github.com/auth0-samples/spa-quickstarts-tests scripts
+      #- run: git clone https://github.com/auth0-samples/spa-quickstarts-tests scripts
       # Use the following line instead of the previous one if you want to use a fork of the tests repository
-      #- run: git clone https://github.com/djbauch/spa-quickstarts-tests scripts
+      - run: git clone https://github.com/djbauch/spa-quickstarts-tests scripts
       - persist_to_workspace:
           root: ~/
           paths:
@@ -68,7 +68,7 @@ jobs:
             docker create --network host --name tester codeceptjs/codeceptjs codeceptjs run-multiple --all --steps --verbose
             docker cp $(pwd)/lock_login_spa_test.js tester:/tests/lock_login_test.js
             docker cp $(pwd)/codecept.conf.js tester:/tests/codecept.conf.js
-            docker start -i tester codeceptjs run-multiple --all --steps --verbose
+            docker start -i tester
           working_directory: scripts
       - run:
           name: Copy app container logs
