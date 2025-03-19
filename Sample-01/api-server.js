@@ -14,7 +14,7 @@ const appOrigin = authConfig.appOrigin || `http://localhost:${appPort}`;
 if (
   !authConfig.domain ||
   !authConfig.audience ||
-  ["{yourApiIdentifier}", "{API_IDENTIFIER}"].includes(authConfig.audience)
+  authConfig.audience === "{API_IDENTIFIER}"
 ) {
   console.log(
     "Exiting: Please make sure that auth_config.json is in place and populated with valid domain and audience values"
