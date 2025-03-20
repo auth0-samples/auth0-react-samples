@@ -7,9 +7,9 @@ const authConfig = require("./src/auth_config.json");
 
 const app = express();
 
-const port = process.env.API_PORT || 3001;
-const appPort = process.env.SERVER_PORT || 3000;
-const appOrigin = authConfig.appOrigin || `http://localhost:${appPort}`;
+const port = +(process.env.API_PORT ?? 3001)
+const appPort = +(process.env.SERVER_PORT || 3000)
+const appOrigin =('appOrigin' in authConfig) ? authConfig.appOrigin : `http://localhost:${appPort}`;
 
 if (
   !authConfig.domain ||
@@ -30,7 +30,7 @@ app.use(cors({ origin: appOrigin }));
 const checkJwt = auth({
   audience: authConfig.audience,
   issuerBaseURL: `https://${authConfig.domain}/`,
-  algorithms: ["RS256"],
+  tokenSigningAlg: "RS256",
 });
 
 app.get("/api/external", checkJwt, (req, res) => {

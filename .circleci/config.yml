@@ -8,15 +8,17 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.0.2
-  docker: circleci/docker@2.0.3
-  
+#  docker: circleci/docker@2.8.2
+
 jobs:
   checkout:
     docker:
-      - image: cimg/node:lts
+      - image: cimg/node:20.2.0
     steps:
       - checkout
-      - run: git clone https://github.com/auth0-samples/spa-quickstarts-tests scripts
+      #- run: git clone https://github.com/auth0-samples/spa-quickstarts-tests scripts
+      # Use the following line instead of the previous one if you want to use a fork of the tests repository
+      - run: git clone https://github.com/djbauch/spa-quickstarts-tests scripts
       - persist_to_workspace:
           root: ~/
           paths:
@@ -24,13 +26,15 @@ jobs:
             - scripts
   sample-01:
     docker:
-      - image: cimg/node:lts
+      - image: cimg/base:stable
     environment:
-      - AUTH0_CFG: Sample-01/src/auth_config.json
-      - SAMPLE_PATH: Sample-01
+      AUTH0_CFG: Sample-01/src/auth_config.json
+      SAMPLE_PATH: Sample-01
     steps:
       - node/install:
+          node-version: "22.14.0"
           install-yarn: true
+      - run: node --version
       - attach_workspace:
           at: ~/
       - run:
@@ -38,10 +42,11 @@ jobs:
           command: |
             echo "{ \"domain\": \"$AUTH0_TEST_DOMAIN\", \"clientId\": \"$AUTH0_TEST_CLIENT_ID\", \"audience\": \"$AUTH0_TEST_API_IDENTIFIER\" }" > $AUTH0_CFG
       - setup_remote_docker:
-          version: 19.03.13
+          version: 20.10.24
       - run:
           name: Build pull request
           command: |
+            node --version
             docker build -t $CIRCLE_JOB ./$SAMPLE_PATH
             docker run -d -p 3000:3000 --name $CIRCLE_SHA1 $CIRCLE_JOB
       - run:
@@ -61,9 +66,12 @@ jobs:
           name: Run integration tests
           command: |
             docker create --network host --name tester codeceptjs/codeceptjs codeceptjs run-multiple --all --steps --verbose
-            docker cp $(pwd)/lock_login_spa_test.js tester:/tests/lock_login_test.js
             docker cp $(pwd)/codecept.conf.js tester:/tests/codecept.conf.js
             docker start -i tester
+            docker cp $(pwd)/cant_login_spa_test.js tester:/tests/cant_login_test.js
+            docker start -i tester
+
+
           working_directory: scripts
       - run:
           name: Copy app container logs

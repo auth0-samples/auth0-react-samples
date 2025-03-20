@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 
-import Highlight from "../components/Highlight";
+import ReactJson from "react-json-view";
 import Loading from "../components/Loading";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 
@@ -24,7 +24,9 @@ export const ProfileComponent = () => {
         </Col>
       </Row>
       <Row>
-        <Highlight>{JSON.stringify(user, null, 2)}</Highlight>
+        <ReactJson src={user} name={false} displayObjectSize={false}
+        displayDataTypes={false} theme="monokai" style={{ fontSize: "1.1rem", lineHeight: 1.1}} />
+        {/* <Highlight>{JSON.stringify(user, null, 2)}</Highlight> */}
       </Row>
     </Container>
   );
