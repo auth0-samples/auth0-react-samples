@@ -40,7 +40,6 @@ placeholders:
     inputKey: "appDomain"
   "%APP_SCHEME%":
     inputKey: "appScheme"
-  "%ENV_FILE_NAME%": *defaultEnvFileName
   "{import.meta.env.VITE_AUTH0_DOMAIN}":
     inputKey: "auth0Domain"
     prefix: '"'
