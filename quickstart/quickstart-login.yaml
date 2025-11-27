@@ -40,7 +40,14 @@ placeholders:
     inputKey: "appDomain"
   "%APP_SCHEME%":
     inputKey: "appScheme"
-  "%ENV_FILE_NAME%": *defaultEnvFileName
+  "{import.meta.env.VITE_AUTH0_DOMAIN}":
+    inputKey: "auth0Domain"
+    prefix: '"'
+    suffix: '"'
+  "{import.meta.env.VITE_AUTH0_CLIENT_ID}":
+    inputKey: "auth0ClientId"
+    prefix: '"'
+    suffix: '"'
 
 snippets:
   get-app: &getApp
@@ -99,12 +106,6 @@ steps:
         source: "quickstart/markdown/install-sdk.md"
       - type: terminal
         <<: *installAuth0
-  - title: "Define Auth0 Environment Variables"
-    contentBlocks:
-      - type: markdown
-        source: "quickstart/markdown/add-provider-variables.md"
-      - type: snippet
-        <<: *env
   - title: "Wrap your App with the Auth0Provider"
     contentBlocks:
       - type: markdown
