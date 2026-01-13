@@ -120,5 +120,12 @@ steps:
         <<: *appJs
   - <<: *tryOutStep
 
+nextSteps:
+  links:
+    - label: "Calling Protected APIs"
+      url: "https://auth0.com/docs/quickstart/spa/react#calling-protected-apis"
+    - label: "Auth0 React SDK"
+      url: "https://github.com/auth0/auth0-react"
+
 # Used by the CLI to generate the .env file
 envSnippet: *env
