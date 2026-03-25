@@ -1,0 +1,11 @@
+[build]
+    base = "Sample-01"
+    command = """if [ -z "${AUTH0_DOMAIN}" ] || [ -z "${AUTH0_CLIENT_ID}" ]; then
+            echo "Error: One or both environment variables (AUTH0_DOMAIN, AUTH0_CLIENT_ID) are not set or are empty."
+            exit 1
+        fi
+        printf '{\"domain\":\"%s\", \"clientId\":\"%s\"}' "${AUTH0_DOMAIN}" "${AUTH0_CLIENT_ID}" > src/auth_config.json
+        yarn install
+        yarn run build
+    """
+    publish = "build"

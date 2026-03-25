@@ -32,12 +32,14 @@ const NavBar = () => {
 
   const logoutWithRedirect = () =>
     logout({
-      returnTo: window.location.origin,
+        logoutParams: {
+          returnTo: window.location.origin,
+        }
     });
 
   return (
     <div className="nav-container">
-      <Navbar color="light" light expand="md">
+      <Navbar color="light" light expand="md" container={false}>
         <Container>
           <NavbarBrand className="logo" />
           <NavbarToggler onClick={toggle} />

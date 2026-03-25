@@ -12,10 +12,10 @@ This sample demonstrates the following use cases:
 
 ## Project setup
 
-Use `npm` to install the project dependencies:
+Use `yarn` to install the project dependencies:
 
 ```bash
-npm install
+yarn install
 ```
 
 ## Configuration
@@ -51,7 +51,7 @@ To do this, first copy `src/auth_config.json.example` into a new file in the sam
 This compiles and serves the React app and starts the backend API server on port 3001.
 
 ```bash
-npm run dev
+yarn run dev
 ```
 
 ## Deployment
@@ -59,7 +59,7 @@ npm run dev
 ### Compiles and minifies for production
 
 ```bash
-npm run build
+yarn run build
 ```
 
 ### Docker build
@@ -69,7 +69,7 @@ To build and run the Docker image, run `exec.sh`, or `exec.ps1` on Windows.
 ### Run your tests
 
 ```bash
-npm run test
+yarn run test
 ```
 
 ## Frequently Asked Questions

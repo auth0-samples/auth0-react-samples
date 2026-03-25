@@ -27,7 +27,7 @@ describe("The config module", () => {
   });
 
   it("should omit the audience if left at a default value", () => {
-    mockConfig({ audience: "YOUR_API_IDENTIFIER" });
+    mockConfig({ audience: "{yourApiIdentifier}" });
 
     const { getConfig } = require("../config");
 
