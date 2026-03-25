@@ -10,6 +10,13 @@
 
 
 
+
+
+
+
+
+
+
 This is the sample code for the [Auth0 React Quickstart](https://auth0.com/docs/quickstart/spa/react) using [auth0-react](https://github.com/auth0/auth0-react).
 
 Please check out [the sample application](./Sample-01) for an example of how to integrate the Auth0 React SDK into your React applications.
