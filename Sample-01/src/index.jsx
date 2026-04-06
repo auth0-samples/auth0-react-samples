@@ -5,6 +5,7 @@ import App from "./App";
 import { Auth0Provider } from "@auth0/auth0-react";
 import history from "./utils/history";
 import { getConfig } from "./config";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const onRedirectCallback = (appState) => {
   history.push(

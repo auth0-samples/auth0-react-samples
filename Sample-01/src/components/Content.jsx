@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
-import { Row, Col } from "reactstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import contentData from "../utils/contentData";
@@ -15,7 +16,7 @@ class Content extends Component {
             <Col key={i} md={5} className="mb-4">
               <h6 className="mb-3">
                 <a href={col.link}>
-                  <FontAwesomeIcon icon="link" className="mr-2" />
+                  <FontAwesomeIcon icon="link" className="me-2" />
                   {col.title}
                 </a>
               </h6>

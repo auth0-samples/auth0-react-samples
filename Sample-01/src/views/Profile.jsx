@@ -1,5 +1,7 @@
 import React from "react";
-import { Container, Row, Col } from "reactstrap";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import Highlight from "../components/Highlight";
 import Loading from "../components/Loading";
@@ -10,7 +12,7 @@ export const ProfileComponent = () => {
 
   return (
     <Container className="mb-5">
-      <Row className="align-items-center profile-header mb-5 text-center text-md-left">
+      <Row className="align-items-center profile-header mb-5 text-center text-md-start">
         <Col md={2}>
           <img
             src={user.picture}

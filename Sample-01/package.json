@@ -20,6 +20,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.8",
     "@fortawesome/react-fontawesome": "^0.2",
     "@vitejs/plugin-react": "^6.0.1",
+    "bootstrap": "5.3.8",
     "cors": "^2.8",
     "express": "^4.18",
     "express-oauth2-jwt-bearer": "^1.6.0",
@@ -28,9 +29,9 @@
     "morgan": "^1.9",
     "npm-run-all": "^4.1",
     "react": "^19.2.4",
+    "react-bootstrap": "2.10.10",
     "react-dom": "^19.2.4",
     "react-router-dom": "^5.3",
-    "reactstrap": "^9.2",
     "vite": "^8.0.3"
   },
   "devDependencies": {

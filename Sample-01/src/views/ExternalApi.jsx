@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button, Alert } from "reactstrap";
+import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
 import Highlight from "../components/Highlight";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { getConfig } from "../config";
@@ -85,11 +86,11 @@ export const ExternalApiComponent = () => {
     <>
       <div className="mb-5">
         {state.error === "consent_required" && (
-          <Alert color="warning">
+          <Alert variant="warning">
             You need to{" "}
             <a
               href="#/"
-              class="alert-link"
+              className="alert-link"
               onClick={(e) => handle(e, handleConsent)}
             >
               consent to get access to users api
@@ -98,11 +99,11 @@ export const ExternalApiComponent = () => {
         )}
 
         {state.error === "login_required" && (
-          <Alert color="warning">
+          <Alert variant="warning">
             You need to{" "}
             <a
               href="#/"
-              class="alert-link"
+              className="alert-link"
               onClick={(e) => handle(e, handleLoginAgain)}
             >
               log in again
@@ -123,7 +124,7 @@ export const ExternalApiComponent = () => {
         </p>
 
         {!audience && (
-          <Alert color="warning">
+          <Alert variant="warning">
             <p>
               You can't call the API at the moment because your application does
               not have any configuration for <code>audience</code>, or it is
@@ -153,7 +154,7 @@ export const ExternalApiComponent = () => {
             </p>
             <ul>
               <li>
-                in the <code>src/index.js</code> file
+                in the <code>src/index.jsx</code> file
               </li>
               <li>
                 by specifying it in the <code>auth_config.json</code> file (see
@@ -169,7 +170,7 @@ export const ExternalApiComponent = () => {
         )}
 
         <Button
-          color="primary"
+          variant="primary"
           className="mt-5"
           onClick={callApi}
           disabled={!audience}
