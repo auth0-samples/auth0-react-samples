@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink as RouterNavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Container from "react-bootstrap/Container";
@@ -34,25 +34,22 @@ const NavBar = () => {
           <Navbar.Collapse id="main-navbar">
             <Nav className="me-auto">
               <Nav.Item>
-                <Nav.Link
-                  as={RouterNavLink}
+                <NavLink
                   to="/"
-                  exact
-                  activeClassName="router-link-exact-active"
+                  end
+                  className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
                 >
                   Home
-                </Nav.Link>
+                </NavLink>
               </Nav.Item>
               {isAuthenticated && (
                 <Nav.Item>
-                  <Nav.Link
-                    as={RouterNavLink}
+                  <NavLink
                     to="/external-api"
-                    exact
-                    activeClassName="router-link-exact-active"
+                    className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
                   >
                     External API
-                  </Nav.Link>
+                  </NavLink>
                 </Nav.Item>
               )}
             </Nav>
@@ -76,10 +73,9 @@ const NavBar = () => {
                 >
                   <NavDropdown.Header>{user.name}</NavDropdown.Header>
                   <NavDropdown.Item
-                    as={RouterNavLink}
+                    as={Link}
                     to="/profile"
                     className="dropdown-profile"
-                    activeClassName="router-link-exact-active"
                   >
                     <FontAwesomeIcon icon="user" className="me-3" /> Profile
                   </NavDropdown.Item>
@@ -125,22 +121,22 @@ const NavBar = () => {
                 </Nav.Item>
                 <Nav.Item>
                   <FontAwesomeIcon icon="user" className="me-3" />
-                  <RouterNavLink
+                  <NavLink
                     to="/profile"
-                    activeClassName="router-link-exact-active"
+                    className={({ isActive }) => isActive ? "active" : undefined}
                   >
                     Profile
-                  </RouterNavLink>
+                  </NavLink>
                 </Nav.Item>
                 <Nav.Item>
                   <FontAwesomeIcon icon="power-off" className="me-3" />
-                  <RouterNavLink
+                  <Link
                     to="#"
                     id="qsLogoutBtn"
                     onClick={() => logoutWithRedirect()}
                   >
                     Log out
-                  </RouterNavLink>
+                  </Link>
                 </Nav.Item>
               </Nav>
             )}

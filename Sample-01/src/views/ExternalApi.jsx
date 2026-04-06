@@ -7,7 +7,7 @@ import { getConfig } from "../config";
 import Loading from "../components/Loading";
 
 export const ExternalApiComponent = () => {
-  const { apiOrigin = "http://localhost:3001", audience } = getConfig();
+  const { apiOrigin, audience } = getConfig();
 
   const [state, setState] = useState({
     showResult: false,
@@ -154,16 +154,15 @@ export const ExternalApiComponent = () => {
             </p>
             <ul>
               <li>
-                in the <code>src/index.jsx</code> file
+                by exposing the <code>AUTH0_AUDIENCE</code> environment variable to the application
               </li>
               <li>
-                by specifying it in the <code>auth_config.json</code> file (see
-                the <code>auth_config.json.example</code> file for an example of
-                where it should go)
+                by setting <code>AUTH0_AUDIENCE</code> in your <code>.env.local</code> file
+                (see <code>.env.example</code> for reference)
               </li>
             </ul>
             <p>
-              Once you have configured the value for <code>audience</code>,
+              Once you have configured the value for <code>AUTH0_AUDIENCE</code>,
               please restart the app and try to use the "Ping API" button below.
             </p>
           </Alert>

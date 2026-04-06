@@ -4,7 +4,6 @@
             echo "Error: One or both environment variables (AUTH0_DOMAIN, AUTH0_CLIENT_ID) are not set or are empty."
             exit 1
         fi
-        printf '{\"domain\":\"%s\", \"clientId\":\"%s\"}' "${AUTH0_DOMAIN}" "${AUTH0_CLIENT_ID}" > src/auth_config.json
         npm install
         npm run build
     """

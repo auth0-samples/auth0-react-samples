@@ -16,7 +16,16 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+ARG AUTH0_DOMAIN
+ARG AUTH0_CLIENT_ID
+ARG AUTH0_AUDIENCE
+ARG API_BASE_URL
+
+RUN AUTH0_DOMAIN=${AUTH0_DOMAIN} \
+  AUTH0_CLIENT_ID=${AUTH0_CLIENT_ID} \
+  AUTH0_AUDIENCE=${AUTH0_AUDIENCE} \
+  API_BASE_URL=${API_BASE_URL} \
+  npm run build
 
 # ---------------
 
@@ -35,7 +44,6 @@ COPY --from=build /app/package.json .
 RUN npm install --omit=dev
 
 COPY --from=build /app/dist ./dist
-COPY --from=build /app/src/auth_config.json ./src/auth_config.json
 COPY --from=build /app/server.js .
 COPY --from=build /app/api-server.js .
 
