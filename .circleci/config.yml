@@ -29,7 +29,7 @@ jobs:
       - AUTH0_CFG: Sample-01/src/auth_config.json
       - SAMPLE_PATH: Sample-01
     steps:
-      - node/install:
+      - node/install
       - attach_workspace:
           at: ~/
       - run:
