@@ -22,7 +22,7 @@ RUN npm run build
 
 FROM node:lts-alpine3.20
 
-RUN mkdir -p /app/build
+RUN mkdir -p /app/dist
 
 RUN apk update && \
   apk upgrade && \
@@ -34,7 +34,7 @@ COPY --from=build /app/package.json .
 
 RUN npm install --omit=dev
 
-COPY --from=build /app/build ./build
+COPY --from=build /app/dist ./dist
 COPY --from=build /app/src/auth_config.json ./src/auth_config.json
 COPY --from=build /app/server.js .
 COPY --from=build /app/api-server.js .
