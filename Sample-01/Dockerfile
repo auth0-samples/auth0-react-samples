@@ -1,4 +1,4 @@
-FROM node:lts-alpine3.14 as build
+FROM node:lts-alpine3.20 AS build
 
 RUN apk update && \
   apk upgrade && \
@@ -10,7 +10,7 @@ WORKDIR /app
 
 COPY package.json .
 
-RUN npm install -g --force npm@latest typescript@latest
+RUN npm install -g --force npm@latest
 
 RUN npm install
 
@@ -20,7 +20,7 @@ RUN npm run build
 
 # ---------------
 
-FROM node:lts-alpine3.14
+FROM node:lts-alpine3.20
 
 RUN mkdir -p /app/build
 
@@ -44,6 +44,6 @@ EXPOSE 3001
 
 ENV SERVER_PORT=3000
 ENV API_PORT=3001
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 CMD ["npm", "run", "prod"]
