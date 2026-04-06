@@ -44,6 +44,6 @@
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
     "jest-fetch-mock": "^3.0",
-    "nodemon": "^2.0"
+    "nodemon": "^3.0"
   }
 }
