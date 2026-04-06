@@ -12,10 +12,10 @@ This sample demonstrates the following use cases:
 
 ## Project setup
 
-Use `yarn` to install the project dependencies:
+Use `npm` to install the project dependencies:
 
 ```bash
-yarn install
+npm install
 ```
 
 ## Configuration
@@ -51,7 +51,7 @@ To do this, first copy `src/auth_config.json.example` into a new file in the sam
 This compiles and serves the React app and starts the backend API server on port 3001.
 
 ```bash
-yarn run dev
+npm run dev
 ```
 
 ## Deployment
@@ -59,7 +59,7 @@ yarn run dev
 ### Compiles and minifies for production
 
 ```bash
-yarn run build
+npm run build
 ```
 
 ### Docker build
@@ -69,7 +69,7 @@ To build and run the Docker image, run `exec.sh`, or `exec.ps1` on Windows.
 ### Run your tests
 
 ```bash
-yarn run test
+npm test
 ```
 
 ## Frequently Asked Questions
@@ -80,12 +80,12 @@ If you're having issues running the sample applications, including issues such a
 
 Auth0 helps you to:
 
-* Add authentication with [multiple sources](https://auth0.com/docs/identityproviders), either social identity providers such as **Google, Facebook, Microsoft Account, LinkedIn, GitHub, Twitter, Box, Salesforce** (amongst others), or enterprise identity systems like **Windows Azure AD, Google Apps, Active Directory, ADFS, or any SAML Identity Provider**.
-* Add authentication through more traditional **[username/password databases](https://auth0.com/docs/connections/database/custom-db)**.
-* Add support for **[linking different user accounts](https://auth0.com/docs/users/user-account-linking)** with the same user.
-* Support for generating signed [JSON Web Tokens](https://auth0.com/docs/tokens/json-web-tokens) to call your APIs and **flow the user identity** securely.
-* Analytics of how, when, and where users are logging in.
-* Pull data from other sources and add it to the user profile through [JavaScript rules](https://auth0.com/docs/rules).
+- Add authentication with [multiple sources](https://auth0.com/docs/identityproviders), either social identity providers such as **Google, Facebook, Microsoft Account, LinkedIn, GitHub, Twitter, Box, Salesforce** (amongst others), or enterprise identity systems like **Windows Azure AD, Google Apps, Active Directory, ADFS, or any SAML Identity Provider**.
+- Add authentication through more traditional **[username/password databases](https://auth0.com/docs/connections/database/custom-db)**.
+- Add support for **[linking different user accounts](https://auth0.com/docs/users/user-account-linking)** with the same user.
+- Support for generating signed [JSON Web Tokens](https://auth0.com/docs/tokens/json-web-tokens) to call your APIs and **flow the user identity** securely.
+- Analytics of how, when, and where users are logging in.
+- Pull data from other sources and add it to the user profile through [JavaScript rules](https://auth0.com/docs/rules).
 
 ## Create a Free Auth0 Account
 

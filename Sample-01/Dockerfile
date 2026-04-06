@@ -10,13 +10,13 @@ WORKDIR /app
 
 COPY package.json .
 
-RUN npm install -g --force npm@latest typescript@latest yarn@latest
+RUN npm install -g --force npm@latest typescript@latest
 
-RUN yarn install
+RUN npm install
 
 COPY . .
 
-RUN yarn build
+RUN npm run build
 
 # ---------------
 
@@ -32,7 +32,7 @@ WORKDIR /app
 
 COPY --from=build /app/package.json .
 
-RUN yarn install --production
+RUN npm install --omit=dev
 
 COPY --from=build /app/build ./build
 COPY --from=build /app/src/auth_config.json ./src/auth_config.json
@@ -46,4 +46,4 @@ ENV SERVER_PORT=3000
 ENV API_PORT=3001
 ENV NODE_ENV production
 
-CMD ["yarn", "prod"]
+CMD ["npm", "run", "prod"]

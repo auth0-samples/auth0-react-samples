@@ -9,7 +9,7 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.2
   docker: circleci/docker@2.0.3
-  
+
 jobs:
   checkout:
     docker:
@@ -30,7 +30,6 @@ jobs:
       - SAMPLE_PATH: Sample-01
     steps:
       - node/install:
-          install-yarn: true
       - attach_workspace:
           at: ~/
       - run:
@@ -50,13 +49,13 @@ jobs:
             sleep 10
             docker run --network host --rm appropriate/curl --retry 8 --retry-connrefused -v localhost:3000
       - node/install-packages:
-          pkg-manager: yarn
+          pkg-manager: npm
           app-dir: Sample-01
       - run:
           name: Run unit tests
           command: |
             cd Sample-01
-            yarn test
+            npm test
       - run:
           name: Run integration tests
           command: |

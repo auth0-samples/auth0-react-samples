@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import hljs from "highlight.js";
+import json from "highlight.js/lib/languages/json";
 import "highlight.js/styles/monokai-sublime.css";
 
-const registeredLanguages = {};
+hljs.registerLanguage("json", json);
+const registeredLanguages = { json: true };
 
 class Highlight extends Component {
   constructor(props) {
@@ -15,22 +17,7 @@ class Highlight extends Component {
   }
 
   componentDidMount() {
-    const { language } = this.props;
-
-    if (language && !registeredLanguages[language]) {
-      try {
-        const newLanguage = require(`highlight.js/lib/languages/${language}`);
-        hljs.registerLanguage(language, newLanguage);
-        registeredLanguages[language] = true;
-
-        this.setState({ loaded: true }, this.highlight);
-      } catch (e) {
-        console.error(e);
-        throw Error(`Cannot register the language ${language}`);
-      }
-    } else {
       this.setState({ loaded: true });
-    }
   }
 
   componentDidUpdate() {
@@ -40,7 +27,7 @@ class Highlight extends Component {
   highlight = () => {
     this.codeNode &&
       this.codeNode.current &&
-      hljs.highlightBlock(this.codeNode.current);
+      hljs.highlightElement(this.codeNode.current);
   };
 
   render() {
