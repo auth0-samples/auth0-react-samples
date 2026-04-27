@@ -60,12 +60,19 @@ snippets:
     source: "quickstart/scripts/install-auth0.sh"
     language: "bash"
   env: &env
+    type: constructed
     fileName: *defaultEnvFileName
-    content: |
-      VITE_AUTH0_DOMAIN=%AUTH0_DOMAIN%
-      VITE_AUTH0_CLIENT_ID=%AUTH0_CLIENT_ID%
-      PORT=%PORT%
     language: "bash"
+    entries:
+      - type: var
+        name: VITE_AUTH0_DOMAIN
+        value: "%AUTH0_DOMAIN%"
+      - type: var
+        name: VITE_AUTH0_CLIENT_ID
+        value: "%AUTH0_CLIENT_ID%"
+      - type: var
+        name: PORT
+        value: "%PORT%"
   app-js: &appJs
     source: "src/App.jsx"
     language: "jsx"
