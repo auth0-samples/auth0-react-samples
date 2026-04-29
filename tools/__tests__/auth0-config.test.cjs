@@ -400,3 +400,195 @@ ENABLE_FEATURE_X=true
     });
   });
 });
+
+describe("validateEnvConfig", () => {
+  const { validateEnvConfig } = require("../auth0-config.cjs");
+
+  const validConfig = {
+    fileName: ".env.local",
+    entries: [
+      { type: "var", name: "DOMAIN", value: "%AUTH0_DOMAIN%" },
+      { type: "var", name: "PORT", value: "%PORT%" },
+    ],
+  };
+
+  test("should return var entries for valid config", () => {
+    const result = validateEnvConfig(validConfig, "test.yaml");
+    expect(result).toEqual([
+      { type: "var", name: "DOMAIN", value: "%AUTH0_DOMAIN%" },
+      { type: "var", name: "PORT", value: "%PORT%" },
+    ]);
+  });
+
+  test("should reject missing envSnippet", () => {
+    expect(() => validateEnvConfig(null, "test.yaml")).toThrow(
+      "envSnippet property is missing",
+    );
+  });
+
+  test("should reject entries that is not an array", () => {
+    expect(() =>
+      validateEnvConfig(
+        { fileName: ".env.local", entries: "not-an-array" },
+        "test.yaml",
+      ),
+    ).toThrow("must have `entries` array");
+  });
+
+  test("should reject missing fileName", () => {
+    expect(() =>
+      validateEnvConfig({ entries: [{ type: "var", name: "X", value: "Y" }] }, "test.yaml"),
+    ).toThrow("must have `fileName` specified");
+  });
+
+  test("should reject entry with missing name", () => {
+    expect(() =>
+      validateEnvConfig(
+        { fileName: ".env.local", entries: [{ type: "var", value: "val" }] },
+        "test.yaml",
+      ),
+    ).toThrow("must have `name` and `value`");
+  });
+
+  test("should reject entry with null value (js-yaml parses missing fields as null)", () => {
+    expect(() =>
+      validateEnvConfig(
+        { fileName: ".env.local", entries: [{ type: "var", name: "X", value: null }] },
+        "test.yaml",
+      ),
+    ).toThrow("must have `name` and `value`");
+  });
+
+  test("should reject entry with undefined value", () => {
+    expect(() =>
+      validateEnvConfig(
+        { fileName: ".env.local", entries: [{ type: "var", name: "X" }] },
+        "test.yaml",
+      ),
+    ).toThrow("must have `name` and `value`");
+  });
+
+  test("should filter out non-var entries", () => {
+    const config = {
+      fileName: ".env.local",
+      entries: [
+        { type: "comment", text: "ignored" },
+        { type: "var", name: "KEEP", value: "yes" },
+      ],
+    };
+    const result = validateEnvConfig(config, "test.yaml");
+    expect(result).toEqual([{ type: "var", name: "KEEP", value: "yes" }]);
+  });
+
+  test("should accept numeric values without throwing", () => {
+    const config = {
+      fileName: ".env.local",
+      entries: [{ type: "var", name: "PORT", value: 3000 }],
+    };
+    const result = validateEnvConfig(config, "test.yaml");
+    expect(result).toEqual([{ type: "var", name: "PORT", value: 3000 }]);
+  });
+
+  test("should accept empty entries array", () => {
+    const config = { fileName: ".env.local", entries: [] };
+    const result = validateEnvConfig(config, "test.yaml");
+    expect(result).toEqual([]);
+  });
+});
+
+describe("parseEnvLines", () => {
+    const { parseEnvLines } = require("../auth0-config.cjs");
+
+    test("should parse active KEY=VALUE lines", () => {
+      const result = parseEnvLines("FOO=bar");
+      expect(result).toEqual([
+        { type: "active", key: "FOO", value: "bar", trimmedValue: "bar", line: "FOO=bar" },
+      ]);
+    });
+
+    test("should preserve values containing '=' signs", () => {
+      const result = parseEnvLines("URL=https://example.com?a=1&b=2");
+      expect(result).toEqual([
+        {
+          type: "active",
+          key: "URL",
+          value: "https://example.com?a=1&b=2",
+          trimmedValue: "https://example.com?a=1&b=2",
+          line: "URL=https://example.com?a=1&b=2",
+        },
+      ]);
+    });
+
+    test("should classify comment lines", () => {
+      const result = parseEnvLines("# this is a comment");
+      expect(result).toEqual([
+        { type: "comment", line: "# this is a comment" },
+      ]);
+    });
+
+    test("should classify indented comment lines", () => {
+      const result = parseEnvLines("  # indented comment");
+      expect(result).toEqual([
+        { type: "comment", line: "  # indented comment" },
+      ]);
+    });
+
+    test("should classify empty lines", () => {
+      const result = parseEnvLines("");
+      expect(result).toEqual([{ type: "empty", line: "" }]);
+    });
+
+    test("should classify whitespace-only lines as empty", () => {
+      const result = parseEnvLines("   ");
+      expect(result).toEqual([{ type: "empty", line: "   " }]);
+    });
+
+    test("should classify lines with no '=' as empty", () => {
+      const result = parseEnvLines("JUST_A_KEY");
+      expect(result).toEqual([{ type: "empty", line: "JUST_A_KEY" }]);
+    });
+
+    test("should handle KEY= with empty value", () => {
+      const result = parseEnvLines("EMPTY=");
+      expect(result).toEqual([
+        { type: "active", key: "EMPTY", value: "", trimmedValue: "", line: "EMPTY=" },
+      ]);
+    });
+
+    test("should trim whitespace from keys", () => {
+      const result = parseEnvLines("  MY_KEY  =value");
+      expect(result[0].key).toBe("MY_KEY");
+    });
+
+    test("should preserve original line including whitespace", () => {
+      const result = parseEnvLines("  MY_KEY  =  value  ");
+      expect(result[0].line).toBe("  MY_KEY  =  value  ");
+    });
+
+    test("should trim trailing whitespace from value via line.trim()", () => {
+      const result = parseEnvLines("KEY=  spaced  ");
+      expect(result[0].value).toBe("  spaced");
+      expect(result[0].trimmedValue).toBe("spaced");
+    });
+
+    test("should parse multi-line content correctly", () => {
+      const content = [
+        "# Config",
+        "A=1",
+        "",
+        "B=2",
+      ].join("\n");
+      const result = parseEnvLines(content);
+      expect(result).toEqual([
+        { type: "comment", line: "# Config" },
+        { type: "active", key: "A", value: "1", trimmedValue: "1", line: "A=1" },
+        { type: "empty", line: "" },
+        { type: "active", key: "B", value: "2", trimmedValue: "2", line: "B=2" },
+      ]);
+    });
+
+    test("should treat a bare '=' as empty (no key)", () => {
+      const result = parseEnvLines("=value");
+      expect(result[0].type).toBe("empty");
+    });
+  });
