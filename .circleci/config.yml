@@ -32,7 +32,7 @@ jobs:
       - attach_workspace:
           at: ~/
       - setup_remote_docker:
-          version: 19.03.13
+          version: default
       - run:
           name: Build pull request
           command: |
