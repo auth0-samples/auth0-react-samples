@@ -4,7 +4,10 @@ if [ ! -f .env.local ]; then
   exit 1
 fi
 
-export $(grep -v '^#' .env.local | grep -v '^$' | xargs)
+AUTH0_DOMAIN=$(grep '^AUTH0_DOMAIN=' .env.local | cut -d '=' -f2-)
+AUTH0_CLIENT_ID=$(grep '^AUTH0_CLIENT_ID=' .env.local | cut -d '=' -f2-)
+AUTH0_AUDIENCE=$(grep '^AUTH0_AUDIENCE=' .env.local | cut -d '=' -f2-)
+API_BASE_URL=$(grep '^API_BASE_URL=' .env.local | cut -d '=' -f2-)
 
 docker build \
   --build-arg AUTH0_DOMAIN="$AUTH0_DOMAIN" \

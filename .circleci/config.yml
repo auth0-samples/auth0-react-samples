@@ -26,22 +26,17 @@ jobs:
     docker:
       - image: cimg/node:lts
     environment:
-      - AUTH0_CFG: Sample-01/src/auth_config.json
       - SAMPLE_PATH: Sample-01
     steps:
       - node/install
       - attach_workspace:
           at: ~/
-      - run:
-          name: Replace Auth0 test credentials
-          command: |
-            echo "{ \"domain\": \"$AUTH0_TEST_DOMAIN\", \"clientId\": \"$AUTH0_TEST_CLIENT_ID\", \"audience\": \"$AUTH0_TEST_API_IDENTIFIER\" }" > $AUTH0_CFG
       - setup_remote_docker:
           version: 19.03.13
       - run:
           name: Build pull request
           command: |
-            docker build -t $CIRCLE_JOB ./$SAMPLE_PATH
+            docker build --build-arg AUTH0_DOMAIN=$AUTH0_TEST_DOMAIN --build-arg AUTH0_CLIENT_ID=$AUTH0_TEST_CLIENT_ID --build-arg AUTH0_AUDIENCE=$AUTH0_TEST_API_IDENTIFIER -t $CIRCLE_JOB ./$SAMPLE_PATH
             docker run -d -p 3000:3000 --name $CIRCLE_SHA1 $CIRCLE_JOB
       - run:
           name: Wait for app to be available
